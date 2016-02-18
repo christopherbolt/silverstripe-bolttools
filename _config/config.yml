@@ -1,0 +1,50 @@
+---
+Name: bolttools
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
+SiteTree_Controller:
+  extensions:
+   - BoltSiteTree_Controller
+
+LeftAndMain:
+  extensions:
+    - BoltToolsLeftAndMain
+
+DBField:
+  extensions:
+    - BoltDBFieldExtension
+
+Text:
+  extensions:
+    - BoltTextExtension
+
+Link:
+  extensions:
+    - BoltLink
+
+LinkField:
+  extensions:
+    - BoltLinkField
+
+# Blog
+Blog:
+  extensions:
+    - BoltBlog
+
+Blog_Controller:
+  extensions:
+    - BoltBlog_Controller
+
+BlogPost:
+  extensions:
+    - BoltBlogPost
+
+BlogPost_Controller:
+  extensions:
+    - BoltBlogPost_Controller
+
+BlogCategory:
+  extensions:
+    - BoltBlogCategory

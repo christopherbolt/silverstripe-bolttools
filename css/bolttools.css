@@ -1,0 +1,15 @@
+/* CSS Document */
+
+/* draggable */
+.col-reorder .ui-icon-grip-dotted-vertical {
+	display: block !important;
+}
+
+/* Add new listbox field */
+.addnewlistbox .addnewlistboxfield-button {
+	position: relative;
+	top: -11px;	
+}
+select.has-chzn.chzn-done {
+	display:none !important;	
+}
