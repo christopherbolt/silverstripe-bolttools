@@ -4,7 +4,7 @@ It's not really intended for public use, so support and documentation is limited
 
 Install silverstripe (update to version required):
 ```
-composer create-project silverstripe/installer . 3.3.3
+composer create-project silverstripe/installer . 3.3.1
 ```
 
 Install BoltTools:
