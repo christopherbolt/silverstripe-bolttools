@@ -7,6 +7,11 @@ Install silverstripe (update to version required):
 composer create-project silverstripe/installer . 3.3.3
 ```
 
+Install BoltTools:
+```
+composer require christopherbolt/bolttools
+```
+
 Copy accross base mysite and themes.
 
 Run the silverstripe web installer if you use it.
