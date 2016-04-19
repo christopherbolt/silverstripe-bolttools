@@ -9,11 +9,27 @@ class BoltLink extends DataExtension{
 		'ExtraAttributes' => 'HTMLText'
 	);
 	
+	private static $defaults = array(
+		'Type' => 'SiteTree'
+	);
+	
+	// Reorder types
+	private static $types = array(
+       	'SiteTree' => 'Page on this website',
+	    'URL' => 'URL',
+        'Email' => 'Email address',
+        'File' => 'File on this website',
+    );
+
+	
 	public function updateCMSFields(FieldList $fields) {
 		
 		// Changed Type to an optionset because drop down does not work sometimes in a dialog :-(
+		// Also move sitetree to first item, I like that better.
 		$types = $this->owner->config()->get('types');
         $i18nTypes = array();
+		// Move SiteTree to first
+		$i18nTypes['SiteTree'] = _t('Linkable.TYPE'.strtoupper('SiteTree'), $types['SiteTree']);
         foreach ($types as $key => $label) {
             $i18nTypes[$key] = _t('Linkable.TYPE'.strtoupper($key), $label);
         }

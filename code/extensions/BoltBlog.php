@@ -82,6 +82,25 @@ class BoltBlog_Controller extends DataExtension {
 	}
 	
 	/* Archive widget */
+	function getAllArchive () {
+		$linkingMode = '';
+		
+		if (is_a($this->owner, 'Blog_Controller')) {
+			$blog = $this->owner;
+			$year = $blog->getArchiveYear();
+			$month = $blog->getArchiveMonth();
+			$day = $blog->getArchiveDay();
+			
+			if (!$year && !$month && !$day/* && !$blog->getCurrentCategory() && !$blog->getCurrentTag()*/) $linkingMode = 'current';
+			
+		} else if (is_a($this->owner, 'BlogPost_Controller')) {
+			$blog = $this->owner->Parent();
+		} else {
+			$blog = Blog::get()->First();
+		}
+		
+		return new ArrayData(array('Title'=>'All','LinkingMode'=>$linkingMode,'Link'=>$blog->Link()));
+	}
 	function getArchiveList($archiveType='Yearly', $numberToDisplay=0) {
 		$w = new BlogArchiveWidget();
 		$w->ArchiveType = $archiveType;
@@ -95,13 +114,61 @@ class BoltBlog_Controller extends DataExtension {
 		$sql = 'SET sql_mode=\''.preg_replace('/(^|,)(ONLY_FULL_GROUP_BY)($|,)/smi', "$3", preg_replace('/(^|,)(ANSI)($|,)/smi', "$3", $mode)).'\';';
 		DB::query($sql);
 		
+		// For linking mode
+		if (is_a($this->owner, 'Blog_Controller')) {
+			$year = $this->owner->getArchiveYear();
+			$month = $this->owner->getArchiveMonth();
+			$day = $this->owner->getArchiveDay();
+		}
+		
 		$return = $w->getArchive();
-		foreach($return as $item) {} // Make sure SQL query is run
+		foreach($return as $item) {
+			if (is_a($this->owner, 'Blog_Controller')) {
+				// add linking mode
+				$link = $item->getField('Link');
+				$parts = explode('/', $link);
+				
+				$foundArchive = false;
+				$foundYear = false;
+				$lyear = null;
+				$foundMonth = false;
+				$lmonth = null;
+				$foundDay = false;
+				$lday = null;
+				
+				foreach ($parts as $part) {
+					if ($part == 'archive') {
+						$foundArchive = true;
+						continue;
+					}
+					if ($foundMonth) {
+						$lday = $part;	
+					} elseif ($foundYear) {
+						$lmonth = $part;	
+					} elseif ($foundArchive) {
+						$lyear = $part;	
+					}
+				}
+				
+				if ($year==$lyear && $month==$lmonth && $day==$lday) {
+					$item->setField('LinkingMode', 'current');
+				}
+			}
+		} // Make sure SQL query is run
 		
 		// Return to previous mode incase this affects other queries
 		DB::query('SET sql_mode=\''.$mode.'\';');
 		// End Hack
 		
 		return $return;
+	}
+	
+	// Bring back previous and next links
+	function PreviousBlogEntry() {
+		return BlogPost::get()->filter(array('ParentID'=>$this->owner->ParentID, 'PublishDate:LessThan'=>$this->owner->PublishDate))->Sort('PublishDate DESC')->First();
+	}
+	
+	function NextBlogEntry() {
+		return BlogPost::get()->filter(array('ParentID'=>$this->owner->ParentID, 'PublishDate:GreaterThan'=>$this->owner->PublishDate))->Sort('PublishDate ASC')->First();	
 	}
 }

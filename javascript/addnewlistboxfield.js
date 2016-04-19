@@ -20,7 +20,7 @@ jQuery.entwine("addnewlistboxfield", function($) {
 			this.setDialog(self.siblings('.addnewlistboxfield-dialog:first'));
 			// Chris Bolt, modified to cope with the translatable query
 			//var url = this.parents('form').attr('action') + '/field/' + this.attr('name') + '/LinkFormHTML';
-			this.setFieldName(self.parents('div.field:first').attr('id').replace(/^Form_EditForm_/, '').replace(/_Holder$/, ''));
+			this.setFieldName(self.parents('div.field:first').find('select').attr('name').replace(/\[\]/,''));
 			var fa = this.parents('form').attr('action').split('?');
 			var url = fa[0] + '/field/' + this.getFieldName() + '/AddNewListboxFormHTML' + (fa[1] ? '?'+fa[1] : '');
 			// End Chris Bolt

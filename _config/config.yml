@@ -23,6 +23,7 @@ Text:
 Link:
   extensions:
     - BoltLink
+    - DefaultCan
 
 LinkField:
   extensions:

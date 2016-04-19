@@ -1,0 +1,27 @@
+# Append this to bottom of Silverstripe htaccess file
+
+### Chris Bolt Begin ###
+# Turn off magic quotes (Silverstripe recommends this)
+php_value magic_quotes_gpc Off
+
+# Remove Etags?
+FileETag none
+
+# Caching
+# 1 WEEK
+<IfModule mod_headers.c>
+	<FilesMatch "\.(jpg|jpeg|png|gif|swf|pdf|js|css|html|eot|svg|ttf|woff)$">
+		Header set Cache-Control "max-age=604800, public"
+	</FilesMatch>
+</IfModule>
+# End Caching
+
+# Gzip compress javascript and css files
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/css application/x-javascript application/javascript text/javascript
+</IfModule>
+# End Gzip
+
+# Hide git
+RedirectMatch 404 /\.git
+### End Chris Bolt ###

@@ -6,6 +6,16 @@ class BoltSiteTree extends DataExtension {
 		'ShowInSiteMap' => 'Boolean'
 	);
 	
+	private static $current_cms_page = null;
+	
+	public static function current_cms_page() {
+		if (self::$current_cms_page) {
+			return Page::get()->byId(self::$current_cms_page);
+		} else {
+			return null;	
+		}
+	}
+	
 	//private static $defaults = array(
 	//	'ShowInSiteMap' => 1
 	//);
@@ -27,6 +37,9 @@ class BoltSiteTree extends DataExtension {
 		// Add back metatitle
 		$fields->fieldByName('Root.Main.Metadata')->insertBefore($metaTitle = new TextField('MetaTitle', 'Meta Title'), 'MetaDescription');
 		$metaTitle->setDescription('Browsers will display this in the title bar and search engines use this for displaying search results (although it may not influence their ranking).');
+		
+		// Record current CMS page, quite useful for sorting etc
+		self::$current_cms_page = $this->owner->ID;
 	}
 	
 	/* hack to set defaults on ErrorPage */
@@ -48,6 +61,8 @@ class BoltSiteTree extends DataExtension {
 	public static $themeFolderAndSubfolder;
 	public static function setupRequirements($cssArray=array(), $jsArray=array()) {
 		
+		$siteConfig = SiteConfig::current_site_config();
+		
 		// Don't combine files if in admin to prevent error on "login as someone else" screen
 		$inAdmin = is_subclass_of(Controller::curr(), "LeftAndMain");
 		
@@ -67,7 +82,7 @@ class BoltSiteTree extends DataExtension {
 			foreach($cssArray as $css) {
 				Requirements::css($css);
 			}
-			if (!$inAdmin) Requirements::combine_files("combined.css",$cssArray);
+			if (!$inAdmin) Requirements::combine_files("combined-".$siteConfig->ID.".css",$cssArray);
 		}
 		
 		// Javascript array
@@ -75,16 +90,15 @@ class BoltSiteTree extends DataExtension {
 			foreach($jsArray as $js) {
 				Requirements::javascript($js);
 			}
-			if (!$inAdmin) Requirements::combine_files("combined.js", $jsArray);
+			if (!$inAdmin) Requirements::combine_files("combined-".$siteConfig->ID.".js", $jsArray);
 		}
  
 		if (!$inAdmin) Requirements::process_combined_files();
 		
 		// Google analytics
 		if(!Director::isDev())  {
-			$siteConfig = SiteConfig::current_site_config();
 			if (isset($siteConfig->GoogleAnalyticsCode))
-				Requirements::insertHeadTags(SiteConfig::current_site_config()->GoogleAnalyticsCode);
+				Requirements::insertHeadTags($siteConfig->GoogleAnalyticsCode);
 		}
 		// End Google analytics	
 		
