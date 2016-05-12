@@ -1,0 +1,20 @@
+---
+Name: betterbuttons
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
+BetterButtonsUtils:
+  create:
+    BetterButton_New: false
+BetterButtonsActions:
+  create:
+    BetterButton_Save: true
+    BetterButton_SaveAndClose: true
+    BetterButton_SaveAndAdd: true
+
+  edit:
+    BetterButton_Save: true
+    BetterButton_SaveAndClose: true
+    BetterButton_Delete: true
+    BetterButtonFrontendLinksAction: false

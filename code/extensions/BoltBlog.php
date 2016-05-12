@@ -52,7 +52,7 @@ class BoltBlog extends DataExtension{
 class BoltBlog_Controller extends DataExtension {
 	
 	/* Category widget */
-	function getCategoriesList($limit=0,$order='Title',$direction='DESC') {
+	function getCategoriesList($limit=0,$order='Title',$direction='ASC') {
 		$w = new BlogCategoriesWidget();
 		$w->Limit = $limit;
 		$w->Order = $order;
@@ -66,7 +66,7 @@ class BoltBlog_Controller extends DataExtension {
 	}
 	
 	/* Tags widget */
-	function getTagsList($limit=0,$order='Title',$direction='DESC') {
+	function getTagsList($limit=0,$order='Title',$direction='ASC') {
 		$w = new BlogTagsWidget();
 		$w->Limit = $limit;
 		$w->Order = $order;

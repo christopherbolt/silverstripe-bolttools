@@ -47,5 +47,9 @@ BlogPost_Controller:
     - BoltBlogPost_Controller
 
 BlogCategory:
+  default_sort: 'Title ASC'
   extensions:
     - BoltBlogCategory
+
+BlogTag:
+  default_sort: 'Title ASC'
