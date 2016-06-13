@@ -20,7 +20,8 @@
     	"sheadawson/silverstripe-linkable": "dev-master",
     	"bummzack/sortablefile" : "dev-master",
 		"christopherbolt/silverstripe-publishwithme": "dev-master",
-		"christopherbolt/silverstripe-contentmodules": "dev-master"
+		"christopherbolt/silverstripe-contentmodules": "dev-master",
+		"colymba/gridfield-bulk-editing-tools": "*"
     },
 	"extra": {
         "installer-name": "bolttools"
