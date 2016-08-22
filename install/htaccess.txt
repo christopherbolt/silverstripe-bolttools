@@ -1,11 +1,6 @@
 # Append this to bottom of Silverstripe htaccess file
 
 ### Chris Bolt Begin ###
-# Turn off magic quotes (Silverstripe recommends this)
-php_value magic_quotes_gpc Off
-
-# Remove Etags?
-FileETag none
 
 # Caching
 # 1 WEEK
@@ -18,10 +13,12 @@ FileETag none
 
 # Gzip compress javascript and css files
 <IfModule mod_deflate.c>
-	AddOutputFilterByType DEFLATE text/css application/x-javascript application/javascript text/javascript
+	AddType image/svg+xml .svg
+	AddOutputFilterByType DEFLATE text/css application/x-javascript application/javascript text/javascript image/svg+xml
 </IfModule>
 # End Gzip
 
 # Hide git
 RedirectMatch 404 /\.git
+
 ### End Chris Bolt ###
