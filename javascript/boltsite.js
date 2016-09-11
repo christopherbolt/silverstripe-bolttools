@@ -28,6 +28,12 @@
 			onReadyFunctions.push(f);
 		}
 		
+		var onResizeFunctions = [];
+		SELF.resize = function(f) {
+			onResizeFunctions.push(f);
+			if (SELF.readyDone) f();
+		}
+		
 		SELF.breakpoint = function(n) {
 			if (n == 'touch') {
 				return SELF.settings.breakpoints[SELF.settings.touchBreakpoint];
@@ -56,6 +62,8 @@
 		SELF.isRetina = function() {
 			return (SELF.retinaDevicesTest() || (SELF.breakpoint('retina') && $(window).width() < SELF.breakpoint('retina')));
 		}
+		
+		SELF.readyDone = false;
 		
 		$(document).ready(function() {		
 			///////////////////////
@@ -90,6 +98,8 @@
 			for (var i=0;i<onReadyFunctions.length;i++) {
 				onReadyFunctions[i]();
 			}
+			
+			SELF.readyDone = true;
 		});
 		
 		function setupForWindowSize () {
@@ -106,6 +116,11 @@
 				$('body').addClass('retina');
 			} else {
 				$('body').removeClass('retina');
+			}
+			
+			// RESIZE
+			for (var i=0;i<onResizeFunctions.length;i++) {
+				onResizeFunctions[i]();
 			}
 		}
 		
