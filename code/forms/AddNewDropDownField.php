@@ -9,8 +9,10 @@ class AddNewDropDownField extends DropDownField {
 		'doSave',
 	);
 	
+	protected $showEditButton = false;
 	protected $addNewModel = '';
 	protected $dialogTitle = '';
+	protected $editDialogTitle = '';
 	protected $onBeforeWriteCallback = array();
 		
 	public function setModel($model) {
@@ -31,6 +33,15 @@ class AddNewDropDownField extends DropDownField {
 		return $this->dialogTitle;
 	}
 	
+	public function setEditDialogTitle($title) {
+		$this->editDialogTitle = $title;
+		return $this;
+	}
+	
+	public function getEditDialogTitle() {
+		return $this->editDialogTitle;
+	}
+	
 	public function setBeforeWriteCallback($callback) {
 		$this->onBeforeWriteCallback = $callback;
 		return $this;
@@ -38,6 +49,15 @@ class AddNewDropDownField extends DropDownField {
 	
 	public function getBeforeWriteCallback() {
 		return $this->onBeforeWriteCallback;
+	}
+	
+	public function setShowEditButton($bool=true) {
+		$this->showEditButton = $bool;
+		return $this;
+	}
+	
+	public function getShowEditButton($bool=true) {
+		return $this->showEditButton;
 	}
 	
 	public function Field($properties = array()){
@@ -56,26 +76,36 @@ class AddNewDropDownField extends DropDownField {
 		}
 		
 		$model = $this->getModel();
-		$link = singleton($model);
+		$item = null;
+        if ($itemID = (int) $this->request->getVar('ItemID')) {
+            $item = $model::get()->byID($itemID);
+        }
+        $item = $item ? $item : singleton($model);
 
-		$fields = $link->getCMSFields();
+		$fields = $item->getCMSFields();
 		
-		$title = $this->getDialogTitle() ? $this->getDialogTitle() : 'New Item';
+		if ($item->ID) {
+			$title = $this->getEditDialogTitle() ? $this->getEditDialogTitle() : 'Edit Item';
+		} else {
+			$title = $this->getDialogTitle() ? $this->getDialogTitle() : 'New Item';
+		}
+		
 		$fields->insertBefore(HeaderField::create('AddNewHeader', $title), $fields->first()->getName());
 		$actions = FieldList::create($action);
 		$form = Form::create($this, 'AddNewListboxForm', $fields, $actions);
 		
 		$fields->push(HiddenField::create('model', 'model', $model));
 		
-		/*
-		if($link){
-			$form->loadDataFrom($link);
-			$fields->push(HiddenField::create('LinkID', 'LinkID', $link->ID));
+		
+		if($item){
+			$form->loadDataFrom($item);
+			$fields->push(HiddenField::create('ItemID', 'ItemID', $item->ID));
 		}
 		
+		/*
 		// Chris Bolt, fixed this
-		//$this->owner->extend('updateLinkForm', $form);
-		$this->extend('updateLinkForm', $form);
+		//$this->owner->extend('updateitemForm', $form);
+		$this->extend('updateitemForm', $form);
 		// End Chris Bolt
 		*/
 		return $form;
@@ -83,20 +113,26 @@ class AddNewDropDownField extends DropDownField {
 	
 	public function doSave($data, $form){
 		$model = $this->getModel();
-		$link = Object::create($model);//eval("return {$model}::create()");
-		$form->saveInto($link);
+		
+		$item = null;
+        if ($itemID = (int) Controller::curr()->request->requestVar('ItemID')) {
+            $item = $model::get()->byID($itemID);
+        }
+        $item = $item ? $item : singleton($model);
+		
+		$form->saveInto($item);
 		$callback = $this->getBeforeWriteCallback();
 		if (is_callable($callback)) {
-			$link = call_user_func($callback, $link);
+			$item = call_user_func($callback, $item);
 		}
-		//return print_r($link, true);
+		//return print_r($item, true);
 		try {
-			$link->write();	
+			$item->write();	
 		} catch (ValidationException $e) {
 			$form->sessionMessage($e->getMessage(), 'bad');
 			return $form->forTemplate();
 		}
-		//$this->setValue($link->ID);
+		//$this->setValue($item->ID);
 		$this->setForm($form);
 		return $this->FieldHolder();
 	}

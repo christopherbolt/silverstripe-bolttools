@@ -102,6 +102,11 @@ class BoltSiteTree extends DataExtension {
 		}
 		// End Google analytics	
 		
+		// Prevent indexing of draft sites
+		if (Director::isDev() || stristr($_SERVER['HTTP_HOST'], 'draftsite.co.nz')) {
+			Requirements::insertHeadTags('<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">');
+		}
+		
 	}
 }
 class BoltSiteTree_Controller extends Extension {

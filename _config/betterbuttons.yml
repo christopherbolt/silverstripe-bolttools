@@ -11,7 +11,7 @@ BetterButtonsActions:
   create:
     BetterButton_Save: true
     BetterButton_SaveAndClose: true
-    BetterButton_SaveAndAdd: true
+    BetterButton_SaveAndAdd: false
 
   edit:
     BetterButton_Save: true

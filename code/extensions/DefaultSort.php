@@ -30,10 +30,12 @@ class DefaultSort extends DataExtension {
 				$common_parent_classes = ClassInfo::subclassesFor('SiteTree');
 				$common_parent_classes[] = 'SiteConfig';
 				$common_parent_classes[] = 'ContentModuleArea';
-				foreach ($has_one as $k => $v) {
-					if (in_array($v,$common_parent_classes)) {
-						$parentID = $k;
-						break;
+				if ($has_one && is_array($has_one)) {
+					foreach ($has_one as $k => $v) {
+						if (in_array($v,$common_parent_classes)) {
+							$parentID = $k;
+							break;
+						}
 					}
 				}
 			}

@@ -18,9 +18,13 @@ class BoltFulltextSearchable extends FulltextSearchable {
 			if(!class_exists($class)) continue;
 
 			if(isset($defaultColumns[$class])) {
-				Config::inst()->update(
-					$class, 'create_table_options', array(MySQLSchemaManager::ID => 'ENGINE=MyISAM')
-				);
+				if (class_exists('MySQLSchemaManager')) {
+					Config::inst()->update(
+						$class, 'create_table_options', array(MySQLSchemaManager::ID => 'ENGINE=MyISAM')
+					);
+				} else {
+					Config::inst()->update($class, 'create_table_options', array('MySQLDatabase' => 'ENGINE=MyISAM'));
+				}
 				$class::add_extension("FulltextSearchable('{$defaultColumns[$class]}')");
 			} else {
 				throw new Exception(

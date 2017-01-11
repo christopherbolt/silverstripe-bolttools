@@ -71,7 +71,7 @@ class BoltBlogPost extends DataExtension{
 		$matches = array();
 		if (preg_match('#<img [^>]*src="([^">]+)"#smi', $this->owner->Content, $matches)) {
 			if (isset($matches[1])) {
-				$filename = preg_replace('#_resampled/resizedimage[0-9]+-#smi', '', $matches[1]);
+				$filename = preg_replace('#_resampled/resizedimage[0-9a-z]+/#smi', '', $matches[1]);
 				$file = DataObject::get_one('File', 'Filename=\''.Convert::Raw2SQL($filename).'\'');
 				if ($file) return $file;
 			}

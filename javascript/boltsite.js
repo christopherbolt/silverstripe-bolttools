@@ -80,7 +80,7 @@
 			
 			// Placeholder forms?
 			if (typeof(jQuery.fn.addPlaceholders) === "function") {
-				jQuery(SELF.settings.placholderFieldsQuery).not(SELF.settings.placholderFieldsExcludeQuery).addPlaceholders({forceScripted:true});
+				jQuery(SELF.settings.placholderFieldsQuery).not(SELF.settings.placholderFieldsExcludeQuery).addPlaceholders();
 			}
 			// Focuspoint
 			if (typeof(jQuery.fn.focusPoint) === "function") {
@@ -90,10 +90,7 @@
 			}
 			// Wrap tables in wrapper for easy mobile scrolling
 			if (SELF.settings.wrapTablesQuery && SELF.settings.wrapTables) $(SELF.settings.wrapTablesQuery).not(SELF.settings.wrapTablesExcludeQuery).wrap(SELF.settings.wrapTables);
-			
-			// Inine SVG so we can style it with CSS
-			if (SELF.settings.inlineSvgQuery) $(SELF.settings.inlineSvgQuery).not(SELF.settings.inlineSvgExcludeQuery).inlineSVG();
-			
+						
 			// READY
 			for (var i=0;i<onReadyFunctions.length;i++) {
 				onReadyFunctions[i]();
@@ -124,37 +121,25 @@
 			}
 		}
 		
-	}
-	
-	$.fn.inlineSVG = function() {
-		/*
-		* Replace SVG image with inline SVG
-		*/
-		this.each(function(){
-			var $img = jQuery(this);
-			var imgURL = $img.attr('src');
-			var copy = ['id','class','width','height'];
-			var attrs = {};
-			for(var i=0;i<copy.length;i++) {
-				attrs[copy[i]] = $img.attr(copy[i]);
+		SELF.removeHoverOnTouch = function() {
+			if (SELF.touchDevicesTest()) { // remove all :hover stylesheets
+				try { // prevent exception on browsers not supporting DOM styleSheets properly
+					for (var si in document.styleSheets) {
+						var styleSheet = document.styleSheets[si];
+						if (!styleSheet.rules) continue;
+			
+						for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
+							if (!styleSheet.rules[ri].selectorText) continue;
+			
+							if (styleSheet.rules[ri].selectorText.match(':hover') && !styleSheet.rules[ri].selectorText.match('.dontTouchRemove')) {
+								styleSheet.deleteRule(ri);
+							}
+						}
+					}
+				} catch (ex) {}
 			}
-			jQuery.get(imgURL, function(data) {
-				// Get the SVG tag, ignore the rest
-				var $svg = jQuery(data).find('svg');
+		}
 		
-				// Add replaced image's attributes to the new SVG
-				for(x in attrs) {
-					$svg = $svg.attr(x, attrs[x]);
-				}
-		
-				// Remove any invalid XML tags as per http://validator.w3.org
-				$svg = $svg.removeAttr('xmlns:a');
-		
-				// Replace image with new SVG
-				$img.replaceWith($svg);
-		
-			}, 'xml');
-		});
 	}
 	
 }( jQuery ));

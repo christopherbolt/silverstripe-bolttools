@@ -56,9 +56,9 @@ class AddNewListboxField extends ListboxField {
 		}
 		
 		$model = $this->getModel();
-		$link = singleton($model);
+		$item = singleton($model);
 
-		$fields = $link->getCMSFields();
+		$fields = $item->getCMSFields();
 		
 		$title = $this->getDialogTitle() ? $this->getDialogTitle() : 'New Item';
 		$fields->insertBefore(HeaderField::create('AddNewHeader', $title), $fields->first()->getName());
@@ -68,14 +68,14 @@ class AddNewListboxField extends ListboxField {
 		$fields->push(HiddenField::create('model', 'model', $model));
 		
 		/*
-		if($link){
-			$form->loadDataFrom($link);
-			$fields->push(HiddenField::create('LinkID', 'LinkID', $link->ID));
+		if($item){
+			$form->loadDataFrom($item);
+			$fields->push(HiddenField::create('itemID', 'itemID', $item->ID));
 		}
 		
 		// Chris Bolt, fixed this
-		//$this->owner->extend('updateLinkForm', $form);
-		$this->extend('updateLinkForm', $form);
+		//$this->owner->extend('updateitemForm', $form);
+		$this->extend('updateitemForm', $form);
 		// End Chris Bolt
 		*/
 		return $form;
@@ -83,19 +83,19 @@ class AddNewListboxField extends ListboxField {
 	
 	public function doSave($data, $form){
 		$model = $this->getModel();
-		$link = Object::create($model);//eval("return {$model}::create()");
-		$form->saveInto($link);
+		$item = Object::create($model);//eval("return {$model}::create()");
+		$form->saveInto($item);
 		$callback = $this->getBeforeWriteCallback();
 		if (is_callable($callback)) {
-			$link = call_user_func($callback, $link);
+			$item = call_user_func($callback, $item);
 		}
 		try {
-			$link->write();	
+			$item->write();	
 		} catch (ValidationException $e) {
 			$form->sessionMessage($e->getMessage(), 'bad');
 			return $form->forTemplate();
 		}
-		//$this->setValue($link->ID);
+		//$this->setValue($item->ID);
 		$this->setForm($form);
 		return $this->FieldHolder();
 	}

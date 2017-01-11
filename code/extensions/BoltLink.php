@@ -33,13 +33,17 @@ class BoltLink extends DataExtension{
         foreach ($types as $key => $label) {
             $i18nTypes[$key] = _t('Linkable.TYPE'.strtoupper($key), $label);
         }
-		$fields->replaceField('Type', OptionsetField::create('Type', _t('Linkable.LINKTYPE', 'Link Type'), $i18nTypes), 'OpenInNewWindow');
+		$fields->replaceField('Type', OptionsetField::create('Type', _t('Linkable.LINKTYPE', 'Link Type'), $i18nTypes));
 		
 		// Chris Bolt, replaced file choose with an upload field
-		$fields->replaceField('FileID', UploadField::create('File', _t('Linkable.FILE', 'File')), 'OpenInNewWindow');
+		$fields->replaceField('FileID', UploadField::create('File', _t('Linkable.FILE', 'File')));
 		
-		// Chris Bolt, added functionality for adding custom attributes
-		$fields->addFieldToTab('Root.Main', TextField::create('ExtraAttributes', 'Extra Attributes')->setDescription('e.g. onClick="_gaq.push([\'_trackEvent\', \'whitepaper\', \'download\', pdfName, pdfValue, true]);"'));
+		if ($this->owner->config()->get('show_extra_attributes')) {
+			// Chris Bolt, added functionality for adding custom attributes
+			$fields->addFieldToTab('Root.Main', TextField::create('ExtraAttributes', 'Extra Attributes')->setDescription('e.g. onClick="_gaq.push([\'_trackEvent\', \'whitepaper\', \'download\', pdfName, pdfValue, true]);"'));
+		} else {
+			$fields->removeByName('ExtraAttributes');	
+		}
 		
 	}
 	
