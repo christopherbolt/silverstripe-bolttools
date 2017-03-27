@@ -15,11 +15,9 @@
 			touchBreakpoint : 'desktop',
 			retinaBreakpoint : null,
 			wrapTablesQuery : '.typography table',
-			wrapTablesExcludeQuery : null,
+			wrapTablesExcludeQuery : '.tableWrapper table',
 			wrapTables: '<div class="tableWrapper"></div>',
 			placholderFieldsQuery : 'input.text, textarea',
-			inlineSvgQuery : 'img.svg',
-			inlineSvgExcludeQuery : null,
 			placholderFieldsExcludeQuery : '.attributeForm input.text, .attributeForm textarea, input[name=Captcha]'
 		}, options );
 		

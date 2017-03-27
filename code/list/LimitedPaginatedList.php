@@ -12,26 +12,25 @@ class LimitedPaginatedList extends PaginatedList {
 	 *
 	 * @param SS_List $list The list to paginate. The getRange method will
 	 *        be used to get the subset of objects to show.
-	 * @param int the default length of a page if none is set
 	 * @param array|ArrayAccess Either a map of request parameters or
 	 *        request object that the pagination offset is read from.
+	 * @param int the default length of a page if none is set
 	 */
 	public function __construct(SS_List $list, $request = array(), $defaultLength=0) {
-		if (!is_array($request) && !$request instanceof ArrayAccess) {
-			throw new Exception('The request must be readable as an array.');
-		}
-
-		$this->request = $request;
-		
-		if (!$defaultLength) $defaultLength = $this->getPageLength();
-		
-		if ($length = $this->request[$this->getLengthGetVar()]) {
-			if ($length == $this->unlimitedLengthText) $length = $this->unlimitedLength;
-		} else {
-			$length = $defaultLength;	
-		}
-		$this->setPageLength($length);
+		if ($defaultLength) $this->setPageLength($length);
 		parent::__construct($list, $request);
+	}
+	
+	/**
+	 * The magic happens in this function?
+	 */
+	public function getPageLength() {
+		$pageLength = isset($this->request[$this->getLengthGetVar()]) ? $this->request[$this->getLengthGetVar()] : 0;
+		if ($pageLength) {
+			if ($pageLength == $this->unlimitedLengthText) $pageLength = $this->unlimitedLength;
+			$this->setPageLength($pageLength);
+		}
+		return parent::getPageLength();
 	}
 	
 	/**
