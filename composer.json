@@ -15,7 +15,7 @@
     	"silverstripe/framework": ">=3.2",
 		"silverstripe-australia/gridfieldextensions": "dev-master",
     	"silverstripe/googlesitemaps": "dev-master",
-    	"unclecheese/betterbuttons": "dev-master",
+    	"unclecheese/betterbuttons": "1.2.*",
     	"jonom/focuspoint": "dev-master",
     	"sheadawson/silverstripe-linkable": "dev-master",
     	"bummzack/sortablefile" : "dev-master",
