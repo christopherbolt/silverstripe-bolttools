@@ -14,7 +14,7 @@
         "silverstripe/cms": ">=3.2",
     	"silverstripe/framework": ">=3.2",
 		"silverstripe-australia/gridfieldextensions": "dev-master",
-    	"silverstripe/googlesitemaps": "dev-master",
+    	"wilr/silverstripe-googlesitemaps": "1.6.*",
     	"unclecheese/betterbuttons": "1.2.*",
     	"jonom/focuspoint": "dev-master",
     	"sheadawson/silverstripe-linkable": "dev-master",
