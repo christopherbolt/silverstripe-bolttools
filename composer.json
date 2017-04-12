@@ -15,7 +15,7 @@
     	"silverstripe/framework": "^3.3",
 		"silverstripe-australia/gridfieldextensions": "1.4.*",
     	"wilr/silverstripe-googlesitemaps": "1.6.*",
-    	"unclecheese/betterbuttons": "1.2.*",
+    	"unclecheese/betterbuttons": "1.3.*",
     	"jonom/focuspoint": "2.4.*",
     	"sheadawson/silverstripe-linkable": "1.3.*",
     	"bummzack/sortablefile" : "1.2.*",
