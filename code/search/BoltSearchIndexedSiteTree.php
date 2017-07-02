@@ -60,6 +60,32 @@ class BoltSearchIndexedSiteTree extends DataExtension {
 								}
 							}
 						}
+					// Allow index to be built from a method
+					} else if ($item->hasMethod($f)) {
+						$data = $item->$f();
+						if (is_string($data) || is_a($data, 'DBField')) {
+							$index[] = $item->$data;
+						} else if (is_subclass_of($data, 'DataObject')) {
+							$object = $data;
+							if (!is_subclass_of($object, 'SiteTree')) { // because better to show the page itself in results?
+								if ($object->config()->get('search_index')) {
+									$index[] = self::buildSearchIndex($object);
+								} else {
+									self::buildGeneric($object, $index);
+								}
+							}
+						} else if (is_a($data, 'DataList')) {
+							$set = $data;
+							foreach ($set as $object) {
+								if (!is_subclass_of($object, 'SiteTree')) { // because better to show the page itself in results?
+									if ($object->config()->get('search_index')) {
+										$index[] = self::buildSearchIndex($object);
+									} else /*if (!is_subclass_of($object, 'Page'))*/ {
+										self::buildGeneric($object, $index);
+									}
+								}
+							}
+						}
 					}
 				} catch (Exception $e) {
 					// we need to log exceptions or something.
@@ -89,6 +115,15 @@ class BoltSearchIndexedSiteTree extends DataExtension {
 	/* updates search index, does not save */
 	function updateSearchIndex() {
 		$this->owner->SearchIndex = self::buildSearchIndex($this->owner);
+	}
+	
+	/* Updates the search index on a stage, useful if search index needs to be changed outside of the page */
+	function writeSearchIndexOnStage($stage="Stage") {
+		$this->owner->writeToStage($stage); // Mmmm this seems too easy?
+	}
+	function writeSearchIndexOnBothStages() {
+		$this->writeSearchIndexOnStage("Stage");
+		$this->writeSearchIndexOnStage("Live");
 	}
 	
 	function onBeforeWrite() {

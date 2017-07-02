@@ -78,6 +78,15 @@ class BoltBlogPost extends DataExtension{
 		}
 	}
 	
+	// Bring back previous and next links
+	function PreviousBlogEntry() {
+		return BlogPost::get()->filter(array('ParentID'=>$this->owner->ParentID, 'PublishDate:LessThan'=>$this->owner->PublishDate))->Sort('PublishDate DESC')->First();
+	}
+	
+	function NextBlogEntry() {
+		return BlogPost::get()->filter(array('ParentID'=>$this->owner->ParentID, 'PublishDate:GreaterThan'=>$this->owner->PublishDate))->Sort('PublishDate ASC')->First();	
+	}
+	
 }
 
 class BoltBlogPost_Controller extends BoltBlog_Controller {

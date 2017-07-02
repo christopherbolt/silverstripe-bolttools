@@ -29,6 +29,10 @@ LinkField:
   extensions:
     - BoltLinkField
 
+Member:
+  extensions:
+    - BoltMember
+
 # Blog
 Blog:
   extensions:
