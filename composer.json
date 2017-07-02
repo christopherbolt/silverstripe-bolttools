@@ -13,7 +13,7 @@
         "php": ">=5.5",
         "silverstripe/cms": "^3.3",
     	"silverstripe/framework": "^3.3",
-		"silverstripe-australia/gridfieldextensions": "1.4.*",
+		"symbiote/gridfieldextensions": "1.4.*",
     	"wilr/silverstripe-googlesitemaps": "1.6.*",
     	"unclecheese/betterbuttons": "1.3.*",
     	"jonom/focuspoint": "2.4.*",
