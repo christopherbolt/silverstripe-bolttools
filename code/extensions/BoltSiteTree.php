@@ -96,14 +96,14 @@ class BoltSiteTree extends DataExtension {
 		if (!$inAdmin) Requirements::process_combined_files();
 		
 		// Google analytics
-		if(!Director::isDev())  {
+		if(Director::isLive())  {
 			if (isset($siteConfig->GoogleAnalyticsCode))
 				Requirements::insertHeadTags($siteConfig->GoogleAnalyticsCode);
 		}
 		// End Google analytics	
 		
 		// Prevent indexing of draft sites
-		if (Director::isDev() || stristr($_SERVER['HTTP_HOST'], 'draftsite.co.nz')) {
+		if (Director::isDev() || Director::isTest() || stristr($_SERVER['HTTP_HOST'], 'draftsite.co.nz')) {
 			Requirements::insertHeadTags('<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">');
 		}
 		

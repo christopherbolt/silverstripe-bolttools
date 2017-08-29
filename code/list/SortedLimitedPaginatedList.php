@@ -57,13 +57,13 @@ class SortedLimitedPaginatedList extends LimitedPaginatedList {
 		
 		// Sort list
 		$sortCol = isset($this->request[$this->getSortColGetVar()]) ? $this->request[$this->getSortColGetVar()] : '';
-		$sortCol = preg_replace('/[^A-Za-z_]/','',$sortCol);
+		$sortCol = preg_replace('/[^A-Za-z0-9_\.]/','',$sortCol);
 		
 		$sortDir = isset($this->request[$this->getSortDirGetVar()]) ? $this->request[$this->getSortDirGetVar()] : '';
 		$sortDir = $sortDir=='Down' ? ' DESC' : ($sortDir=='Up' ? ' ASC' : '');
 		
-		if ($sortCol && $this->canSortBy($sortCol)) {
-			$list = $this->List->Sort($sortCol.$sortDir);
+		if ($sortCol/* && $list->canSortBy($sortCol)*/) {
+			$list = $list->Sort($sortCol.$sortDir);
 		}
 		
 		// Limit list
