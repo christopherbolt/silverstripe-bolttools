@@ -17,7 +17,7 @@ class LimitedPaginatedList extends PaginatedList {
 	 * @param int the default length of a page if none is set
 	 */
 	public function __construct(SS_List $list, $request = array(), $defaultLength=0) {
-		if ($defaultLength) $this->setPageLength($length);
+		if ($defaultLength) $this->setPageLength($defaultLength);
 		parent::__construct($list, $request);
 	}
 	
