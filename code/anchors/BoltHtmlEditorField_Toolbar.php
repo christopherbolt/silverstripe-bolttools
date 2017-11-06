@@ -44,11 +44,13 @@ class BoltHtmlEditorField_Toolbar extends HtmlEditorField_Toolbar {
 		$anchors = array();
 		
 		$db = $page->config()->get('db');
-		foreach($db as $k => $v) {
-			if ($v == 'HTMLText') {
-				// Similar to the regex found in HtmlEditorField.js / getAnchors method.
-				if (preg_match_all("/\s(name|id)=\"([^\"]+?)\"|\s(name|id)='([^']+?)'/im", $page->$k, $matches)) {
-					$anchors = array_merge($anchors, array_filter(array_merge($matches[2], $matches[4])));
+		if ($db && is_array($db)) {
+			foreach($db as $k => $v) {
+				if ($v == 'HTMLText') {
+					// Similar to the regex found in HtmlEditorField.js / getAnchors method.
+					if (preg_match_all("/\s(name|id)=\"([^\"]+?)\"|\s(name|id)='([^']+?)'/im", $page->$k, $matches)) {
+						$anchors = array_merge($anchors, array_filter(array_merge($matches[2], $matches[4])));
+					}
 				}
 			}
 		}
@@ -91,11 +93,13 @@ class BoltHtmlEditorField_Toolbar extends HtmlEditorField_Toolbar {
 			$anchors = array_merge($anchors, $anchor);
 		}
 		$db = $obj->config()->get('db');
-		foreach($db as $k => $v) {
-			if ($v == 'HTMLText') {
-				// Similar to the regex found in HtmlEditorField.js / getAnchors method.
-				if (preg_match_all("/\s(name|id)=\"([^\"]+?)\"|\s(name|id)='([^']+?)'/im", $obj->$k, $matches)) {
-					$anchors = array_merge($anchors, array_filter(array_merge($matches[2], $matches[4])));
+		if ($db && is_array($db)) {
+			foreach($db as $k => $v) {
+				if ($v == 'HTMLText') {
+					// Similar to the regex found in HtmlEditorField.js / getAnchors method.
+					if (preg_match_all("/\s(name|id)=\"([^\"]+?)\"|\s(name|id)='([^']+?)'/im", $obj->$k, $matches)) {
+						$anchors = array_merge($anchors, array_filter(array_merge($matches[2], $matches[4])));
+					}
 				}
 			}
 		}
