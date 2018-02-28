@@ -24,6 +24,9 @@
 		"colymba/gridfield-bulk-editing-tools": "2.1.*"
     },
 	"extra": {
-        "installer-name": "bolttools"
+        "installer-name": "bolttools",
+		"branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     }
 }
