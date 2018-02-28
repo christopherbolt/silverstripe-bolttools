@@ -11,7 +11,7 @@ composer create-project silverstripe/installer . 3.3.1
 
 Install BoltTools:
 ```
-composer require christopherbolt/silverstripe-bolttools
+composer require christopherbolt/silverstripe-bolttools 1.0.x
 ```
 
 Copy accross base mysite and themes.
