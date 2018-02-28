@@ -19,8 +19,8 @@
     	"jonom/focuspoint": "2.4.*",
     	"sheadawson/silverstripe-linkable": "1.3.*",
     	"bummzack/sortablefile" : "1.2.*",
-		"christopherbolt/silverstripe-publishwithme": "dev-master",
-		"christopherbolt/silverstripe-contentmodules": "dev-master",
+		"christopherbolt/silverstripe-publishwithme": "1.0.*",
+		"christopherbolt/silverstripe-contentmodules": "1.0.*",
 		"colymba/gridfield-bulk-editing-tools": "2.1.*"
     },
 	"extra": {
