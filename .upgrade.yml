@@ -17,7 +17,7 @@ mappings:
   BoltTextExtension: ChristopherBolt\BoltTools\Extensions\BoltTextExtension
   BoltToolsLeftAndMain: ChristopherBolt\BoltTools\Extensions\BoltToolsLeftAndMain
   DefaultCan: ChristopherBolt\BoltTools\Extensions\DefaultCan
-  DefaultSort: Christop~erBolt\BoltTools\Extensions\DefaultSort
+  DefaultSort: ChristopherBolt\BoltTools\Extensions\DefaultSort
   AddNewDropDownField: ChristopherBolt\BoltTools\Forms\AddNewDropDownField
   AddNewListboxField: ChristopherBolt\BoltTools\Forms\AddNewListboxField
   GroupedListboxField: ChristopherBolt\BoltTools\Forms\GroupedListboxField
