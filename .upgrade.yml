@@ -29,5 +29,5 @@ mappings:
   BoltFulltextSearchable: ChristopherBolt\BoltTools\Search\BoltFulltextSearchable
   BoltSearchForm: ChristopherBolt\BoltTools\Search\BoltSearchForm
   BoltSearchIndexedSiteTree: ChristopherBolt\BoltTools\Search\BoltSearchIndexedSiteTree
-  SVGTemplate: ChristopherBolt\BoltTools\SVG\SVGTemplate
-  SVGTemplateProvider: ChristopherBolt\BoltTools\SVG\SVGTemplateProvider
+  SVGTemplate: ChristopherBolt\BoltTools\View\SVGTemplate
+  SVGTemplateProvider: ChristopherBolt\BoltTools\View\SVGTemplateProvider

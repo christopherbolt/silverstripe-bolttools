@@ -126,12 +126,3 @@ class BoltSiteTree extends DataExtension {
 		
 	}
 }
-class BoltSiteTree_Controller extends Extension {
-	/* Some helper functions for templates */
-	function PageById($id) {
-		return Page::get()->byId($id);	
-	}
-	function AllPages() {
-		return Page::get();	
-	}
-}

@@ -1,9 +1,9 @@
 <?php
 
-namespace ChristopherBolt\BoltTools\SVG;
+namespace ChristopherBolt\BoltTools\View;
 
 use SilverStripe\View\TemplateGlobalProvider;
-use ChristopherBolt\BoltTools\SVG\SVGTemplate;
+use ChristopherBolt\BoltTools\View\SVGTemplate;
 
 
 /**

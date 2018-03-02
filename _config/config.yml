@@ -4,24 +4,19 @@ After:
   - 'framework/*'
   - 'cms/*'
 ---
-# SS Core
-SiteTree_Controller:
-  extensions:
-   - BoltSiteTree_Controller
-
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   extensions:
     - BoltToolsLeftAndMain
 
-DBField:
+SilverStripe\ORM\FieldType\DBField:
   extensions:
     - BoltDBFieldExtension
     
-Text:
+SilverStripe\ORM\FieldType\DBText:
   extensions:
     - BoltTextExtension
 
-Member:
+SilverStripe\Security\Member:
   extensions:
     - BoltMember
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace ChristopherBolt\BoltTools\SVG;
+namespace ChristopherBolt\BoltTools\View;
 
 use SilverStripe\View\ViewableData;
 use DOMDocument;
