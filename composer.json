@@ -39,5 +39,5 @@
             "ChristopherBolt\\BoltTools\\": "src/"
         },
 		"exclude-from-classmap": ["/src/nowidgets/"]
-    },
+    }
 }
