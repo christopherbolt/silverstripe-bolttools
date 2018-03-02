@@ -4,6 +4,7 @@ After:
   - 'framework/*'
   - 'cms/*'
 ---
+# SS Core
 SiteTree_Controller:
   extensions:
    - BoltSiteTree_Controller
@@ -15,45 +16,55 @@ LeftAndMain:
 DBField:
   extensions:
     - BoltDBFieldExtension
-
+    
 Text:
   extensions:
     - BoltTextExtension
-
-Link:
-  extensions:
-    - BoltLink
-    - DefaultCan
-
-LinkField:
-  extensions:
-    - BoltLinkField
 
 Member:
   extensions:
     - BoltMember
 
+# Linkable
+Sheadawson\Linkable\Models\Link:
+  extensions:
+    - BoltLink
+    - DefaultCan
+
+Sheadawson\Linkable\Forms\LinkField:
+  extensions:
+    - BoltLinkField
+
 # Blog
-Blog:
+SilverStripe\Blog\Model\Blog:
   extensions:
     - BoltBlog
 
-Blog_Controller:
+SilverStripe\Blog\Controllers\BlogController:
   extensions:
     - BoltBlog_Controller
 
-BlogPost:
+SilverStripe\Blog\Model\BlogPost:
   extensions:
     - BoltBlogPost
 
-BlogPost_Controller:
+SilverStripe\Blog\Controllers\BlogPostController:
   extensions:
     - BoltBlogPost_Controller
 
-BlogCategory:
+SilverStripe\Blog\Model\BlogCategory:
   default_sort: 'Title ASC'
   extensions:
     - BoltBlogCategory
 
-BlogTag:
+SilverStripe\Blog\Model\BlogTag:
   default_sort: 'Title ASC'
+
+# Content Modules
+ChristopherBolt\ContentModules\ContentModule:
+  extensions:
+    - ChristopherBolt\BoltTools\DefaultCan
+
+ChristopherBolt\ContentModules\ContentModuleArea:
+  extensions:
+    - ChristopherBolt\BoltTools\DefaultCan
