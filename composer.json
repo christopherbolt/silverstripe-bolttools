@@ -15,7 +15,7 @@
     	"silverstripe/framework": "^4.0",
 		"symbiote/silverstripe-gridfieldextensions": "^3",
     	"wilr/silverstripe-googlesitemaps": "1.8.*",
-    	"unclecheese/betterbuttons": "^3",
+    	"unclecheese/betterbuttons": "2.x-dev",
     	"jonom/focuspoint": "^3",
     	"sheadawson/silverstripe-linkable": "^2",
 		"christopherbolt/silverstripe-contentmodules": "^2",
