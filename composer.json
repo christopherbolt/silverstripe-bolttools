@@ -1,6 +1,6 @@
 {
     "name": "christopherbolt/silverstripe-bolttools",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "description": "Includes common tools and configuration used in ChristopherBolt.Com silverstripe sites.",
     "homepage": "http://github.com/christopherbolt/bolttools",
     "authors": [
