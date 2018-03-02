@@ -18,8 +18,6 @@
     	"unclecheese/betterbuttons": "^3",
     	"jonom/focuspoint": "^3",
     	"sheadawson/silverstripe-linkable": "^2",
-    	//"bummzack/sortablefile" : "1.2.*", // Not yet availabe for SS4
-		//"christopherbolt/silverstripe-publishwithme": "^2", // Use $owns now instead?? built into SilverStripe??
 		"christopherbolt/silverstripe-contentmodules": "^2",
 		"colymba/gridfield-bulk-editing-tools": "^3"
     },
