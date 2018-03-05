@@ -2,14 +2,14 @@
 
 namespace ChristopherBolt\BoltTools\Controllers;
 
-use Page_Controller;
+use PageController;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\FormAction;
 use ChristopherBolt\BoltTools\Search\BoltSearchForm;
 
 
-class BoltSiteSearch extends Page_Controller {
+class BoltSiteSearch extends PageController {
 	
 	private static $allowed_actions = array (
 		'SearchForm'

@@ -62,7 +62,7 @@ class BoltSearchForm extends SearchForm {
             strpos($keywords, '+') !== false ||
             strpos($keywords, '-') !== false ||
             strpos($keywords, '*') !== false;
-        $results = self::searchEngine()($this->classesToSearch, $keywords, $start, $pageLength, "\"Relevance\" DESC", "", $booleanSearch);
+        $results = self::searchEngine($this->classesToSearch, $keywords, $start, $pageLength, "\"Relevance\" DESC", "", $booleanSearch);
 
         // filter by permission
         if ($results) {

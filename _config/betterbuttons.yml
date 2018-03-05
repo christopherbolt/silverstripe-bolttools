@@ -1,8 +1,5 @@
 ---
-Name: betterbuttons
-After:
-  - 'framework/*'
-  - 'cms/*'
+Name: bolttoolsbetterbuttons
 ---
 BetterButtonsUtils:
   create:

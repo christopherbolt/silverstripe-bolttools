@@ -3,8 +3,8 @@ mappings:
   BoltSiteTreeLinkTracking_Parser: ChristopherBolt\BoltTools\Anchors\BoltSiteTreeLinkTracking_Parser
   BoltSiteMap: ChristopherBolt\BoltTools\Controllers\BoltSiteMap
   BoltSiteSearch: ChristopherBolt\BoltTools\Controllers\BoltSiteSearch
-  BoltBlogPost_Controller: ChristopherBolt\BoltTools\Extensions\BoltBlogPost_Controller
-  BoltBlog_Controller: ChristopherBolt\BoltTools\Extensions\BoltBlog_Controller
+  BoltBlogPost_Controller: ChristopherBolt\BoltTools\Extensions\BoltBlogPostController
+  BoltBlog_Controller: ChristopherBolt\BoltTools\Extensions\BoltBlogController
   BoltBlog: ChristopherBolt\BoltTools\Extensions\BoltBlog
   BoltBlogCategory: ChristopherBolt\BoltTools\Extensions\BoltBlogCategory
   BoltBlogPost: ChristopherBolt\BoltTools\Extensions\BoltBlogPost

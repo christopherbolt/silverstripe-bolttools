@@ -24,6 +24,7 @@ RedirectMatch 404 /\.git
 ### End Chris Bolt ###
 
 ### Environment set up ###
+SetEnvIfExpr "%{HTTP_HOST} =~ /\.draftsite\.co\.nz$/" SS_ENVIRONMENT_TYPE=test
 SetEnv SS_DATABASE_CLASS=MySQLPDODatabase
 SetEnv SS_DATABASE_SERVER=localhost
 SetEnv SS_DATABASE_NAME XXXXX_ss

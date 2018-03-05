@@ -19,6 +19,7 @@
     	"jonom/focuspoint": "^3",
     	"sheadawson/silverstripe-linkable": "^2",
 		"christopherbolt/silverstripe-contentmodules": "^2",
+		"christopherbolt/silverstripe-publishwithme": "^2",
 		"colymba/gridfield-bulk-editing-tools": "^3"
     },
 	"extra": {
@@ -27,9 +28,7 @@
             "dev-master": "2.0.x-dev"
         },
 		"expose": [
-            "client/css",
-			"client/javascript",
-            "client/thirdparty"
+            "client"
         ]
     },
 	 "autoload": {

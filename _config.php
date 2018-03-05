@@ -11,6 +11,6 @@
 //define('BOLTTOOLS_CONF_PATH', BOLTTOOLS_PATH.'/conf');
 
 // Short code handlers
-ShortcodeParser::get()->register('LineBreak',array('ChristopherBolt\\BoltTools\\Helpers\\BoltShortCodeHelper','LineBreak'));
+SilverStripe\View\Parsers\ShortcodeParser::get()->register('LineBreak',array('ChristopherBolt\\BoltTools\\Helpers\\BoltShortCodeHelper','LineBreak'));
 
 ?>

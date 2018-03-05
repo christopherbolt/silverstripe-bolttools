@@ -15,7 +15,7 @@ use SilverStripe\ORM\ValidationException;
 
 class AddNewDropDownField extends DropDownField {
 	
-	public static $allowed_actions = array(
+	private static $allowed_actions = array(
 		'AddNewListboxForm',
 		'AddNewListboxFormHTML',
 		'AddNewFieldHolderHTML',

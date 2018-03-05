@@ -33,9 +33,9 @@ class DefaultSort extends DataExtension {
 			$parentID = $owner->config()->get('sort_parent');
 			if (!$parentID) {
 				$has_one = $owner->config()->get('has_one');
-				$common_parent_classes = ClassInfo::subclassesFor('SiteTree');
-				$common_parent_classes[] = 'SiteConfig';
-				$common_parent_classes[] = 'ContentModuleArea';
+				$common_parent_classes = ClassInfo::subclassesFor('SilverStripe\CMS\Model\SiteTree');
+				$common_parent_classes[] = 'SilverStripe\SiteConfig\SiteConfig';
+				$common_parent_classes[] = 'ChristopherBolt\ContentModules\ContentModuleArea';
 				if ($has_one && is_array($has_one)) {
 					foreach ($has_one as $k => $v) {
 						if (in_array($v,$common_parent_classes)) {

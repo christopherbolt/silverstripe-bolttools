@@ -5,10 +5,12 @@ namespace ChristopherBolt\BoltTools\Extensions;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\OptionsetField;
-use SilverStripe\Forms\UploadField;
+//use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Core\Extension;
-
+//use SilverStripe\Forms\FileHandleField;
+//use SilverStripe\Core\Injector\Injector;
+//use UncleCheese\DisplayLogic\Forms\Wrapper;
 
 /* 
 Adds file uploads and a few other things to the Link class
@@ -33,7 +35,7 @@ class BoltLink extends DataExtension{
 
 	
 	public function updateCMSFields(FieldList $fields) {
-		
+		/*
 		// Changed Type to an optionset because drop down does not work sometimes in a dialog :-(
 		// Also move sitetree to first item, I like that better.
 		$types = $this->owner->config()->get('types');
@@ -45,8 +47,15 @@ class BoltLink extends DataExtension{
         }
 		$fields->replaceField('Type', OptionsetField::create('Type', _t('Linkable.LINKTYPE', 'Link Type'), $i18nTypes));
 		
-		// Chris Bolt, replaced file choose with an upload field
-		$fields->replaceField('FileID', UploadField::create('File', _t('Linkable.FILE', 'File')));
+		// Chris Bolt, replaced file choose with an upload field, this doesn't currently work, maybe ss bug, will revist later
+		/*$fields->removeByName('FileID');
+		$fields->addFieldToTab('Root.Main', $file = Wrapper::create(
+			Injector::inst()->create(FileHandleField::class, 'File', _t('Linkable.FILE', 'File'))
+		), 'Email');
+		$file
+            ->displayIf('Type')
+            ->isEqualTo('File')
+            ->end();*/
 		
 		if ($this->owner->config()->get('show_extra_attributes')) {
 			// Chris Bolt, added functionality for adding custom attributes
@@ -85,16 +94,4 @@ class BoltLink extends DataExtension{
 		return $this->owner->Title;
 	}
 	
-}
-
-class BoltLinkField extends Extension {
-	// replacement for link object for use in the CMS template so that object is displayed when new
-    public function getBetterLinkObject()
-    {
-        $object = $this->owner->getLinkObject();
-		if (!$object) {
-			return ($this->owner->Value());
-		}
-       return $object;
-    }
 }

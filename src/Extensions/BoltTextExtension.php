@@ -1,6 +1,6 @@
 <?php
 
-namespace ChristopherBolt\BolTools\Extensions;
+namespace ChristopherBolt\BoltTools\Extensions;
 
 use SilverStripe\ORM\DataExtension;
 

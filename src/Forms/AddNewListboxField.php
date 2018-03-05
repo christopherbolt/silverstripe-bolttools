@@ -14,7 +14,7 @@ use SilverStripe\ORM\ValidationException;
 
 class AddNewListboxField extends ListboxField {
 		
-	public static $allowed_actions = array(
+	private static $allowed_actions = array(
 		'AddNewListboxForm',
 		'AddNewListboxFormHTML',
 		'AddNewFieldHolderHTML',

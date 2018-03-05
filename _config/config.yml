@@ -1,56 +1,53 @@
 ---
 Name: bolttools
-After:
-  - 'framework/*'
-  - 'cms/*'
 ---
 SilverStripe\Admin\LeftAndMain:
   extensions:
-    - BoltToolsLeftAndMain
+    - ChristopherBolt\BoltTools\Extensions\BoltToolsLeftAndMain
 
 SilverStripe\ORM\FieldType\DBField:
   extensions:
-    - BoltDBFieldExtension
-    
+    - ChristopherBolt\BoltTools\Extensions\BoltDBFieldExtension
+
 SilverStripe\ORM\FieldType\DBText:
   extensions:
-    - BoltTextExtension
+    - ChristopherBolt\BoltTools\Extensions\BoltTextExtension
 
 SilverStripe\Security\Member:
   extensions:
-    - BoltMember
+    - ChristopherBolt\BoltTools\Extensions\BoltMember
 
 # Linkable
 Sheadawson\Linkable\Models\Link:
   extensions:
-    - BoltLink
-    - DefaultCan
+    - ChristopherBolt\BoltTools\Extensions\BoltLink
+    - ChristopherBolt\BoltTools\Extensions\DefaultCan
 
 Sheadawson\Linkable\Forms\LinkField:
   extensions:
-    - BoltLinkField
+    - ChristopherBolt\BoltTools\Extensions\BoltLinkField
 
 # Blog
 SilverStripe\Blog\Model\Blog:
   extensions:
-    - BoltBlog
+    - ChristopherBolt\BoltTools\Extensions\BoltBlog
 
 SilverStripe\Blog\Controllers\BlogController:
   extensions:
-    - BoltBlog_Controller
+    - ChristopherBolt\BoltTools\Extensions\BoltBlogController
 
 SilverStripe\Blog\Model\BlogPost:
   extensions:
-    - BoltBlogPost
+    - ChristopherBolt\BoltTools\Extensions\BoltBlogPost
 
 SilverStripe\Blog\Controllers\BlogPostController:
   extensions:
-    - BoltBlogPost_Controller
+    - ChristopherBolt\BoltTools\Extensions\BoltBlogPostController
 
 SilverStripe\Blog\Model\BlogCategory:
   default_sort: 'Title ASC'
   extensions:
-    - BoltBlogCategory
+    - ChristopherBolt\BoltTools\Extensions\BoltBlogCategory
 
 SilverStripe\Blog\Model\BlogTag:
   default_sort: 'Title ASC'
@@ -58,8 +55,8 @@ SilverStripe\Blog\Model\BlogTag:
 # Content Modules
 ChristopherBolt\ContentModules\ContentModule:
   extensions:
-    - ChristopherBolt\BoltTools\DefaultCan
+    - ChristopherBolt\BoltTools\Extensions\DefaultCan
 
 ChristopherBolt\ContentModules\ContentModuleArea:
   extensions:
-    - ChristopherBolt\BoltTools\DefaultCan
+    - ChristopherBolt\BoltTools\Extensions\DefaultCan

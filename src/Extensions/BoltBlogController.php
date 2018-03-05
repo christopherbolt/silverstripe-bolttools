@@ -13,7 +13,7 @@ if(!class_exists('SilverStripe\Widgets\Model\Widget')) {
 	include_once(dirname(__DIR__).'/nowidgets/nowidgets.php');
 }
 
-class BoltBlog_Controller extends DataExtension {
+class BoltBlogController extends DataExtension {
 	
 	/* Category widget */
 	function getCategoriesList($limit=0,$order='Title',$direction='ASC') {
@@ -49,7 +49,7 @@ class BoltBlog_Controller extends DataExtension {
 	function getAllArchive () {
 		$linkingMode = '';
 		
-		if (is_a($this->owner, 'Blog_Controller')) {
+		if (is_a($this->owner, 'SilverStripe\Blog\Controllers\BlogController')) {
 			$blog = $this->owner;
 			$year = $blog->getArchiveYear();
 			$month = $blog->getArchiveMonth();
@@ -57,7 +57,7 @@ class BoltBlog_Controller extends DataExtension {
 			
 			if (!$year && !$month && !$day/* && !$blog->getCurrentCategory() && !$blog->getCurrentTag()*/) $linkingMode = 'current';
 			
-		} else if (is_a($this->owner, 'BlogPost_Controller')) {
+		} else if (is_a($this->owner, 'SilverStripe\Blog\Controllers\BlogPostController')) {
 			$blog = $this->owner->Parent();
 		} else {
 			$blog = Blog::get()->First();
@@ -79,7 +79,7 @@ class BoltBlog_Controller extends DataExtension {
 		DB::query($sql);
 		
 		// For linking mode
-		if (is_a($this->owner, 'Blog_Controller')) {
+		if (is_a($this->owner, 'SilverStripe\Blog\Controllers\BlogController')) {
 			$year = $this->owner->getArchiveYear();
 			$month = $this->owner->getArchiveMonth();
 			$day = $this->owner->getArchiveDay();
@@ -87,7 +87,7 @@ class BoltBlog_Controller extends DataExtension {
 		
 		$return = $w->getArchive();
 		foreach($return as $item) {
-			if (is_a($this->owner, 'Blog_Controller')) {
+			if (is_a($this->owner, 'SilverStripe\Blog\Controllers\BlogController')) {
 				// add linking mode
 				$link = $item->getField('Link');
 				$parts = explode('/', $link);

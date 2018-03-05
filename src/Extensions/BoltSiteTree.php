@@ -10,12 +10,11 @@ use SilverStripe\Forms\TextField;
 use ChristopherBolt\BoltTools\Controllers\BoltSiteMap;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Control\Controller;
-use Page_Controller;
-use SilverStripe\View\SSViewer;
+use PageController;
 use SilverStripe\View\Requirements;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Extension;
- 
+use SilverStripe\View\ThemeResourceLoader; 
 
 class BoltSiteTree extends DataExtension {
 	private static $db = array(
@@ -40,7 +39,7 @@ class BoltSiteTree extends DataExtension {
 		$defaults = $this->owner->config()->get('defaults');
 		if (isset($defaults['ShowInSiteMap']) && $defaults['ShowInSiteMap'] == 0) {
 			$this->owner->ShowInSiteMap = 0;
-		} else if ($this->owner->ClassName != 'ErrorPage' && $this->owner->ClassName != 'BlogEntry') {
+		} else if ($this->owner->ClassName != 'SilverStripe\ErrorPage\ErrorPage' && $this->owner->ClassName != 'SilverStripe\Blog\Model\BlogPost') {
 			$this->owner->ShowInSiteMap = 1;
 		}
 		parent::populateDefaults();
@@ -62,7 +61,7 @@ class BoltSiteTree extends DataExtension {
 	/* hack to set defaults on ErrorPage */
 	function onBeforeWrite() {
 		parent::onBeforeWrite();
-		if (!$this->owner->ID && $this->owner->ClassName == 'ErrorPage') $this->owner->ShowInSiteMap = 0;
+		if (!$this->owner->ID && $this->owner->ClassName == 'SilverStripe\ErrorPage\ErrorPage') $this->owner->ShowInSiteMap = 0;
 	}
 	
 	function SanitizedURLSegment() {
@@ -75,24 +74,18 @@ class BoltSiteTree extends DataExtension {
 	}
 	
 	// function for adding and combing css and js files
-	public static $themeFolderAndSubfolder;
 	public static function setupRequirements($cssArray=array(), $jsArray=array()) {
 		
 		$siteConfig = SiteConfig::current_site_config();
 		
 		// Don't combine files if in admin to prevent error on "login as someone else" screen
-		$inAdmin = is_subclass_of(Controller::curr(), "LeftAndMain");
+		$inAdmin = is_subclass_of(Controller::curr(), "SilverStripe/Admin/LeftAndMain");
 		
-		// Setup requirements	
-		if (isset(Page_Controller::$themeFolderAndSubfolder) && 	Page_Controller::$themeFolderAndSubfolder) {
-			self::$themeFolderAndSubfolder = Page_Controller::$themeFolderAndSubfolder;
-		} else {
-			$currentTheme = SSViewer::current_theme();
-			self::$themeFolderAndSubfolder = 'themes/'.$currentTheme;
-		}
-		
+		// Setup requirements
+		$themeLoader = ThemeResourceLoader::inst();
+			
 		//Set a custom combined folder under themes so relative paths to images within CSS and JavaScript files don't break
-        Requirements::set_combined_files_folder(self::$themeFolderAndSubfolder . '/combined');
+        Requirements::set_combined_files_folder($themeLoader->getPath('combined'));
 		
 		// CSS array
 		if (count($cssArray)) {
@@ -123,6 +116,5 @@ class BoltSiteTree extends DataExtension {
 		if (Director::isDev() || Director::isTest() || stristr($_SERVER['HTTP_HOST'], 'draftsite.co.nz')) {
 			Requirements::insertHeadTags('<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">');
 		}
-		
 	}
 }

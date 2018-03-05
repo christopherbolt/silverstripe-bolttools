@@ -60,7 +60,7 @@ class BoltBlogPost extends DataExtension{
 		} else {
 			// Add description about ContentImage
 			$fields->dataFieldByName('FeaturedImage')->setDescription(_t(
-					'BlogPost.FEATURED_IMAGE_DESCRIPTION',
+					'SilverStripe\Blog\Model\BlogPost.FEATURED_IMAGE_DESCRIPTION',
 					'If no image is supplied then the first image found in the article content will be used if one exists.'
 				)
 			);	

@@ -4,7 +4,6 @@ namespace ChristopherBolt\BoltTools\Search;
 
 use SilverStripe\ORM\Search\FulltextSearchable;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Core\Config\ConfigLoader;
 use SilverStripe\ORM\Connect\MySQLSchemaManager;
 use SilverStripe\Core\Exception;
 use SilverStripe\CMS\Controllers\ContentController;

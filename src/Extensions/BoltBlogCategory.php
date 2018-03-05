@@ -17,9 +17,9 @@ class BoltBlogCategory extends DataExtension{
 	function BlogLink() {
 		if (empty($this->owner->BlogID)) {
 			$entry = Director::get_current_page();
-			if (is_a($entry, 'BlogPost')) {
+			if (is_a($entry, 'SilverStripe\Blog\Model\BlogPost')) {
 				$this->owner->BlogID = $entry->Parent()->ID;
-			} else if (is_a($entry, 'Blog')) {
+			} else if (is_a($entry, 'SilverStripe\Blog\Model\Blog')) {
 				$this->owner->BlogID = $entry->ID;
 			} else {
 				$this->owner->BlogID = Blog::get()->First()->ID;
@@ -32,7 +32,7 @@ class BoltBlogCategory extends DataExtension{
 	function LinkingMode() {
 		
 		$entry = Director::get_current_page();
-		if (is_a($entry, 'Blog')) {
+		if (is_a($entry, 'SilverStripe\Blog\Model\Blog')) {
 			$currentCategory = Controller::curr()->getCurrentCategory();
 			if ($currentCategory) {
 				if ($currentCategory->ID == $this->owner->ID) {

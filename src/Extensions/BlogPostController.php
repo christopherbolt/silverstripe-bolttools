@@ -2,10 +2,10 @@
 
 namespace ChristopherBolt\BoltTools\Extensions;
 
-use ChristopherBolt\BoltTools\Extensions\BoltBlog_Controller;
+use ChristopherBolt\BoltTools\Extensions\BoltBlogController;
 
 
-class BoltBlogPost_Controller extends BoltBlog_Controller {
+class BoltBlogPostController extends BoltBlogController {
 	
 	function getRSSLink() {
 		return $this->owner->Parent()->Link('rss');

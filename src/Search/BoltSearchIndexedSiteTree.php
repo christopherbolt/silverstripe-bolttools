@@ -42,7 +42,7 @@ class BoltSearchIndexedSiteTree extends DataExtension {
 						}
 					} else if (isset($has_one[$f])) {
 						$object = $item->$f();
-						if ($object && !is_subclass_of($object, 'SiteTree')) { // because better to show the page itself in results?
+						if ($object && !is_subclass_of($object, 'SilverStripe\CMS\Model\SiteTree')) { // because better to show the page itself in results?
 							if ($object->config()->get('search_index')) {
 								$index[] = self::buildSearchIndex($object);
 							} else {
@@ -57,7 +57,7 @@ class BoltSearchIndexedSiteTree extends DataExtension {
 						}
 						if ($set) { 
 							foreach ($set as $object) {
-								if (!is_subclass_of($object, 'SiteTree')) { // because better to show the page itself in results?
+								if (!is_subclass_of($object, 'SilverStripe\CMS\Model\SiteTree')) { // because better to show the page itself in results?
 									if ($object->config()->get('search_index')) {
 										$index[] = self::buildSearchIndex($object);
 									} else /*if (!is_subclass_of($object, 'Page'))*/ {
@@ -69,21 +69,21 @@ class BoltSearchIndexedSiteTree extends DataExtension {
 					// Allow index to be built from a method
 					} else if ($item->hasMethod($f)) {
 						$data = $item->$f();
-						if (is_string($data) || is_a($data, 'DBField')) {
+						if (is_string($data) || is_a($data, 'SilverStripe\ORM\FieldType\DBField')) {
 							$index[] = $item->$data;
-						} else if (is_subclass_of($data, 'DataObject')) {
+						} else if (is_subclass_of($data, 'SilverStripe\ORM\DataObject')) {
 							$object = $data;
-							if (!is_subclass_of($object, 'SiteTree')) { // because better to show the page itself in results?
+							if (!is_subclass_of($object, 'SilverStripe\CMS\Model\SiteTree')) { // because better to show the page itself in results?
 								if ($object->config()->get('search_index')) {
 									$index[] = self::buildSearchIndex($object);
 								} else {
 									self::buildGeneric($object, $index);
 								}
 							}
-						} else if (is_a($data, 'DataList')) {
+						} else if (is_a($data, 'Silverstripe\ORM\DataList')) {
 							$set = $data;
 							foreach ($set as $object) {
-								if (!is_subclass_of($object, 'SiteTree')) { // because better to show the page itself in results?
+								if (!is_subclass_of($object, 'SilverStripe\CMS\Model\SiteTree')) { // because better to show the page itself in results?
 									if ($object->config()->get('search_index')) {
 										$index[] = self::buildSearchIndex($object);
 									} else /*if (!is_subclass_of($object, 'Page'))*/ {

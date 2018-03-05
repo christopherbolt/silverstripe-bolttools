@@ -3,7 +3,7 @@
 namespace ChristopherBolt\BoltTools\View;
 
 use SilverStripe\View\TemplateGlobalProvider;
-use Page
+use Page;
 
 // Adds some usful global template functions
 

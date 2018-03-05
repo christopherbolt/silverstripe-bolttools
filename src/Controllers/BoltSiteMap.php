@@ -2,11 +2,11 @@
 
 namespace ChristopherBolt\BoltTools\Controllers;
 
-use Page_Controller;
+use PageController;
 use Page;
 
 
-class BoltSiteMap extends Page_Controller {
+class BoltSiteMap extends PageController {
 	
 	function init() {
 		// This hack prevents the ContentController from restricting access when in draft site
