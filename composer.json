@@ -20,7 +20,8 @@
     	"sheadawson/silverstripe-linkable": "^2",
 		"christopherbolt/silverstripe-contentmodules": "^2",
 		"christopherbolt/silverstripe-publishwithme": "^2",
-		"colymba/gridfield-bulk-editing-tools": "^3"
+		"colymba/gridfield-bulk-editing-tools": "^3",
+		"axllent/silverstripe-minifier": "^1.0"
     },
 	"extra": {
         "installer-name": "bolttools",

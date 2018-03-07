@@ -85,7 +85,8 @@ class BoltSiteTree extends DataExtension {
 		$themeLoader = ThemeResourceLoader::inst();
 			
 		//Set a custom combined folder under themes so relative paths to images within CSS and JavaScript files don't break
-        Requirements::set_combined_files_folder($themeLoader->getPath('combined'));
+		// this nolonger works in SS4, have decided to use gulp task to rewrite relative paths instead
+        //Requirements::set_combined_files_folder($themeLoader->getPath('combined'));
 		
 		// CSS array
 		if (count($cssArray)) {

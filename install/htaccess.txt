@@ -30,3 +30,4 @@ SetEnv SS_DATABASE_SERVER localhost
 SetEnv SS_DATABASE_NAME XXXXX_ss
 SetEnvIfExpr "%{HTTP_HOST} !~ /\.local/" SS_DATABASE_USERNAME=XXXXX_ss
 SetEnvIfExpr "%{HTTP_HOST} !~ /\.local/" SS_DATABASE_PASSWORD=XXXXX
+SetEnvIfExpr "%{HTTP_HOST} !~ /\.local/" SS_IGNORE_DOT_ENV=true
