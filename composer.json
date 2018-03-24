@@ -20,6 +20,7 @@
     	"sheadawson/silverstripe-linkable": "^2",
 		"christopherbolt/silverstripe-contentmodules": "^2",
 		"christopherbolt/silverstripe-publishwithme": "^2",
+		"christopherbolt/silverstripe-retinacontentimages": "dev-master",
 		"colymba/gridfield-bulk-editing-tools": "^3",
 		"axllent/silverstripe-minifier": "^1.0"
     },
