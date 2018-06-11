@@ -1,4 +1,4 @@
-# Append this to bottom of Silverstripe htaccess file
+# Prepend this to top of Silverstripe htaccess file
 
 ### Chris Bolt Begin ###
 
@@ -18,8 +18,12 @@
 </IfModule>
 # End Gzip
 
-# Hide git and mark down files that might contain info we don't want to reveal
+# Hide git
 RedirectMatch 404 /\.git
 RedirectMatch 404 /*\.md
 
+# Redirect themes
+RewriteRule ^themes/(.*) resources/themes/$1 [NC,L]
+
 ### End Chris Bolt ###
+

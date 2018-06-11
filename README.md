@@ -20,5 +20,5 @@ Run the silverstripe web installer if you use it.
 
 Run post install commands as required:
 ```
-cat vendor/christopherbolt/bolttools/install/htaccess.txt >> .htaccess && rm install.php
+cat vendor/christopherbolt/silverstripe-bolttools/install/htaccess.txt public/.htaccess > temp && mv temp public/.htaccess && rm public/install.php
 ```
