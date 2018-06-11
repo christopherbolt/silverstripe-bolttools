@@ -18,16 +18,8 @@
 </IfModule>
 # End Gzip
 
-# Hide git
+# Hide git and mark down files that might contain info we don't want to reveal
 RedirectMatch 404 /\.git
+RedirectMatch 404 /*\.md
 
 ### End Chris Bolt ###
-
-### Environment set up ###
-SetEnvIfExpr "%{HTTP_HOST} =~ /\.draftsite\.co\.nz$/" SS_ENVIRONMENT_TYPE=test
-SetEnv SS_DATABASE_CLASS MySQLPDODatabase
-SetEnv SS_DATABASE_SERVER localhost
-SetEnv SS_DATABASE_NAME XXXXX_ss
-SetEnvIfExpr "%{HTTP_HOST} !~ /\.local/" SS_DATABASE_USERNAME=XXXXX_ss
-SetEnvIfExpr "%{HTTP_HOST} !~ /\.local/" SS_DATABASE_PASSWORD=XXXXX
-SetEnvIfExpr "%{HTTP_HOST} !~ /\.local/" SS_IGNORE_DOT_ENV=true
