@@ -18,7 +18,8 @@
 			wrapTablesExcludeQuery : '.tableWrapper table',
 			wrapTables: '<div class="tableWrapper"></div>',
 			placholderFieldsQuery : 'input.text, textarea',
-			placholderFieldsExcludeQuery : '.attributeForm input.text, .attributeForm textarea, input[name=Captcha]'
+			placholderFieldsExcludeQuery : '.attributeForm input.text, .attributeForm textarea, input[name=Captcha]',
+			flipFocusY: true
 		}, options );
 		
 		var onReadyFunctions = [];
@@ -84,6 +85,13 @@
 			}
 			// Focuspoint
 			if (typeof(jQuery.fn.focusPoint) === "function") {
+				// Flip y co-ordinate on focus point, recent versions of SilverStripe Focus point have flipped this co-ordinate
+				if (SELF.settings.flipFocusY) {
+					$('.focuspoint').each(function() {
+						var y = $(this).data('focus-y');
+						if (y) $(this).data('focus-y', parseFloat(y)*-1);
+					});
+				}
 				$('.focuspoint').focusPoint({
 					reCalcOnWindowResize: true
 				});

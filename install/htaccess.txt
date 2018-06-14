@@ -1,5 +1,14 @@
 # Prepend this to top of Silverstripe htaccess file
 
+## SSL Redirect Begin
+
+#RewriteCond %{HTTPS} !=on
+#RewriteCond %{HTTP_HOST} !local
+#RewriteCond %{HTTP_HOST} !draftsite\.co\.nz
+#RewriteRule ^(.*)$ https://www.domain.co.nz%{REQUEST_URI} [R=301,L]
+
+## SSL Redirect End
+
 ### Chris Bolt Begin ###
 
 # Caching
