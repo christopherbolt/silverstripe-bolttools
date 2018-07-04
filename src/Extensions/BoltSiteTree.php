@@ -51,8 +51,10 @@ class BoltSiteTree extends DataExtension {
 	
 	public function updateCMSFields(FieldList $fields) {		
 		// Add back metatitle
-		$fields->fieldByName('Root.Main.Metadata')->insertBefore($metaTitle = new TextField('MetaTitle', 'Meta Title'), 'MetaDescription');
-		$metaTitle->setDescription('Browsers will display this in the title bar and search engines use this for displaying search results (although it may not influence their ranking).');
+		if ($fields->dataFieldByName('Metadata')) {
+			$fields->fieldByName('Root.Main.Metadata')->insertBefore($metaTitle = new TextField('MetaTitle', 'Meta Title'), 'MetaDescription');
+			$metaTitle->setDescription('Browsers will display this in the title bar and search engines use this for displaying search results (although it may not influence their ranking).');
+		}
 		
 		// Record current CMS page, quite useful for sorting etc
 		self::$current_cms_page = $this->owner->ID;
