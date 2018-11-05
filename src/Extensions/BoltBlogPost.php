@@ -84,7 +84,7 @@ class BoltBlogPost extends DataExtension{
 				$filename = preg_replace('#/[a-z0-9]+/([^/]+)__ResizedImage[a-z0-9]+/#smi', '$1', $matches[1]);
 				$file = File::get()->filter(array(
                     'FileFilename' => $filename
-                ));
+                ))->First();
 				if ($file) return $file;
 			}
 		}
