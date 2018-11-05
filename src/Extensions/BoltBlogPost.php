@@ -79,10 +79,17 @@ class BoltBlogPost extends DataExtension{
 		if ($img && $img->exists()) return $img;
 		// else try to get first image tag from article.
 		$matches = array();
-		if (preg_match('#<img [^>]*src="([^">]+)"#smi', $this->owner->Content, $matches)) {
+        if (preg_match('#\[image [^\]]*id="([0-9]+)"#smi', $this->owner->Content, $matches)) {
 			if (isset($matches[1])) {
-				$filename = preg_replace('#/[a-z0-9]+/([^/]+)__ResizedImage[a-z0-9]+/#smi', '$1', $matches[1]);
-				$file = File::get()->filter(array(
+                $file = File::get()->byId($matches[1]);
+				if ($file) return $file;
+			}
+		} else if (preg_match('#<img [^>]*src="assets/([^">]+)"#smi', $this->owner->Content, $matches)) {
+			if (isset($matches[1])) {
+                $filename = $matches[1];
+				$filename = preg_replace('#_resampled/resizedimage[0-9]+-#smi', '', $filename);
+                $filename = preg_replace('#/[a-z0-9]+/([^/]+)__ResizedImage[a-z0-9]+/#smi', '$1', $filename);
+                $file = File::get()->filter(array(
                     'FileFilename' => $filename
                 ))->First();
 				if ($file) return $file;
