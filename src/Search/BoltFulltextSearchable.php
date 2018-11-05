@@ -44,7 +44,7 @@ class BoltFulltextSearchable extends FulltextSearchable {
             ContentController::add_extension("SilverStripe\\CMS\\Search\\ContentControllerSearchExtension");
         }
     }
-	
+	/*
 	public static function get_extra_config($class, $extensionClass, $args)
     {
         return array(
@@ -56,6 +56,6 @@ class BoltFulltextSearchable extends FulltextSearchable {
                 )
             )
         );
-    }
+    }*/
 
 }

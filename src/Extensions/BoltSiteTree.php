@@ -69,6 +69,10 @@ class BoltSiteTree extends DataExtension {
 	function SanitizedURLSegment() {
 		return preg_replace("/[^a-z0-9]/i", "", $this->owner->URLSegment);	
 	}
+    
+    function SanitizedClassName() {
+		return preg_replace("/([a-z0-9]+\\\)/i", "", $this->owner->ClassName);	
+	}
 	
 	/* function for site map */
 	function SiteMapChildren() {

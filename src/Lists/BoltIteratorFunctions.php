@@ -23,8 +23,12 @@ class BoltIteratorFunctions implements TemplateIteratorProvider {
 		return $this->iteratorPos > $num;
 	}
 	
-	function PosFromBottom($num){
-    	return (($this->iteratorTotalItems - $this->iteratorPos) == $num);
+    function PosFromBottom($num=null){
+		if ($num === null) {
+			return ($this->iteratorTotalItems - $this->iteratorPos);
+		} else {
+    		return (($this->iteratorTotalItems - $this->iteratorPos) == $num);
+		}
   	}
 	
 	function PosMultipleOf($num){

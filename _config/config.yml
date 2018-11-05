@@ -32,7 +32,7 @@ SilverStripe\Blog\Model\Blog:
   extensions:
     - ChristopherBolt\BoltTools\Extensions\BoltBlog
 
-SilverStripe\Blog\Controllers\BlogController:
+SilverStripe\Blog\Model\BlogController:
   extensions:
     - ChristopherBolt\BoltTools\Extensions\BoltBlogController
 
@@ -40,7 +40,7 @@ SilverStripe\Blog\Model\BlogPost:
   extensions:
     - ChristopherBolt\BoltTools\Extensions\BoltBlogPost
 
-SilverStripe\Blog\Controllers\BlogPostController:
+SilverStripe\Blog\Model\BlogPostController:
   extensions:
     - ChristopherBolt\BoltTools\Extensions\BoltBlogPostController
 

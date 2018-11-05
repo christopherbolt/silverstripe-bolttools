@@ -7,7 +7,12 @@ use SilverStripe\Blog\Model\BlogCategory;
 use SilverStripe\Blog\Model\Blog;
 use SilverStripe\View\ArrayData;
 use SilverStripe\ORM\DB;
-
+use SilverStripe\Versioned\Versioned;
+use SilverStripe\ORM\Queries\SQLSelect;
+use SilverStripe\ORM\FieldType\DBDate;
+use SilverStripe\ORM\FieldType\DBDatetime;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\Control\Controller;
 
 if(!class_exists('SilverStripe\Widgets\Model\Widget')) {
 	include_once(dirname(__DIR__).'/nowidgets/nowidgets.php');
@@ -49,7 +54,7 @@ class BoltBlogController extends DataExtension {
 	function getAllArchive () {
 		$linkingMode = '';
 		
-		if (is_a($this->owner, 'SilverStripe\Blog\Controllers\BlogController')) {
+		if (is_a($this->owner, 'SilverStripe\Blog\Model\BlogController')) {
 			$blog = $this->owner;
 			$year = $blog->getArchiveYear();
 			$month = $blog->getArchiveMonth();
@@ -57,7 +62,7 @@ class BoltBlogController extends DataExtension {
 			
 			if (!$year && !$month && !$day/* && !$blog->getCurrentCategory() && !$blog->getCurrentTag()*/) $linkingMode = 'current';
 			
-		} else if (is_a($this->owner, 'SilverStripe\Blog\Controllers\BlogPostController')) {
+		} else if (is_a($this->owner, 'SilverStripe\Blog\Model\BlogPostController')) {
 			$blog = $this->owner->Parent();
 		} else {
 			$blog = Blog::get()->First();
@@ -66,28 +71,72 @@ class BoltBlogController extends DataExtension {
 		return new ArrayData(array('Title'=>'All','LinkingMode'=>$linkingMode,'Link'=>$blog->Link()));
 	}
 	function getArchiveList($archiveType='Yearly', $numberToDisplay=0) {
-		$w = new SilverStripe\Blog\Widgets\BlogArchiveWidget();
-		$w->ArchiveType = $archiveType;
-		$w->NumberToDisplay = $numberToDisplay;
-		
-		// Hack to get this working in mysql 5.7, seems that even if I turn ONLY_FULL_GROUP_BY off in my.cnf silverstripe turns it on again somewhere.
-		// Get current mode
-		$mode = DB::query('SELECT @@sql_mode')->value();
-		// Do not remove all modes or Silverstripe will break
-		// Remove both the ONLY_FULL_GROUP_BY and ANSI modes, enabling ANSI seems to automatically add ONLY_FULL_GROUP_BY
-		$sql = 'SET sql_mode=\''.preg_replace('/(^|,)(ONLY_FULL_GROUP_BY)($|,)/smi', "$3", preg_replace('/(^|,)(ANSI)($|,)/smi', "$3", $mode)).'\';';
-		DB::query($sql);
 		
 		// For linking mode
-		if (is_a($this->owner, 'SilverStripe\Blog\Controllers\BlogController')) {
+		if (is_a($this->owner, 'SilverStripe\Blog\Model\BlogController')) {
 			$year = $this->owner->getArchiveYear();
 			$month = $this->owner->getArchiveMonth();
 			$day = $this->owner->getArchiveDay();
+            $blog = $this->owner;
+		} else if (is_a($this->owner, 'SilverStripe\Blog\Model\BlogPostController')) {
+        	$blog = $this->owner->Parent();
+		} else {
+			$blog = Blog::get()->First();
 		}
 		
+        ///////////////////////////
+        // The default Blog Archive widget gets all posts rather than just the posts from the current blog, so until this is fixed we have our own routine below.....
+        /*
+        $w = new \SilverStripe\Blog\Widgets\BlogArchiveWidget();
+		$w->ArchiveType = $archiveType;
+		$w->NumberToDisplay = $numberToDisplay;
+        $w->BlogID = $blog->ID;
 		$return = $w->getArchive();
+        */
+        
+        $format = ($archiveType == 'Yearly') ? '%Y' : '%Y-%m';
+        $publishDate = DB::get_conn()->formattedDatetimeClause('"PublishDate"', $format);
+        $fields = [
+            'PublishDate' => $publishDate,
+            'Total' => "COUNT('\"PublishDate\"')"
+        ];
+
+        $stage = Versioned::get_stage();
+        $suffix = ($stage === Versioned::LIVE) ? '_' . Versioned::LIVE : '';
+        $query = SQLSelect::create($fields, '"BlogPost' . $suffix . '"')
+            ->addInnerJoin('SiteTree','"SiteTree"."ID" = "BlogPost' . $suffix . '"."ID"')
+            ->addGroupBy($publishDate)
+            ->addOrderBy('"PublishDate" DESC')
+            ->addWhere(['"PublishDate" <= ?' => DBDatetime::now()->Format(DBDatetime::ISO_DATETIME)])
+            ->addWhere(['"SiteTree"."ParentID" = ?' => $blog->ID])
+            ;
+
+        $posts = $query->execute();
+        $return = ArrayList::create();
+        foreach ($posts as $post) {
+            if ($archiveType == 'Yearly') {
+                $pyear  = $post['PublishDate'];
+                $pmonth = null;
+                $title = $pyear;
+            } else {
+                $date = DBDate::create();
+                $date->setValue(strtotime($post['PublishDate']));
+
+                $pyear  = $date->Format('y');
+                $pmonth = $date->Format('MM');
+                $title = $date->Format('MMMM y');
+            }
+
+            $return->push(ArrayData::create([
+                'Title' => $title,
+                'Link' => Controller::join_links($blog->Link('archive'), $pyear, $pmonth)
+            ]));
+        }
+        // End own routine
+        ///////////////////////////
+        
 		foreach($return as $item) {
-			if (is_a($this->owner, 'SilverStripe\Blog\Controllers\BlogController')) {
+			if (is_a($this->owner, 'SilverStripe\Blog\Model\BlogController')) {
 				// add linking mode
 				$link = $item->getField('Link');
 				$parts = explode('/', $link);
@@ -118,11 +167,7 @@ class BoltBlogController extends DataExtension {
 					$item->setField('LinkingMode', 'current');
 				}
 			}
-		} // Make sure SQL query is run
-		
-		// Return to previous mode incase this affects other queries
-		DB::query('SET sql_mode=\''.$mode.'\';');
-		// End Hack
+		}
 		
 		return $return;
 	}

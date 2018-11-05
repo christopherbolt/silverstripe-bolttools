@@ -5,6 +5,7 @@ namespace SilverStripe\Widgets\Model;
 use SilverStripe\Control\Controller;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Blog\Model\Blog;
+use SilverStripe\Control\Director;
 
 class Widget extends DataObject {
 	function Blog() {
