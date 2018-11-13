@@ -36,8 +36,8 @@
 					if (!t.attr('placeholder') && !t.hasClass(settings.ignoreClass)) {
 						var label = $('label[for="'+t.attr('id')+'"]');
 						if (label.length) {
-							t.attr('placeholder', label.html());
-							t.attr('title', label.html());
+							t.attr('placeholder', label.text());
+							t.attr('title', label.text());
 							label.hide();
 						}
 					}
@@ -80,7 +80,7 @@
 					if (!t.hasClass(settings.ignoreClass)) {
 						//if (t.val() == '') {
 							var label = $('label[for="'+t.attr('id')+'"]')
-							var placeholder = t.attr('placeholder') ? t.attr('placeholder') : label.html();
+							var placeholder = t.attr('placeholder') ? t.attr('placeholder') : label.text();
 							
 							if ($.addPlaceholders.attributeSupported(jQuery(this).prop('tagName'), 'type')) {
 								var type = t.attr('type');
