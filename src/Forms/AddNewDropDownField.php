@@ -27,6 +27,7 @@ class AddNewDropDownField extends DropDownField {
 	protected $dialogTitle = '';
 	protected $editDialogTitle = '';
 	protected $onBeforeWriteCallback = array();
+    protected $formFieldsMethod = 'getCMSFields';
 		
 	public function setModel($model) {
 		$this->addNewModel = $model;
@@ -72,10 +73,19 @@ class AddNewDropDownField extends DropDownField {
 	public function getShowEditButton($bool=true) {
 		return $this->showEditButton;
 	}
+    
+    public function setFormFieldsMethod($method) {
+		$this->formFieldsMethod = $method;
+		return $this;
+	}
+	
+	public function getFormFieldsMethod($bool=true) {
+		return $this->formFieldsMethod;
+	}
 	
 	public function Field($properties = array()){
-		Requirements::javascript(BOLTTOOLS_DIR . '/javascript/addnewlistboxfield.js');
-		$this->setTemplate('AddNewListboxField');
+		Requirements::javascript('christopherbolt/silverstripe-bolttools: client/javascript/addnewlistboxfield.js');
+		$this->setTemplate('ChristopherBolt\BoltTools\Forms\AddNewListboxField');
 		$this->addExtraClass('has-chzn');
 		return parent::Field($properties);
 	}
@@ -94,8 +104,8 @@ class AddNewDropDownField extends DropDownField {
             $item = $model::get()->byID($itemID);
         }
         $item = $item ? $item : singleton($model);
-
-		$fields = $item->getCMSFields();
+        
+		$fields = $item->{$this->formFieldsMethod}();
 		
 		if ($item->ID) {
 			$title = $this->getEditDialogTitle() ? $this->getEditDialogTitle() : 'Edit Item';
@@ -108,7 +118,6 @@ class AddNewDropDownField extends DropDownField {
 		$form = Form::create($this, 'AddNewListboxForm', $fields, $actions);
 		
 		$fields->push(HiddenField::create('model', 'model', $model));
-		
 		
 		if($item){
 			$form->loadDataFrom($item);
@@ -157,9 +166,6 @@ class AddNewDropDownField extends DropDownField {
 	public function AddNewFieldHolderHTML() {
 		$selected = $this->request->getVar('selected');
 		$multiple = isset($this->multiple) ? $this->multiple : false;
-		if($multiple && !is_array($selected)) {
-			$selected = explode(',', $selected);
-		}
 		$this->setValue($selected);
 		return $this->FieldHolder();
 	}

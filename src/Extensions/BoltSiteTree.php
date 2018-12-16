@@ -81,6 +81,10 @@ class BoltSiteTree extends DataExtension {
 	
 	// function for adding and combing css and js files
 	public static function setupRequirements($cssArray=array(), $jsArray=array()) {
+        
+        // Remove empty values
+        $cssArray = array_filter($cssArray);
+        $jsArray = array_filter($jsArray);
 		
 		$siteConfig = SiteConfig::current_site_config();
 		

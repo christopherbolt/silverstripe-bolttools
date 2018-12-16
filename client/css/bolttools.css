@@ -6,8 +6,12 @@
 }
 
 /* Add new listbox field */
-.addnewlistbox .addnewlistboxfield-button {
-	
+.addnewlistbox .chosen-container,
+.addnewdropdown .chosen-container{
+	width: 80% !important;
+}
+.addnewlistboxfield-button-new {
+    vertical-align:text-bottom;
 }
 select.has-chzn.chzn-done {
 	display:none !important;	

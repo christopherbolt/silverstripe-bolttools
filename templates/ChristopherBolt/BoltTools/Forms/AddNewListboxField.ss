@@ -4,7 +4,7 @@
 <% end_loop %>
 </select>
 <% if $Model %>
-<button href='#' class='addnewlistboxfield-button-new ss-ui-button ss-ui-button-small ss-ui-action-constructive' data-icon="add">&nbsp;&nbsp;New</button>
+<button href='#' class='addnewlistboxfield-button-new action action-detail btn btn-primary font-icon-plus-circled new new-link'>New</button>
 	<% if $ShowEditButton %>
     <button href='#' class='addnewlistboxfield-button-edit ss-ui-button ss-ui-button-small'>Edit Selected</button>
     <div class='addnewlistboxfield-edit-dialog'></div>
