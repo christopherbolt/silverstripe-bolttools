@@ -5,12 +5,6 @@ jQuery.entwine("addnewlistboxfield", function($) {
 	var _match = function () {
 		var self = this;
 		
-		// make sure that select has chosen
-		if (self.siblings('select:first').length && !self.siblings('select:first').hasClass('chzn-done')) {
-			self.siblings('select:first').hide();
-			self.siblings('select:first').chosen({disable_search_threshold: 10});
-		}
-		
 		if (self.hasClass('addnewlistboxfield-button-edit')) {
 			this.setEdit(true);
 			var selectElement = self.siblings('select:first');
