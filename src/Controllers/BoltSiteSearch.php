@@ -7,6 +7,7 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\FormAction;
 use ChristopherBolt\BoltTools\Search\BoltSearchForm;
+use SilverStripe\CMS\Model\SiteTree;
 
 
 class BoltSiteSearch extends PageController {
@@ -49,7 +50,7 @@ class BoltSiteSearch extends PageController {
 	 */
 	function results($data, $form){
 	  	$form->classesToSearch(array(
-			"SiteTree"			
+			SiteTree::class		
 		));
 		$data = array(
 	     	'Results' => $form->getResults(),

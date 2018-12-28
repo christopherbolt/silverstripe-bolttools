@@ -10,6 +10,9 @@ use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Assets\File;
+use SilverStripe\ORM\DataObject;
 
 /* extends search form to support the custom SearchIndex, 
 just replaces calls to DB::get_conn()->searchEngine() with a new function, only difference is this function uses a different field list */
@@ -109,7 +112,7 @@ class BoltSearchForm extends SearchForm {
             throw new Exception('MySQLDatabase->searchEngine() requires "File" class');
         }
 
-        $keywords = $this->escapeString($keywords);
+        $keywords = Convert::raw2sql($keywords);
         $htmlEntityKeywords = htmlentities($keywords, ENT_NOQUOTES, 'UTF-8');
 
         $extraFilters = array($pageClass => '', $fileClass => '');
@@ -135,7 +138,7 @@ class BoltSearchForm extends SearchForm {
         // File.ShowInSearch was added later, keep the database driver backwards compatible
         // by checking for its existence first
         $fileTable = DataObject::getSchema()->tableName($fileClass);
-        $fields = $this->getSchemaManager()->fieldList($fileTable);
+        $fields = DB::get_conn()->getSchemaManager()->fieldList($fileTable);
         if (array_key_exists('ShowInSearch', $fields)) {
             $extraFilters[$fileClass] .= " AND ShowInSearch <> 0";
         }
@@ -173,7 +176,7 @@ class BoltSearchForm extends SearchForm {
             $sqlTables[$class] = '"' . DataObject::getSchema()->tableName($class) . '"';
         }
 
-        $charset = static::config()->get('charset');
+        $charset = DB::get_conn()->config()->get('charset');
 
         // Make column selection lists
         $select = array(
@@ -214,7 +217,7 @@ class BoltSearchForm extends SearchForm {
         $fullQuery = implode(" UNION ", $querySQLs) . " ORDER BY $sortBy LIMIT $limit";
 
         // Get records
-        $records = $this->preparedQuery($fullQuery, $queryParameters);
+        $records = DB::get_conn()->preparedQuery($fullQuery, $queryParameters);
 
         $objects = array();
 
