@@ -51,7 +51,7 @@ class BoltSiteTree extends DataExtension {
 	
 	public function updateCMSFields(FieldList $fields) {		
 		// Add back metatitle
-		if ($fields->dataFieldByName('Metadata')) {
+		if ($fields->fieldByName('Root.Main.Metadata')) {
 			$fields->fieldByName('Root.Main.Metadata')->insertBefore($metaTitle = new TextField('MetaTitle', 'Meta Title'), 'MetaDescription');
 			$metaTitle->setDescription('Browsers will display this in the title bar and search engines use this for displaying search results (although it may not influence their ranking).');
 		}
