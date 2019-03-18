@@ -41,11 +41,31 @@ class SortedLimitedPaginatedList extends LimitedPaginatedList {
 	}
 	
 	function SortCol() {
-		return isset($this->request[$this->getSortColGetVar()]) ? $this->request[$this->getSortColGetVar()] : '';
+		if (!empty($this->request[$this->getSortColGetVar()])) {
+            return $this->request[$this->getSortColGetVar()];
+        } else {
+            // Attempt to get sort col from SQL
+            $sql = $this->list->sql();
+            if (preg_match('/ORDER BY "[a-z0-9_]+"."([a-z0-9_]+)" (ASC|DESC)/i', $sql, $matches)) {
+                return $matches[1];
+            } else {
+                return '';
+            }
+        }
 	}
 	
 	function SortDir() {
-		return isset($this->request[$this->getSortDirGetVar()]) ? $this->request[$this->getSortDirGetVar()] : 'Up';
+		if (!empty($this->request[$this->getSortDirGetVar()])) {
+            return $this->request[$this->getSortDirGetVar()];
+        } else {
+            // Attempt to get direction from SQL
+            $sql = $this->list->sql();
+            if (preg_match('/ORDER BY [a-z0-9\.\" ]+ DESC/i', $sql)) {
+                return 'Down';
+            } else {
+                return 'Up';
+            }
+        }
 	}
 	
 	/**
