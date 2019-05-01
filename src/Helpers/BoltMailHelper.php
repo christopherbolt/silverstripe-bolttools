@@ -28,7 +28,7 @@ class BoltMailHelper {
   </details>
 </xmlrequest>';
 		
-		$ch = curl_init('http://www.boltmail.co.nz/boltmail/xml.php'); 
+		$ch = curl_init('https://www.boltmail.co.nz/boltmail/xml.php'); 
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); curl_setopt($ch, CURLOPT_POST, 1); curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
 		
 		$result = @curl_exec($ch); 
@@ -96,7 +96,7 @@ class BoltMailHelper {
 		$lists = array();
 		//$listids = explode(',', $this->BoltMailListIds);
 		foreach ($listids as $listid) {
-			$lists[] = 'http://www.boltmail.co.nz/boltmail/rss.php?List='.$listid;	
+			$lists[] = 'https://www.boltmail.co.nz/boltmail/rss.php?List='.$listid;	
 		}
 		
 		$feed = new SimplePie();
