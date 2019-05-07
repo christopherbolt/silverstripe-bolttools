@@ -1,6 +1,17 @@
 <?php
 
 class Widget extends DataObject {
+    public function __construct($record = null, $isSingleton = false, $model = null) {
+		parent::__construct();
+        $entry = Director::get_current_page();
+        if (is_a($entry, 'BlogPost')) {
+            $this->BlogID = $entry->Parent()->ID;
+        } else if (is_a($entry, 'Blog')) {
+            $this->BlogID = $entry->ID;
+        } else {
+            $this->BlogID = Blog::get()->First()->ID;
+        }
+    }
 	function Blog() {
 		if (empty($this->BlogID)) {
 			$entry = Director::get_current_page();
