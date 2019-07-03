@@ -22,7 +22,7 @@ class BoltBlogController extends DataExtension {
 	
 	/* Category widget */
 	function getCategoriesList($limit=0,$order='Title',$direction='ASC') {
-		$w = new SilverStripe\Blog\Widgets\BlogCategoriesWidget();
+		$w = new \SilverStripe\Blog\Widgets\BlogCategoriesWidget();
 		$w->Limit = $limit;
 		$w->Order = $order;
 		$w->Direction = $direction;
@@ -36,7 +36,7 @@ class BoltBlogController extends DataExtension {
 	
 	/* Tags widget */
 	function getTagsList($limit=0,$order='Title',$direction='ASC') {
-		$w = new SilverStripe\Blog\Widgets\BlogTagsWidget();
+		$w = new \SilverStripe\Blog\Widgets\BlogTagsWidget();
 		$w->Limit = $limit;
 		$w->Order = $order;
 		$w->Direction = $direction;
@@ -45,7 +45,7 @@ class BoltBlogController extends DataExtension {
 	
 	/* Recent posts widget */
 	function getRecentPosts($numberOfPosts=5) {
-		$w = new SilverStripe\Blog\Widgets\BlogRecentPostsWidget();
+		$w = new \SilverStripe\Blog\Widgets\BlogRecentPostsWidget();
 		$w->NumberOfPosts = $numberOfPosts;
 		return $w->getPosts();
 	}
