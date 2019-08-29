@@ -7,7 +7,7 @@ use DOMDocument;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\SSViewer;
 use SilverStripe\SiteConfig\SiteConfig;
-
+use SilverStripe\View\ThemeResourceLoader;
 
 // Based on https://github.com/stevie-mayhew/silverstripe-svg
 // Adds some mods for writing and caching SVG to a file, using SVG as a template with SSViewer processing, functions for setting CSS
@@ -23,10 +23,15 @@ class SVGTemplate extends ViewableData
      * @config
      * @var string
      */
-    private static $base_path = 'themes/mytheme/svg/';
+    
+    // Folder inside theme to load svg from
+    private static $base_path = 'svg';
 	
-	// Path to save processed file to
-    private static $save_path = 'themes/mytheme/combined/';
+	// Folder inside theme to save processed svg to
+    private static $save_path = 'combined';
+    
+    // Custom save path, replaces the above path for this instance if set, this is a full path not inside a theme
+	private $custom_save_path;
 	
 	// Template vars 
 	private static $default_template_vars = array();
@@ -35,11 +40,10 @@ class SVGTemplate extends ViewableData
 	// Custom CSS (for when using URL() function)
 	private $custom_css;
 	
-	// String for mod
+	// String to record unique reference to modified svg
 	private $file_mod_string = '';
 	
-	// Custom save path
-	private $custom_save_path;
+	
 	
 	// Remove style tags (css must be manually added to your stylesheet), applies only for inlined svg
 	private static $remove_style_tag = true;
@@ -320,45 +324,66 @@ class SVGTemplate extends ViewableData
     }
 	
 	private function buildPath() {
-		$path = BASE_PATH . DIRECTORY_SEPARATOR;
-        $path .= ($this->custom_base_path) ? $this->custom_base_path : $this->stat('base_path');
-        $path .= DIRECTORY_SEPARATOR;
-        foreach($this->subfolders as $subfolder) {
-            $path .= $subfolder . DIRECTORY_SEPARATOR;
+        
+        if ($this->custom_base_path) {
+            $path = BASE_PATH . DIRECTORY_SEPARATOR . $this->custom_base_path;
+            foreach($this->subfolders as $subfolder) {
+                $path .= $subfolder . DIRECTORY_SEPARATOR;
+            }
+            $path .= (strpos($this->name, ".") === false) ? $this->name . '.' . $this->stat('extension') : $this->name;
+            return $path;
+        } else {
+            $themeLoader = ThemeResourceLoader::inst();
+            $themeList = SSViewer::get_themes();
+
+            $path = $this->stat('base_path');
+            $path .= DIRECTORY_SEPARATOR;
+            foreach($this->subfolders as $subfolder) {
+                $path .= $subfolder . DIRECTORY_SEPARATOR;
+            }
+            $path .= (strpos($this->name, ".") === false) ? $this->name . '.' . $this->stat('extension') : $this->name;            
+            return BASE_PATH . DIRECTORY_SEPARATOR . $themeLoader->findThemedResource($path, $themeList);
         }
-        $path .= (strpos($this->name, ".") === false) ? $this->name . '.' . $this->stat('extension') : $this->name;
 		
 		return $path;	
+	}
+    
+    private function buildSavePath() {
+        $themeLoader = ThemeResourceLoader::inst();
+        $themeList = SSViewer::get_themes();
+
+        $path = $this->stat('save_path');
+
+        return $themeLoader->findThemedResource($path, $themeList);	
 	}
 
     /**
      * @return string
      */
     public function forTemplate() {
-		$path = $this->buildPath();
+        $path = $this->buildPath();
         return $this->process($path);
     }
 	
 	// Writes the modified SVG file to a file and returns the path
 	public function URL() {
-		$path = $this->buildPath();
-		$base = BASE_PATH . DIRECTORY_SEPARATOR;
-		$save = ($this->custom_save_path) ? $this->custom_save_path : $this->stat('save_path');
-		if (substr($save, strlen($save)-1) != DIRECTORY_SEPARATOR) {
-			$save .= DIRECTORY_SEPARATOR;
-		}
-		//foreach($this->subfolders as $subfolder) {
-		//    $path .= $subfolder . DIRECTORY_SEPARATOR;
-		//}
-		$file_mod_string = preg_replace("/[^a-zA-Z0-9]/smi", '', $this->file_mod_string);
-		$file_mod_string .= 'sc'.SiteConfig::current_site_config()->ID;
-		$save .= preg_replace("/\.[a-z]+$/smi", '', $this->name) . $file_mod_string . '.' . $this->stat('extension');
-		
-		if (!file_exists($base.$save)) {
-			$xml = $this->process($path, true);
-			file_put_contents($base.$save, $xml);
-		}
-		
-		return $save;
+        $base = BASE_PATH . DIRECTORY_SEPARATOR;
+        if (($path = $this->buildPath()) && ($save = $this->buildSavePath())) {
+            //foreach($this->subfolders as $subfolder) {
+            //    $path .= $subfolder . DIRECTORY_SEPARATOR;
+            //}
+            $file_mod_string = preg_replace("/[^a-zA-Z0-9]/smi", '', $this->file_mod_string);
+            $file_mod_string .= 'sc'.SiteConfig::current_site_config()->ID;
+            $save .= preg_replace("/\.[a-z]+$/smi", '', $this->name) . $file_mod_string . '.' . $this->stat('extension');
+
+            if (!file_exists($base.$save)) {
+                $xml = $this->process($path, true);
+                file_put_contents($base.$save, $xml);
+            }
+
+            return $save;
+        } else {
+            return null;
+        }
 	}
 }

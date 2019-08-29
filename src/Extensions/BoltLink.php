@@ -5,12 +5,10 @@ namespace ChristopherBolt\BoltTools\Extensions;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\OptionsetField;
-//use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Core\Extension;
-//use SilverStripe\Forms\FileHandleField;
-//use SilverStripe\Core\Injector\Injector;
-//use UncleCheese\DisplayLogic\Forms\Wrapper;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use UncleCheese\DisplayLogic\Forms\Wrapper;
 
 /* 
 Adds file uploads and a few other things to the Link class
@@ -46,16 +44,11 @@ class BoltLink extends DataExtension{
             $i18nTypes[$key] = _t('Linkable.TYPE'.strtoupper($key), $label);
         }
 		$fields->replaceField('Type', OptionsetField::create('Type', _t('Linkable.LINKTYPE', 'Link Type'), $i18nTypes));
+        */
 		
 		// Chris Bolt, replaced file choose with an upload field, this doesn't currently work, maybe ss bug, will revist later
-		/*$fields->removeByName('FileID');
-		$fields->addFieldToTab('Root.Main', $file = Wrapper::create(
-			Injector::inst()->create(FileHandleField::class, 'File', _t('Linkable.FILE', 'File'))
-		), 'Email');
-		$file
-            ->displayIf('Type')
-            ->isEqualTo('File')
-            ->end();*/
+        $fields->insertBefore('OpenInNewWindow', Wrapper::create(UploadField::create('File'))->displayIf('Type')->isEqualTo('File')->end());
+        $fields->removeByName('FileID');
 		
 		if ($this->owner->config()->get('show_extra_attributes')) {
 			// Chris Bolt, added functionality for adding custom attributes
