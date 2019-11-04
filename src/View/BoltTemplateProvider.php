@@ -17,10 +17,10 @@ class BoltTemplateProvider implements TemplateGlobalProvider {
     }
     // Media queries for use in picture source tags
 	/* Some helper functions for templates */
-	function PageById($id) {
+	public static function PageById($id) {
 		return Page::get()->byId($id);	
 	}
-	function AllPages() {
+	public static function AllPages() {
 		return Page::get();	
 	}
 }
