@@ -23,17 +23,17 @@ class AddTrackingScriptsMiddleware implements HTTPMiddleware {
             $responseBody = $response->getBody();
             
 			// Head tags
-			if (isset($siteConfig->TrackingCodeHead)) {
+			if (!empty($siteConfig->TrackingCodeHead)) {
 				$responseBody = preg_replace('/(<\/head>)/i', $this->escapeReplacement($siteConfig->TrackingCodeHead)."\n$1", $responseBody);
 			}
             
             // Body open
-            if (isset($siteConfig->TrackingCodeBodyOpen)) {
+            if (!empty($siteConfig->TrackingCodeBodyOpen)) {
 				$responseBody = preg_replace('/(<body[^>]*>)/i', "$1\n".$this->escapeReplacement($siteConfig->TrackingCodeBodyOpen), $responseBody);
 			}
             
             // Body close
-            if (isset($siteConfig->TrackingCodeBodyClose)) {
+            if (!empty($siteConfig->TrackingCodeBodyClose)) {
 				$responseBody = preg_replace('/(<\/body>)/i', $this->escapeReplacement($siteConfig->TrackingCodeBodyClose)."\n$1", $responseBody);
 			}
             
