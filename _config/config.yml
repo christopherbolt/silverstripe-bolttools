@@ -60,3 +60,10 @@ ChristopherBolt\ContentModules\ContentModule:
 ChristopherBolt\ContentModules\ContentModuleArea:
   extensions:
     - ChristopherBolt\BoltTools\Extensions\DefaultCan
+
+# Tracking codes
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Control\Director:
+    properties:
+      Middlewares:
+        CustomMiddleware: %$ChristopherBolt\BoltTools\Middleware\AddTrackingScriptsMiddleware

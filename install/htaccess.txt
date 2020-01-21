@@ -32,7 +32,7 @@ RedirectMatch 404 /\.git
 RedirectMatch 404 /*\.md
 
 # Redirect themes
-RewriteRule ^themes/(.*) resources/themes/$1 [NC,L]
+RewriteRule ^themes/(.*) _resources/themes/$1 [NC,L]
 
 ### End Chris Bolt ###
 

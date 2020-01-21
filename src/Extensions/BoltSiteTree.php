@@ -15,6 +15,8 @@ use SilverStripe\View\Requirements;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Extension;
 use SilverStripe\View\ThemeResourceLoader; 
+use ChristopherBolt\BoltTools\Middleware\AddTrackingScriptsMiddleware;
+use SilverStripe\Core\Config\Config;
 
 class BoltSiteTree extends DataExtension {
 	private static $db = array(
@@ -116,12 +118,14 @@ class BoltSiteTree extends DataExtension {
  
 		if (!$inAdmin) Requirements::process_combined_files();
 		
-		// Google analytics
+		// Tracking scripts
 		if(Director::isLive())  {
+            // $siteConfig->GoogleAnalyticsCode is depreciated
 			if (isset($siteConfig->GoogleAnalyticsCode))
 				Requirements::insertHeadTags($siteConfig->GoogleAnalyticsCode);
+            
+            Config::inst()->set(AddTrackingScriptsMiddleware::class, 'enabled', true);
 		}
-		// End Google analytics	
 		
 		// Prevent indexing of draft sites
 		if (Director::isDev() || Director::isTest() || stristr($_SERVER['HTTP_HOST'], 'draftsite.co.nz')) {
