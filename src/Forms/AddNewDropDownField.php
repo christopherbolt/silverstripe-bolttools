@@ -92,7 +92,7 @@ class AddNewDropDownField extends DropDownField {
 	
 	public function AddNewListboxForm(){
 
-		$action = FormAction::create('doSave', 'Save')->setUseButtonTag('true');
+		$action = FormAction::create('doSave', 'Save')->setUseButtonTag('true')->addExtraClass('btn-primary');
 
 		if(!$this->isFrontend){
 			$action->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept');
