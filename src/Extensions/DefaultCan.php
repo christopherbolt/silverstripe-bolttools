@@ -3,7 +3,7 @@
 namespace ChristopherBolt\BoltTools\Extensions;
 
 use SilverStripe\ORM\DataExtension;
-
+use SilverStripe\Security\Permission;
 
 /* Quickly allow editing on an object */
 
@@ -25,7 +25,9 @@ class DefaultCan extends DataExtension {
 	 * @return boolean
 	 */
 	public function canView($member = null) {
-		return true;
+		if (Permission::checkMember($member, 'CMS_ACCESS')) {
+    		return true;
+		}
 	}
 
 	/**
@@ -33,7 +35,9 @@ class DefaultCan extends DataExtension {
 	 * @return boolean
 	 */
 	public function canEdit($member = null) {
-		return true;
+		if (Permission::checkMember($member, 'CMS_ACCESS')) {
+    		return true;
+		}
 	}
 
 	/**
@@ -41,7 +45,9 @@ class DefaultCan extends DataExtension {
 	 * @return boolean
 	 */
 	public function canDelete($member = null) {
-		return true;
+		if (Permission::checkMember($member, 'CMS_ACCESS')) {
+    		return true;
+		}
 	}
 
 	/**
@@ -51,7 +57,9 @@ class DefaultCan extends DataExtension {
 	 * @return boolean
 	 */
 	public function canCreate($member = null) {
-		return true;
+		if (Permission::checkMember($member, 'CMS_ACCESS')) {
+    		return true;
+		}
 	}
 	
 }
