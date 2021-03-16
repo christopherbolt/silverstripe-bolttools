@@ -66,4 +66,4 @@ SilverStripe\Core\Injector\Injector:
   SilverStripe\Control\Director:
     properties:
       Middlewares:
-        CustomMiddleware: %$ChristopherBolt\BoltTools\Middleware\AddTrackingScriptsMiddleware
+        CustomMiddleware: '%$ChristopherBolt\BoltTools\Middleware\AddTrackingScriptsMiddleware'
