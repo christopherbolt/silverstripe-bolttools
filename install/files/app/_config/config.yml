@@ -8,12 +8,12 @@ SilverStripe\i18n\i18n:
 # Add any required javascript and CSS to admin
 SilverStripe\Admin\LeftAndMain:
   extensions:
-  #  - MySite\Extension\LeftAndMainExtension
+    - MySite\Extension\LeftAndMainExtension
 
 # Custom site settings
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
-  #  - MySite\Extension\SiteConfigExtension
+    - MySite\Extension\SiteConfigExtension
 
 SilverStripe\Forms\HTMLEditor\HTMLEditorField:
   insert_width: 960
