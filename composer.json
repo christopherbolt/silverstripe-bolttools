@@ -21,7 +21,7 @@
 		"christopherbolt/silverstripe-retinacontentimages": "dev-master",
 		"colymba/gridfield-bulk-editing-tools": "^3",
         "bummzack/sortablefile": "^2.0",
-		"undefinedoffset/silverstripe-nocaptcha": "^2.1",
+		"undefinedoffset/silverstripe-nocaptcha": "^2.1"
     },
 	"extra": {
         "installer-name": "bolttools",
