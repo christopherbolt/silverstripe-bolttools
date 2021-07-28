@@ -33,7 +33,7 @@
 
 @mixin between($breakpoint1, $breakpoint2) {
     // If the key exists in the map
-    @if map-has-key($breakpoints, $breakpoint1) && map-has-key($breakpoints, $breakpoint2) {
+    @if map-has-key($breakpoints, $breakpoint1) and map-has-key($breakpoints, $breakpoint2) {
         // Prints a media query based on the value
         @media (min-width: map-get($breakpoints, $breakpoint1)) and (max-width: map-get($breakpoints, $breakpoint2)) {
             @content;
@@ -53,7 +53,7 @@
 }
 
 @mixin touch() {
-	@media (hover: none) or (pointer: coarse) {
+	@media (hover: none) {
 		@content;
 	}
 }

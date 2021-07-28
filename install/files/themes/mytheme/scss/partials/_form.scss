@@ -2,16 +2,18 @@
 // the ss-form class isolates this from other forms that might be different
 
 form.ss-form {
-    div.field, div.fieldholder-small {
+    div.field {
     	margin: 0 0 1rem 0;
+		&.text, &.dropdown, &.textarea {
+			label {
+				display: none;
+			}
+		}
 	}
 	fieldset {
 		border: 0;
 		margin: 0;
 		padding: 0;
-	}
-	label {
-		display: none;
 	}
 	input.text,
 	textarea,
@@ -54,29 +56,50 @@ form.ss-form {
     }
 	
 	// Radio and Checkbox
-	/*.field .checkbox, .field .radio {
-		vertical-align: middle;
-		margin-bottom: 3px;
-	}
-    .checkbox label.right,
-    .radio label.right {
-        display: inline;
-    }
-
-	*/
 	
-	// Optionset
-	.optionset ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
+	// Optionset & checboxset (both have the optionset class)
+	.optionset {
+		> label {
+			display: block;
+			margin-bottom: 0.5rem;
+		}
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			display: inline-block;
+			margin-right: 1rem;
+		}
+		&.stacked li {
+			display: block;
+		}
+		
+		input {
+			display: none;
+		}
+		input + label {
+			display: inline-block;
+			background: url("../images/forms/radio.svg") left 0.15rem / 1rem 1rem no-repeat;
+			padding-left: 1.5rem;
+		}
+		input:checked + label {
+			background-image: url("../images/forms/radio-checked.svg");
+		}
 	}
-	.optionset li {
-		display: inline-block;
-		margin-right: 1rem;
-	}
-	.optionset.stacked li {
-		display: block;
+	.checkboxset, .checkbox {
+		input {
+			display: none;
+		}
+		input + label {
+			display: inline-block;
+			background: url("../images/forms/checkbox.svg") left 0.15rem / 1rem 1rem no-repeat;
+			padding-left: 1.5rem;
+		}
+		input:checked + label {
+			background-image: url("../images/forms/checkbox-checked.svg");
+		}
 	}
 	
 }
@@ -100,13 +123,15 @@ form.ss-form {
 
 /* ACTIONS */
 .btn-toolbar  {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 }
 a.btn, .btn-toolbar button, .btn-toolbar input[type="submit"], .btn-toolbar .action {
     display: inline-block;
-    margin-top: 0.5rem;
+    
+	margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    font-family: inherit;
+	
+	font-family: inherit;
     font-size: inherit;
     cursor: pointer;
     
@@ -117,6 +142,7 @@ a.btn, .btn-toolbar button, .btn-toolbar input[type="submit"], .btn-toolbar .act
     
     padding: 0.3rem 0.5rem;
 	
+	background: #fff;
 	border: 1px solid $default-text-color;
 	
 	transition: all .3s ease;

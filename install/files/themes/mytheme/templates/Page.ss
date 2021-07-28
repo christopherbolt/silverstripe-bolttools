@@ -2,7 +2,7 @@
 <html lang="$ContentLocale">
 <head>
 	<% base_tag %>
-	<title><% if $MetaTitle %>$MetaTitle<% else %><% if $URLSegment = "home" || $ClassName = "HomePage" %>$SiteConfig.Title<% else %>$Title<% end_if %><% if $URLSegment != "home" && $ClassName != "HomePage" %> - $SiteConfig.Title<% end_if %><% end_if %></title>
+	<title><% if $MetaTitle %>$MetaTitle<% else %><% if $URLSegment = "home" %>$SiteConfig.Title<% else %>$Title<% end_if %><% if $URLSegment != "home" %> - $SiteConfig.Title<% end_if %><% end_if %></title>
 	<meta charset="UTF-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="icon" href="{$BaseHref}favicon.ico" type="image/x-icon">
@@ -10,6 +10,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	<link rel="canonical" href="$AbsoluteLink"/>
 	$MetaTags(false)
+	<% require themedCss('app.min') %>
+	<% require themedJavascript('app.min') %>
 </head>
 
 <body class="$SanitizedClassName url{$SanitizedURLSegment} id{$ID}">

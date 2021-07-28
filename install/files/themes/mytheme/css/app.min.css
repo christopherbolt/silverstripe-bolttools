@@ -1,0 +1,630 @@
+@charset "UTF-8";
+/**
+ * Main CSS File
+ */
+/* Site specific mixins */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset, img {
+  border: 0;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+caption, th {
+  text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+q:before, q:after {
+  content: "";
+}
+
+abbr, acronym {
+  border: 0;
+}
+
+br {
+  font-size: 0;
+}
+
+body, body * {
+  line-height: 1.35em;
+  box-sizing: border-box;
+}
+
+span, strong, em, a, b, i {
+  line-height: inherit;
+}
+
+input, select, textarea {
+  line-height: normal;
+}
+
+body {
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: 138.5%;
+}
+
+h2 {
+  font-size: 123.1%;
+}
+
+h3 {
+  font-size: 108%;
+}
+
+h1, h2, h3 {
+  margin: 1em 0;
+}
+
+h1, h2, h3, h4, h5, h6, strong {
+  font-weight: bold;
+  font-style: inherit;
+}
+
+abbr, acronym {
+  border-bottom: 1px dotted #000;
+  cursor: help;
+}
+
+em {
+  font-style: italic;
+  font-weight: inherit;
+}
+
+blockquote, ul, ol, dl {
+  margin: 1em;
+}
+
+ol, ul, dl {
+  margin-left: 2em;
+}
+
+ul {
+  list-style: disc outside;
+  margin-left: 1.4em;
+}
+
+dl dd {
+  margin-left: 1em;
+}
+
+th, td {
+  /*border:1px solid #000;
+  padding:.5em;*/
+}
+
+th {
+  font-weight: bold;
+  text-align: center;
+}
+
+caption {
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+p, fieldset, table {
+  margin-bottom: 1em;
+}
+
+img, iframe {
+  vertical-align: bottom;
+}
+
+video {
+  background-color: #000;
+}
+
+/* This causes some display issues, better not to bother unless actually needed
+textarea,
+input,
+select {
+  margin: 0;
+  vertical-align: bottom;
+}
+*/
+br {
+  font-size: 0;
+  line-height: 0;
+}
+
+main {
+  display: block;
+}
+
+*:focus {
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* CSS Document */
+.table-wrapper {
+  max-width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1em;
+  padding: 1px 0;
+}
+
+.table-wrapper table {
+  margin-bottom: 0;
+}
+
+ul.content-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ErrorPage h1.none {
+  display: block;
+}
+
+.urlSecurity h1.none {
+  display: block;
+}
+
+.clear {
+  clear: both;
+}
+
+.none {
+  display: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+ul.content-list,
+.ss-uploadfield ul,
+.WidgetHolder ul,
+form .field ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.content-list > li,
+.ss-uploadfield ul li,
+.WidgetHolder ul li,
+form .field ul li {
+  list-style: none;
+  padding-left: 0;
+  width: auto;
+}
+
+ul.content-list > li:before,
+.ss-uploadfield ul li:before,
+.WidgetHolder ul li:before,
+form .field ul li:before {
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #444;
+  background: #fff;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  min-width: 320px;
+  font-size: 16px;
+}
+@media (min-width: 920px) {
+  body {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1400px) {
+  body {
+    font-size: 20px;
+  }
+}
+
+a, button, input[type=submit] {
+  transition: all 0.3s ease;
+}
+
+/* Styles for content that can be edited in the CMS editor */
+.typography > *:last-child, .typography > ul > li:last-child, .typography > ol > li:last-child {
+  margin-bottom: 0 !important;
+}
+.typography > div.WordSection1:last-child {
+  margin-bottom: 0 !important;
+}
+.typography > div.WordSection1:last-child > ul > li:last-child, .typography > div.WordSection1:last-child > ol > li:last-child {
+  margin-bottom: 0 !important;
+}
+.typography .small {
+  font-size: 0.9rem;
+}
+.typography .leadin, .typography .large {
+  font-size: 1.5rem;
+}
+.typography .margin-bottom {
+  margin-bottom: 1rem !important;
+}
+.typography .no-margins {
+  margin: 0 !important;
+}
+.typography table {
+  max-width: 100%;
+  margin-top: 1rem;
+}
+.typography table td, .typography table th {
+  vertical-align: top;
+}
+.typography table td[valign=bottom], .typography table th[valign=bottom] {
+  vertical-align: bottom;
+}
+.typography table td[valign=middle], .typography table th[valign=middle] {
+  vertical-align: middle;
+}
+.typography table tr:last-child td p {
+  margin-bottom: 0;
+}
+.typography a {
+  text-decoration: none;
+  color: inherit;
+}
+.typography a:hover {
+  text-decoration: underline;
+}
+.typography a img {
+  border: 0;
+}
+.typography h1 a,
+.typography h2 a,
+.typography h3 a,
+.typography h4 a,
+.typography h5 a,
+.typography h6 a {
+  color: inherit;
+}
+.typography ul, .typography ol {
+  margin-top: 0;
+}
+.typography ul ul, .typography ol ol {
+  margin-bottom: 0;
+}
+.typography ul.content-list > li > ul, .typography ol.content-list > li > ol,
+.typography ul.content-list > li > article > ul, .typography ol.content-list > li > article > ol,
+.typography ul.content-list > li > div > ul, .typography ol.content-list > li > div > ol {
+  margin-bottom: 1rem;
+}
+.typography ul,
+.typography ol {
+  list-style: none;
+  margin-left: 0;
+}
+.typography ul ul,
+.typography ol ul {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin-left: 0;
+}
+.typography li {
+  position: relative;
+  padding-left: 0.75rem;
+}
+.typography li:before {
+  content: "\2022";
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  padding-right: 0.3rem;
+}
+.typography ol {
+  counter-reset: ol;
+}
+.typography ol ol {
+  counter-reset: ol2;
+}
+.typography ol ol,
+.typography ul ol {
+  padding-left: 1.5rem;
+}
+.typography ol > li {
+  padding-left: 1.5rem;
+}
+.typography ol > li:before {
+  counter-increment: ol;
+  content: counter(ol) ". ";
+  width: 1.2rem;
+  text-align: right;
+}
+.typography ol ol > li:before {
+  counter-increment: ol2;
+  content: counter(ol2) ". ";
+}
+.typography .center li,
+.typography .text-center li,
+.typography [style*="text-align: center"] li,
+.typography li.center,
+.typography li.text-center,
+.typography li[style*="text-align: center"] {
+  margin: 0 auto;
+}
+.typography .center li:before,
+.typography .text-center li:before,
+.typography [style*="text-align: center"] li:before,
+.typography li.center:before,
+.typography li.text-center:before,
+.typography li[style*="text-align: center"]:before {
+  position: static;
+}
+.typography h3 {
+  margin: 0;
+}
+.typography h4 {
+  margin: 0;
+}
+.typography h5 {
+  margin: 0;
+}
+.typography h6 {
+  margin: 0;
+}
+.typography .left, .typography .text-left {
+  text-align: left;
+}
+.typography .center, .typography .text-center {
+  text-align: center;
+}
+.typography .right, .typography .text-right {
+  text-align: right;
+}
+.typography img {
+  /* border: 5px solid #d7d7d7;*/
+  max-width: 100%;
+  /* prevents width being wider than 100% */
+  height: auto;
+  /* resets the image height so that it maintains its aspect ratio when width is set */
+  /*background: transparent url(../images/ajax-loader.gif) no-repeat center center;*/
+}
+.typography img.left {
+  float: left;
+  max-width: 50%;
+  margin: 0.3rem 1rem 0.5rem 0;
+}
+.typography img.right {
+  float: right;
+  max-width: 50%;
+  /* Responsive width */
+  margin: 0.3rem 0 0.5rem 1rem;
+}
+.typography img.leftAlone {
+  /*float: left;
+  margin-right: 100%;
+  margin-bottom: 10px;*/
+  clear: both;
+}
+.typography img.center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 0.5rem;
+  clear: both;
+}
+.typography .captionImage {
+  width: 100%;
+  margin-top: 5px;
+}
+.typography .captionImage img {
+  margin: 0;
+}
+.typography .captionImage.left {
+  float: left;
+  margin: 0.3rem 1.5rem 1rem 0;
+}
+.typography .captionImage.right {
+  float: right;
+  margin: 0.3rem 0 1rem 1.5rem;
+}
+.typography .captionImage.left[style],
+.typography .captionImage.right[style] {
+  max-width: 50%;
+  /* Overides core width to make responsive */
+}
+.typography .captionImage.left img,
+.typography .captionImage.right img {
+  float: none;
+  max-width: none;
+  width: 100%;
+}
+.typography .captionImage.left img {
+  margin-right: -0.5rem;
+}
+.typography .captionImage.right img {
+  margin-left: -0.5rem;
+}
+.typography .captionImage.right p {
+  margin-left: -0.5rem;
+  text-align: left;
+  margin-left: -0.5rem;
+}
+.typography .captionImage.leftAlone {
+  float: none;
+  margin: 0 1rem 1rem 0;
+}
+.typography .captionImage.center {
+  margin: 0 auto 1rem;
+}
+.typography .captionImage p {
+  clear: both;
+  margin: 0.3rem 0;
+  font-style: italic;
+  color: #888;
+}
+
+form.ss-form div.field {
+  margin: 0 0 1rem 0;
+}
+form.ss-form div.field.text label, form.ss-form div.field.dropdown label, form.ss-form div.field.textarea label {
+  display: none;
+}
+form.ss-form fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+form.ss-form input.text,
+form.ss-form textarea,
+form.ss-form select {
+  width: 100%;
+  padding: 0.3rem;
+  background-color: #fff;
+  border: 1px solid #444;
+  font-family: inherit;
+  font-size: inherit;
+  box-sizing: border-box;
+  color: inherit;
+  border-radius: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+form.ss-form select {
+  background: #fff url("../images/forms/select.svg") right 1rem center/1rem auto no-repeat;
+  padding-right: 3rem;
+}
+form.ss-form textarea {
+  resize: vertical;
+  vertical-align: top;
+}
+form.ss-form input.text:focus,
+form.ss-form textarea:focus,
+form.ss-form .textajaxuniquetext:focus,
+form.ss-form select:focus {
+  outline: none;
+}
+form.ss-form input[disabled], form.ss-form form textarea[disabled] {
+  opacity: 0.5;
+}
+form.ss-form ::-moz-placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
+form.ss-form :-ms-input-placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
+form.ss-form ::placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
+form.ss-form .optionset > label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+form.ss-form .optionset ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+form.ss-form .optionset li {
+  display: inline-block;
+  margin-right: 1rem;
+}
+form.ss-form .optionset.stacked li {
+  display: block;
+}
+form.ss-form .optionset input {
+  display: none;
+}
+form.ss-form .optionset input + label {
+  display: inline-block;
+  background: url("../images/forms/radio.svg") left 0.15rem/1rem 1rem no-repeat;
+  padding-left: 1.5rem;
+}
+form.ss-form .optionset input:checked + label {
+  background-image: url("../images/forms/radio-checked.svg");
+}
+form.ss-form .checkboxset input, form.ss-form .checkbox input {
+  display: none;
+}
+form.ss-form .checkboxset input + label, form.ss-form .checkbox input + label {
+  display: inline-block;
+  background: url("../images/forms/checkbox.svg") left 0.15rem/1rem 1rem no-repeat;
+  padding-left: 1.5rem;
+}
+form.ss-form .checkboxset input:checked + label, form.ss-form .checkbox input:checked + label {
+  background-image: url("../images/forms/checkbox-checked.svg");
+}
+
+/* Messages */
+.message {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.field .message {
+  margin-bottom: 0;
+  margin-top: 0.5rem;
+}
+.message .good {
+  color: green;
+}
+.message .error, .message .bad, .message .required, .message .validation {
+  color: red;
+}
+
+/* ACTIONS */
+.btn-toolbar {
+  margin-bottom: 1rem;
+}
+
+a.btn, .btn-toolbar button, .btn-toolbar input[type=submit], .btn-toolbar .action {
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border-radius: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 0.3rem 0.5rem;
+  background: #fff;
+  border: 1px solid #444;
+  transition: all 0.3s ease;
+}
+a.btn:hover, .btn-toolbar button:hover, .btn-toolbar input[type=submit]:hover, .btn-toolbar .action:hover {
+  background: rgba(68, 68, 68, 0.3);
+}
+
+/* CSS Document */

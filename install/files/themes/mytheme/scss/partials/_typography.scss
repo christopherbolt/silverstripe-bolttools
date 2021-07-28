@@ -4,7 +4,7 @@
 	// GENERIC STYLES 
 	// -------------------------------
 	
-	@include responsive-font-sizes;
+	//@include responsive-font-sizes;
 	
 	> *:last-child, > ul > li:last-child, > ol > li:last-child {
 		margin-bottom: 0 !important;
@@ -112,19 +112,19 @@
 	ul ul,
 	ol ul {
 		list-style: none;
-		padding-left: 1.5em;
+		padding-left: 1.5rem;
 		margin-left: 0;
 	}
 	li {
 		position: relative;
-		padding-left: 0.75em;	
+		padding-left: 0.75rem;	
 	}
 	li:before {
 		content: "\2022";
 		display: inline-block;
 		position: absolute;
 		left: 0;
-		padding-right: 0.3em;
+		padding-right: 0.3rem;
 	}
 	// make ol lists the same so that we can position the number nicely when centered
 	ol {
@@ -135,15 +135,15 @@
 	}
 	ol ol,
 	ul ol {
-		padding-left: 1.5em;	
+		padding-left: 1.5rem;	
 	}
 	ol > li {
-		padding-left: 1.5em;	
+		padding-left: 1.5rem;	
 	}
 	ol > li:before {
 		counter-increment: ol;
 		content: counter(ol)". ";
-		width: 1.2em;
+		width: 1.2rem;
 		text-align: right;
 	}
 	ol ol > li:before {
