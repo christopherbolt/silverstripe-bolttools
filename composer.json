@@ -36,7 +36,10 @@
         "psr-4": {
             "ChristopherBolt\\BoltTools\\": "src/"
         },
-		"exclude-from-classmap": ["/src/nowidgets/"]
+		"exclude-from-classmap": [
+			"/src/nowidgets/",
+			"/install/"
+		]
     },
 	"suggest": {
         "dnadesign/silverstripe-elemental": "For building modular pages"
