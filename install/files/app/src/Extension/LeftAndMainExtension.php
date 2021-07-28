@@ -2,10 +2,10 @@
 
 namespace MySite\Extension;
 
-use SilverStripe\Admin\LeftAndMainExtension;
+use SilverStripe\Admin\LeftAndMainExtension as SS_LeftAndMainExtension;
 use SilverStripe\View\Requirements;
 
-class LeftAndMainExtension extends LeftAndMainExtension {
+class LeftAndMainExtension extends SS_LeftAndMainExtension {
 
 	public function init() {
 		parent::init();

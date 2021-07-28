@@ -1,5 +1,7 @@
 <?php
 
+namespace ChristopherBolt\BoltTools\Extensions;
+
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\EmailField;
