@@ -1,0 +1,57 @@
+/* CSS Document */
+
+///* Begin base silverstripe specific stuff
+//------------------------------------------------*/
+.table-wrapper {
+	max-width: 100%;
+	overflow: auto;	
+	-webkit-overflow-scrolling: touch;
+	margin-bottom: 1em;
+	padding: 1px 0; // Prevents scroll bar show if not required
+}
+.table-wrapper table {
+	margin-bottom: 0;	
+}
+ul.content-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;	
+}
+.ErrorPage h1.none {
+	display: block;	
+}
+.urlSecurity h1.none {
+	display: block;	
+}
+.clear {
+	clear: both;	
+}
+.none {
+	display: none;	
+}
+.hidden {
+	visibility: hidden;	
+}
+// content list 
+ul.content-list,
+.ss-uploadfield ul,
+.WidgetHolder ul,
+form .field ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;	
+}
+ul.content-list > li,
+.ss-uploadfield ul li,
+.WidgetHolder ul li,
+form .field ul li {
+	list-style: none;
+	padding-left: 0;
+	width: auto;
+}
+ul.content-list > li:before,
+.ss-uploadfield ul li:before,
+.WidgetHolder ul li:before,
+form .field ul li:before { 
+	display: none;
+}

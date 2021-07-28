@@ -1,0 +1,23 @@
+// SETTINGS
+
+// Globals
+$default-background: #fff;
+$default-line-height: 1.35em;
+$default-text-color: #444;
+$default-font-family: Arial, Helvetica, sans-serif;
+
+// Default responsive font sizes
+$font-size-small: 18px;
+$font-size-medium: 18px;
+$font-size-large: 16px;
+
+// Breakpoints
+$breakpoints: (
+	"xxsmall": 350px,
+    "xsmall": 500px,
+    "small": 767px,
+    "medium": 920px,
+    "large": 1400px,
+    "xlarge": 1760px,
+	"xxlarge": 2560px,
+) !default;

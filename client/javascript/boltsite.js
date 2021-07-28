@@ -7,18 +7,19 @@
 		// This is the easiest way to have default options.
 		SELF.settings = $.extend({
 			breakpoints : {
-				mobile: 0,
-				tablet: 768,
-				desktop: 960,
-				bigdesktop: 1090
+				xxsmall: 350,
+				xsmall: 500,
+				small: 767,
+				medium: 920,
+				large: 1400,
+				xlarge: 1760,
+				xxlarge: 2560,
 			},
-			touchBreakpoint : 'desktop',
+			touchBreakpoint : 'medium',
 			retinaBreakpoint : null,
 			wrapTablesQuery : '.typography table',
-			wrapTablesExcludeQuery : '.tableWrapper table',
-			wrapTables: '<div class="tableWrapper"></div>',
-			placholderFieldsQuery : 'input.text, textarea',
-			placholderFieldsExcludeQuery : '.attributeForm input.text, .attributeForm textarea, input[name=Captcha]',
+			wrapTablesExcludeQuery : '.table-wrapper table',
+			wrapTables: '<div class="table-wrapper"></div>',
 			flipFocusY: true
 		}, options );
 		
@@ -41,6 +42,21 @@
 			} else {
 				return SELF.settings.breakpoints[n];
 			}
+		}
+		
+		SELF.above = function(n) {
+			var w = $(window).width();
+			return (w > SELF.breakpoint(n));
+		}
+		
+		SELF.below = function(n) {
+			var w = $(window).width();
+			return (w < SELF.breakpoint(n));
+		}
+		
+		SELF.between = function(n1, n2) {
+			var w = $(window).width();
+			return (w > SELF.breakpoint(n1) && w < SELF.breakpoint(n2));
 		}
 		
 		SELF.touchDevicesTest = function() {
@@ -79,10 +95,6 @@
 			// Everything else....
 			///////////////////////
 			
-			// Placeholder forms?
-			if (typeof(jQuery.fn.addPlaceholders) === "function") {
-				jQuery(SELF.settings.placholderFieldsQuery).not(SELF.settings.placholderFieldsExcludeQuery).addPlaceholders();
-			}
 			// Focuspoint
 			if (typeof(jQuery.fn.focusPoint) === "function") {
 				// Flip y co-ordinate on focus point, recent versions of SilverStripe Focus point have flipped this co-ordinate
@@ -96,6 +108,7 @@
 					reCalcOnWindowResize: true
 				});
 			}
+			
 			// Wrap tables in wrapper for easy mobile scrolling
 			if (SELF.settings.wrapTablesQuery && SELF.settings.wrapTables) $(SELF.settings.wrapTablesQuery).not(SELF.settings.wrapTablesExcludeQuery).wrap(SELF.settings.wrapTables);
 						
@@ -139,7 +152,7 @@
 						for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
 							if (!styleSheet.rules[ri].selectorText) continue;
 			
-							if (styleSheet.rules[ri].selectorText.match(':hover') && !styleSheet.rules[ri].selectorText.match('.dontTouchRemove')) {
+							if (styleSheet.rules[ri].selectorText.match(':hover') && !styleSheet.rules[ri].selectorText.match('.dont-touch-remove')) {
 								styleSheet.deleteRule(ri);
 							}
 						}

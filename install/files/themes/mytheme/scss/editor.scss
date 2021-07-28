@@ -1,0 +1,19 @@
+/**
+ * This support file is used to style the WYSIWYG editor in the CMS
+ */
+
+// Fonts should be imported here too so that they show in the editor
+
+@import "settings";
+
+@import "mixins/mixins";
+@import "mixins/custom";
+@import "base/reset";
+@import "base/base";
+@import "partials/global";
+@import "typography";
+
+body {
+	padding: 10px;
+	margin: 0;
+}

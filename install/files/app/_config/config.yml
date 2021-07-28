@@ -1,0 +1,71 @@
+---
+Name: mysiteconfig
+After: '*'
+---
+SilverStripe\i18n\i18n:
+  default_locale: 'en_GB'
+ 
+# Add any required javascript and CSS to admin
+SilverStripe\Admin\LeftAndMain:
+  extensions:
+  #  - MySite\Extension\LeftAndMainExtension
+
+# Custom site settings
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+  #  - MySite\Extension\SiteConfigExtension
+
+SilverStripe\Forms\HTMLEditor\HTMLEditorField:
+  insert_width: 960
+
+SilverStripe\Security\Member:
+  hide_blog_profile_summary: true
+  hide_blog_profile_image: true
+
+SilverStripe\Blog\Model\Blog:
+  hide_tags: true
+  hide_content: true
+SilverStripe\Blog\Model\BlogPost:
+  hide_authors: true
+  hide_image: true
+  
+Sheadawson\Linkable\Models\Link:
+  extensions:
+    - SilverStripe\Versioned\Versioned
+    
+SilverStripe\Forms\Form:
+  default_classes:
+    - ss-form
+
+SilverStripe\Forms\FormField:
+  extensions:
+    - ChristopherBolt\BoltTools\Extensions\PlaceholderFields
+  placeholders_supported:
+    - SilverStripe\Forms\TextField
+    - SilverStripe\Forms\NumericField
+    - SilverStripe\Forms\CurrencyField
+    - SilverStripe\Forms\EmailField
+    - SilverStripe\Forms\PasswordField
+    - SilverStripe\Forms\TextareaField
+    - SilverStripe\Forms\DateField
+
+BetterBrief\GoogleMapField:
+  default_options:
+    api_key: 'AIzaSyANUwYa-T233sQiGyL5BPL34vErmWDEsF8'
+
+SilverStripe\Control\Email\Email:
+  admin_email: "chris@christopherbolt.com"
+
+SilverStripe\SpamProtection\Extension\FormSpamProtectionExtension:
+    default_spam_protector: UndefinedOffset\NoCaptcha\Forms\NocaptchaProtector
+UndefinedOffset\NoCaptcha\Forms\NocaptchaField:
+    site_key: "6LeRC7cZAAAAAFBFhGchFwqr6Bq9IL9uMA-QxuHD" #Your site key (required)
+    secret_key: "6LeRC7cZAAAAAMdGakKnKmm3J-99IYSgoBMEzSZ-" #Your secret key (required)
+    verify_ssl: true #Allows you to disable php-curl's SSL peer verification by setting this to false (optional, defaults to true)
+    default_theme: "light" #Default theme color (optional, light or dark, defaults to light)
+    default_type: "image" #Default captcha type (optional, image or audio, defaults to image)
+    default_size: "invisible" #Default size (optional, normal, compact or invisible, defaults to normal)
+    default_badge: "bottomright" #Default badge position (bottomright, bottomleft or inline, defaults to bottomright)
+    proxy_server: "" #Your proxy server address (optional)
+    proxy_port: "" #Your proxy server address port (optional)
+    proxy_auth: "" #Your proxy server authentication information (optional)

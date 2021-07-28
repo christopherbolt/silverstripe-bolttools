@@ -1,7 +1,17 @@
 en:
+  SilverShop\Page\AccountPage:
+    LOGIN: "You'll need to login before you can access the account page."
+    LOGINAGAIN: 'You have been logged out. If you would like to login again, please do so below.'
   SilverStripe\Blog\Model\Blog:
     DESCRIPTION: 'Adds a Blog or News section to your website.'
   SilverStripe\Blog\Model\BlogPost:
     SUMMARY_DESCRIPTION: "If no summary is specified then an excerpt from the article content will be used."
     FEATURED_IMAGE_DESCRIPTION: "If no image is supplied then the first image found in the article content will be used if one exists."
     DESCRIPTION: 'An individual Blog or News post.'
+  ChangePasswordEmail_ss:
+    CHANGEPASSWORDTEXT2: 'You can now use the following credentials to login:'
+  SilverStripe\Security\Member:
+    BUTTONLOGIN: 'Login'
+    BUTTONLOGINOTHER: 'Login as someone else'
+  SilverStripe\Security\Security:
+    LOGIN: 'Login'

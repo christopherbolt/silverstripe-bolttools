@@ -8,15 +8,7 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\TextField;
 use ChristopherBolt\BoltTools\Controllers\BoltSiteMap;
-use SilverStripe\SiteConfig\SiteConfig;
-use SilverStripe\Control\Controller;
-use PageController;
-use SilverStripe\View\Requirements;
 use SilverStripe\Control\Director;
-use SilverStripe\Core\Extension;
-use SilverStripe\View\ThemeResourceLoader; 
-use ChristopherBolt\BoltTools\Middleware\AddTrackingScriptsMiddleware;
-use SilverStripe\Core\Config\Config;
 
 class BoltSiteTree extends DataExtension {
 	private static $db = array(
@@ -48,7 +40,7 @@ class BoltSiteTree extends DataExtension {
 	}
 	
 	public function updateSettingsFields(FieldList $fields) {
-    	$fields->addFieldToTab("Root.Settings", new CheckboxField('ShowInSiteMap', 'Show in site map?'), 'ShowInSearch');
+    	$fields->addFieldToTab("Root.Settings", new CheckboxField('ShowInSiteMap', 'Show on site map page? (only if this site has a sitemap page)'), 'ShowInSearch');
 	}
 	
 	public function updateCMSFields(FieldList $fields) {		
@@ -69,7 +61,7 @@ class BoltSiteTree extends DataExtension {
 	}
 	
 	function SanitizedURLSegment() {
-		return preg_replace("/[^a-z0-9]/i", "", $this->owner->URLSegment);	
+		return preg_replace("/[^a-z0-9\-]/i", "", $this->owner->URLSegment);	
 	}
     
     function SanitizedClassName() {
@@ -79,57 +71,5 @@ class BoltSiteTree extends DataExtension {
 	/* function for site map */
 	function SiteMapChildren() {
 		return BoltSiteMap::getSiteMapChildrenOf($this->owner->ID);
-	}
-	
-	// function for adding and combing css and js files
-	public static function setupRequirements($cssArray=array(), $jsArray=array()) {
-        
-        // Remove empty values
-        $cssArray = array_filter($cssArray);
-        $jsArray = array_filter($jsArray);
-		
-		$siteConfig = SiteConfig::current_site_config();
-		
-		// Don't combine files if in admin to prevent error on "login as someone else" screen
-		$inAdmin = is_subclass_of(Controller::curr(), "SilverStripe/Admin/LeftAndMain");
-		
-		// Setup requirements
-		$themeLoader = ThemeResourceLoader::inst();
-			
-		//Set a custom combined folder under themes so relative paths to images within CSS and JavaScript files don't break
-		// this nolonger works in SS4, have decided to use gulp task to rewrite relative paths instead
-        //Requirements::set_combined_files_folder($themeLoader->getPath('combined'));
-		
-		// CSS array
-		if (count($cssArray)) {
-			foreach($cssArray as $css) {
-				Requirements::css($css);
-			}
-			if (!$inAdmin) Requirements::combine_files("combined-".$siteConfig->ID.".css",$cssArray);
-		}
-		
-		// Javascript array
-		if (count($jsArray)) {
-			foreach($jsArray as $js) {
-				Requirements::javascript($js);
-			}
-			if (!$inAdmin) Requirements::combine_files("combined-".$siteConfig->ID.".js", $jsArray);
-		}
- 
-		if (!$inAdmin) Requirements::process_combined_files();
-		
-		// Tracking scripts
-		if(Director::isLive())  {
-            // $siteConfig->GoogleAnalyticsCode is depreciated
-			if (isset($siteConfig->GoogleAnalyticsCode))
-				Requirements::insertHeadTags($siteConfig->GoogleAnalyticsCode);
-            
-            Config::inst()->set(AddTrackingScriptsMiddleware::class, 'enabled', true);
-		}
-		
-		// Prevent indexing of draft sites
-		if (Director::isDev() || Director::isTest() || stristr($_SERVER['HTTP_HOST'], 'draftsite.co.nz')) {
-			Requirements::insertHeadTags('<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">');
-		}
 	}
 }

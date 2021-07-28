@@ -1,6 +1,7 @@
 ---
 Name: bolttools
 ---
+# CMS
 SilverStripe\Admin\LeftAndMain:
   extensions:
     - ChristopherBolt\BoltTools\Extensions\BoltToolsLeftAndMain
@@ -16,6 +17,20 @@ SilverStripe\ORM\FieldType\DBText:
 SilverStripe\Security\Member:
   extensions:
     - ChristopherBolt\BoltTools\Extensions\BoltMember
+    
+SilverStripe\CMS\Model\SiteTree:
+  extensions:
+   - ChristopherBolt\BoltTools\Extensions\BoltSiteTree
+   - ChristopherBolt\PublishWithMe\PublishWithMe
+   
+SilverStripe\CMS\Controllers\ContentController:
+  extensions:
+   - ChristopherBolt\BoltTools\Extensions\BoltContentController
+
+# Custom site settings
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - ChristopherBolt\BoltTools\Extensions\BoltSiteConfig
 
 # Linkable
 Sheadawson\Linkable\Models\Link:
@@ -51,15 +66,6 @@ SilverStripe\Blog\Model\BlogCategory:
 
 SilverStripe\Blog\Model\BlogTag:
   default_sort: 'Title ASC'
-
-# Content Modules
-ChristopherBolt\ContentModules\ContentModule:
-  extensions:
-    - ChristopherBolt\BoltTools\Extensions\DefaultCan
-
-ChristopherBolt\ContentModules\ContentModuleArea:
-  extensions:
-    - ChristopherBolt\BoltTools\Extensions\DefaultCan
 
 # Tracking codes
 SilverStripe\Core\Injector\Injector:

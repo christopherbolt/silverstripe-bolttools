@@ -1,0 +1,127 @@
+// SS forms, most sites are now designed to use placeholders so this is now the default style setup
+// the ss-form class isolates this from other forms that might be different
+
+form.ss-form {
+    div.field, div.fieldholder-small {
+    	margin: 0 0 1rem 0;
+	}
+	fieldset {
+		border: 0;
+		margin: 0;
+		padding: 0;
+	}
+	label {
+		display: none;
+	}
+	input.text,
+	textarea,
+	select {
+		width: 100%;
+		padding: 0.3rem;
+		background-color: #fff;
+		border: 1px solid $default-text-color;
+		font-family: inherit;
+		font-size: inherit;
+		box-sizing: border-box;
+		color: inherit;
+
+		border-radius: 0;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		appearance: none;
+	}
+	select {
+		background: #fff url("../images/forms/select.svg") right 1rem center / 1rem auto no-repeat;
+		padding-right: 3rem;
+	}
+	textarea {
+		resize: vertical;
+		vertical-align: top;
+	}
+	input.text:focus,
+	textarea:focus,
+	.textajaxuniquetext:focus,
+	select:focus {
+		outline:none;
+	}
+	input[disabled], form textarea[disabled] {
+		opacity: 0.5;
+	}
+	
+	::placeholder {
+        color: inherit;
+        opacity: 0.5;
+    }
+	
+	// Radio and Checkbox
+	/*.field .checkbox, .field .radio {
+		vertical-align: middle;
+		margin-bottom: 3px;
+	}
+    .checkbox label.right,
+    .radio label.right {
+        display: inline;
+    }
+
+	*/
+	
+	// Optionset
+	.optionset ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.optionset li {
+		display: inline-block;
+		margin-right: 1rem;
+	}
+	.optionset.stacked li {
+		display: block;
+	}
+	
+}
+
+/* Messages */
+.message {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 1rem;
+	.field & {
+		margin-bottom: 0;
+		margin-top: 0.5rem;
+	}
+	.good {
+        color: $color-success;
+    }
+	.error, .bad, .required, .validation {
+        color: $color-error;
+    }
+}
+
+/* ACTIONS */
+.btn-toolbar  {
+    margin-bottom: 1em;
+}
+a.btn, .btn-toolbar button, .btn-toolbar input[type="submit"], .btn-toolbar .action {
+    display: inline-block;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    
+    border-radius: 0;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    
+    padding: 0.3rem 0.5rem;
+	
+	border: 1px solid $default-text-color;
+	
+	transition: all .3s ease;
+	
+	&:hover {
+		background: rgba($default-text-color,0.3);
+	}
+}

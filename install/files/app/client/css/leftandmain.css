@@ -1,0 +1,17 @@
+/* CSS Document */
+
+/* Hide users tab in blog, we don't use this crap */
+#tab-Root_BlogPosts,
+#tab-Root_Users {
+	display: none;	
+}
+
+/* set minimum height of gridfield so that add type menu is not obscured */
+fieldset.field.ss-gridfield {
+	min-height: 300px !important;	
+}
+
+/* fix display of bulk editing checkboxes */
+input.bulkSelect, input.bulkSelectAll {
+	position: static !important;
+}

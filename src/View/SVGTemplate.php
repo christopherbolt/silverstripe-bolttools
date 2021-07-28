@@ -25,10 +25,10 @@ class SVGTemplate extends ViewableData
      */
     
     // Folder inside theme to load svg from
-    private static $base_path = 'svg';
+    private static $base_path = 'images';
 	
 	// Folder inside theme to save processed svg to
-    private static $save_path = 'combined';
+    private static $save_path = '_processed';
     
     // Custom save path, replaces the above path for this instance if set, this is a full path not inside a theme
 	private $custom_save_path;

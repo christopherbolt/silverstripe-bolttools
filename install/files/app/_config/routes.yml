@@ -1,0 +1,8 @@
+---
+Name: customroutes
+After: framework/routes#coreroutes
+---
+SilverStripe\Control\Director:
+  rules:
+    'search' : 'ChristopherBolt\BoltTools\Controllers\BoltSiteSearch'
+    'site-map' : 'ChristopherBolt\BoltTools\Controllers\BoltSiteMap' # cannot be 'sitemap' or will override the google sitemaps controller!!

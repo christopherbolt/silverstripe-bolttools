@@ -1,0 +1,286 @@
+/* Styles for content that can be edited in the CMS editor */
+
+.typography {
+	// GENERIC STYLES 
+	// -------------------------------
+	
+	@include responsive-font-sizes;
+	
+	> *:last-child, > ul > li:last-child, > ol > li:last-child {
+		margin-bottom: 0 !important;
+	}
+	
+	> div.WordSection1:last-child {
+		margin-bottom: 0 !important;
+		> ul > li:last-child, > ol > li:last-child {
+			margin-bottom: 0 !important;
+		}
+	}
+	
+	// PARAGRAPHS 
+	// -------------------------------
+	p { 
+		
+	}
+	
+	.small {
+		font-size: 0.9rem;	
+	}
+	
+	.leadin, .large  {
+		font-size: 1.5rem;
+	}
+	
+	.margin-bottom {
+		margin-bottom: 1rem !important
+	}
+	.no-margins {
+		margin: 0 !important;	
+	}
+	
+	
+	// INLINE STYLES
+	// -------------------------------
+	
+	// TABLES
+	// -------------------------------
+	table {
+		max-width: 100%;
+		margin-top: 1rem;
+	}
+	table td, table th {
+		vertical-align: top;
+	}
+	table td[valign='bottom'], table th[valign='bottom'] {
+		vertical-align: bottom;
+	}
+	table td[valign='middle'], table th[valign='middle'] {
+		vertical-align: middle;
+	}
+	table tr:last-child td p {
+		margin-bottom: 0;	
+	}	
+	
+	// QUOTES
+	// -------------------------------
+	
+	// LINKS 
+	// -------------------------------
+	
+	a { 
+		text-decoration: none;
+		color: inherit;
+	}
+		a:hover { 
+			text-decoration: underline;
+		}
+		
+		a img {
+			border: 0;	
+		}
+	
+	h1 a,
+	h2 a,
+	h3 a,
+	h4 a,
+	h5 a,
+	h6 a { 
+		color: inherit;
+	}
+	
+	// LIST STYLES
+	// ------------------------------- 
+
+	ul, ol {
+		margin-top: 0;
+	}
+	ul ul, ol ol {
+		margin-bottom: 0;	
+	}
+	ul.content-list > li > ul, ol.content-list > li > ol,
+	ul.content-list > li > article > ul, ol.content-list > li > article > ol,
+	ul.content-list > li > div > ul, ol.content-list > li > div > ol {
+		margin-bottom: 1rem;	
+	}
+	
+	// Make the bullet point on UL same as the AI design
+	ul,
+	ol {
+		list-style: none;
+		margin-left: 0;
+	}
+	ul ul,
+	ol ul {
+		list-style: none;
+		padding-left: 1.5em;
+		margin-left: 0;
+	}
+	li {
+		position: relative;
+		padding-left: 0.75em;	
+	}
+	li:before {
+		content: "\2022";
+		display: inline-block;
+		position: absolute;
+		left: 0;
+		padding-right: 0.3em;
+	}
+	// make ol lists the same so that we can position the number nicely when centered
+	ol {
+		counter-reset: ol;
+	}
+	ol ol {
+		counter-reset: ol2;	
+	}
+	ol ol,
+	ul ol {
+		padding-left: 1.5em;	
+	}
+	ol > li {
+		padding-left: 1.5em;	
+	}
+	ol > li:before {
+		counter-increment: ol;
+		content: counter(ol)". ";
+		width: 1.2em;
+		text-align: right;
+	}
+	ol ol > li:before {
+		counter-increment: ol2;
+		content: counter(ol2)". ";
+	}
+	
+	// Centered lists, make sure bullet and number is placed nicely
+	.center li,
+	.text-center li,
+	[style*="text-align: center"] li,
+	li.center,
+	li.text-center,
+	li[style*="text-align: center"] {
+		margin: 0 auto;
+	}
+	.center li:before,
+	.text-center li:before,
+	[style*="text-align: center"] li:before,
+	li.center:before,
+	li.text-center:before,
+	li[style*="text-align: center"]:before {
+		position: static;
+	}
+			
+	// HEADER STYLES 
+	// -------------------------------
+	
+	h1 {
+		
+	}
+	h2 {
+		
+	}
+	
+	h3 {
+		margin: 0;
+	}
+	h4 {
+		margin: 0;
+	}
+	h5 {
+		margin: 0;
+	}
+	h6 {
+		margin: 0;
+	}
+		
+	// WYSIWYG EDITOR ALIGNMENT CLASSES
+	// ------------------------------- 
+	
+	.left, .text-left {
+		text-align: left;
+	}
+	.center, .text-center {
+		text-align: center;
+	}
+	.right, .text-right {
+		text-align: right;
+	}
+	
+	// IMAGES 
+	// -------------------------------
+
+	img {
+	   /* border: 5px solid #d7d7d7;*/
+	   max-width: 100%; /* prevents width being wider than 100% */
+	   height: auto; /* resets the image height so that it maintains its aspect ratio when width is set */
+	   /*background: transparent url(../images/ajax-loader.gif) no-repeat center center;*/
+	}
+	img.left {
+		float: left;
+		max-width: 50%;
+		margin: 0.3rem 1rem 0.5rem 0;
+	}
+	img.right {
+		float: right;
+		max-width: 50%; /* Responsive width */
+		margin: 0.3rem 0 0.5rem 1rem;
+	}
+	img.leftAlone {
+		/*float: left;
+		margin-right: 100%;
+		margin-bottom: 10px;*/
+		clear: both;
+	}
+	img.center {
+		float: none;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		margin-bottom: 0.5rem;
+		clear: both;
+	}
+	.captionImage { width: 100%; margin-top: 5px; }
+	.captionImage img { margin: 0; }
+	  .captionImage.left {
+		float: left;
+		margin: 0.3rem 1.5rem 1rem 0;
+	  }
+	  .captionImage.right{
+		float: right;
+		margin: 0.3rem 0 1rem 1.5rem;
+	  }
+	  .captionImage.left[style],
+	  .captionImage.right[style] {
+		max-width: 50%; /* Overides core width to make responsive */
+	  }
+	  .captionImage.left img,
+	  .captionImage.right img {
+		float: none;
+		max-width: none;
+		width: 100%;
+	  }
+	  .captionImage.left img {
+		margin-right: -0.5rem;
+	  }
+	  .captionImage.right img {
+		margin-left: -0.5rem;
+	  }
+	  .captionImage.right p {
+		margin-left: -0.5rem;
+		text-align: left;
+		margin-left: -0.5rem;
+	  }
+	.captionImage.leftAlone{
+	  float:none;
+	  margin: 0 1rem 1rem 0;
+	}
+	.captionImage.center{
+	  margin: 0 auto 1rem;
+	}
+	.captionImage p {
+	  clear: both;
+	  margin: 0.3rem 0;
+	  font-style: italic;
+	  color: #888;
+	}
+	
+}
