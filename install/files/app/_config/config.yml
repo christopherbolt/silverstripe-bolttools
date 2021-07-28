@@ -51,7 +51,7 @@ SilverStripe\Forms\FormField:
 
 BetterBrief\GoogleMapField:
   default_options:
-    api_key: 'AIzaSyANUwYa-T233sQiGyL5BPL34vErmWDEsF8'
+    api_key: ''
 
 SilverStripe\Control\Email\Email:
   admin_email: "chris@christopherbolt.com"
@@ -59,8 +59,8 @@ SilverStripe\Control\Email\Email:
 SilverStripe\SpamProtection\Extension\FormSpamProtectionExtension:
     default_spam_protector: UndefinedOffset\NoCaptcha\Forms\NocaptchaProtector
 UndefinedOffset\NoCaptcha\Forms\NocaptchaField:
-    site_key: "6LeRC7cZAAAAAFBFhGchFwqr6Bq9IL9uMA-QxuHD" #Your site key (required)
-    secret_key: "6LeRC7cZAAAAAMdGakKnKmm3J-99IYSgoBMEzSZ-" #Your secret key (required)
+    site_key: "" #Your site key (required)
+    secret_key: "" #Your secret key (required)
     verify_ssl: true #Allows you to disable php-curl's SSL peer verification by setting this to false (optional, defaults to true)
     default_theme: "light" #Default theme color (optional, light or dark, defaults to light)
     default_type: "image" #Default captcha type (optional, image or audio, defaults to image)
