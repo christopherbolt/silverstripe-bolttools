@@ -40,7 +40,7 @@ class BoltSiteTree extends DataExtension {
 	}
 	
 	public function updateSettingsFields(FieldList $fields) {
-    	$fields->addFieldToTab("Root.Settings", new CheckboxField('ShowInSiteMap', 'Show on site map page? (only if this site has a sitemap page)'), 'ShowInSearch');
+    	$fields->addFieldToTab("Root.Settings", new CheckboxField('ShowInSiteMap', 'Show on site map page? (only if this site has a site map page)'), 'ShowInSearch');
 	}
 	
 	public function updateCMSFields(FieldList $fields) {		

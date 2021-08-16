@@ -17,8 +17,8 @@ mix.js(
 );
 
 mix.sass(
-    'themes/mytheme/scss/style.scss',
-    'themes/mytheme/css/style.min.css'
+    'themes/mytheme/scss/app.scss',
+    'themes/mytheme/css/app.min.css'
 ).options({
     processCssUrls: false,
 });

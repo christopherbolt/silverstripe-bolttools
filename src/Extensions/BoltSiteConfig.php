@@ -30,8 +30,8 @@ class BoltSiteConfig extends DataExtension {
 			EmailField::create("ContactEmail", 'Contact email'),
 			TextField::create("ContactPhone", 'Contact phone'),
 			TextField::create("Copyright", 'Copyright'),
-					
-			HeaderField::create('Tracking codes'),
+		));			
+		$fields->addFieldsToTab("Root.TrackingCodes", array(
             LiteralField::create("TrackingCodesExplained", '<p class="message">Enter your tracking codes for services such as Google Analytics below. Tracking codes usually need to be placed into one of three places; before the closing head tag, after the opening body tag or before the closing body tag. Paste your code into the appropriate box below. You can add code from multiple services into each box; simply separate each with a new line.</p>'),
             TextareaField::create("TrackingCodeHead", 'Before the closing head tag (</head>)'),
             TextareaField::create("TrackingCodeBodyOpen", 'After the opening body tag (<body>)'),

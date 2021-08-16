@@ -1,6 +1,9 @@
 // Base styles for gloabl elements specific for this project
 // Do not put classes in here
-
+html,body {
+	// Base REM size must be set on the html element
+	@include responsive-font-sizes;
+}
 body {
 	margin: 0;
 	padding: 0;
@@ -16,8 +19,6 @@ body {
     text-rendering: optimizeLegibility;
 	
 	min-width: 320px;
-	
-	@include responsive-font-sizes;
 }
 
 // Set project line heights in setting

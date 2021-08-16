@@ -9,8 +9,8 @@ class LeftAndMainExtension extends SS_LeftAndMainExtension {
 
 	public function init() {
 		parent::init();
-		Requirements::javascript('app: client/javascript/leftandmain.js');
-		Requirements::css('app: client/css/leftandmain.css');
+		Requirements::javascript('_resources/app/client/javascript/leftandmain.js');
+		Requirements::css('_resources/app/client/css/leftandmain.css');
 	}
 
 }

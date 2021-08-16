@@ -31,7 +31,7 @@
 		var onResizeFunctions = [];
 		SELF.resize = function(f) {
 			onResizeFunctions.push(f);
-			if (SELF.readyDone) f();
+			f();
 		}
 		
 		SELF.breakpoint = function(n) {

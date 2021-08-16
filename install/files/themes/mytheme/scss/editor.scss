@@ -6,8 +6,8 @@
 
 @import "settings";
 
+@import "mixins/common";
 @import "mixins/mixins";
-@import "mixins/custom";
 @import "base/reset";
 @import "base/base";
 @import "partials/global";
