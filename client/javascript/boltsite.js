@@ -51,12 +51,12 @@
 		
 		SELF.below = function(n) {
 			var w = $(window).width();
-			return (w < SELF.breakpoint(n));
+			return (w < SELF.breakpoint(n)+1);
 		}
 		
 		SELF.between = function(n1, n2) {
 			var w = $(window).width();
-			return (w > SELF.breakpoint(n1) && w < SELF.breakpoint(n2));
+			return (w > SELF.breakpoint(n1) && w < SELF.breakpoint(n2)+1);
 		}
 		
 		SELF.touchDevicesTest = function() {
