@@ -6,8 +6,8 @@ fieldset,img {
 	border:0;
 }
 address,caption,cite,code,dfn,em,strong,th,var {
-	font-style:normal;
-	font-weight:normal;
+	font-style:inherit;
+	font-weight:inherit;
 }
 
 // Chris Bolt, commented out ol so that the type attribute can be used in content
@@ -20,7 +20,7 @@ caption,th {
 }
 h1,h2,h3,h4,h5,h6 {
 	font-size:100%;
-	font-weight:normal;
+	font-weight:inherit;
 }
 q:before,q:after {
 	content:'';

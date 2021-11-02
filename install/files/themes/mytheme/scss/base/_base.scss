@@ -45,7 +45,7 @@ h1,h2,h3 {
 }
 h1,h2,h3,h4,h5,h6,strong {
 	//bringing boldness back to headers and the strong element
-	font-weight:bold; 
+	font-weight: $default-font-weight-bold; 
 	font-style: inherit;
 }
 abbr,acronym {
@@ -86,7 +86,7 @@ th,td {
 }
 th {
 	//distinguishing table headers from data cells
-	font-weight:bold;
+	font-weight:$default-font-weight-bold;
 	text-align:center;
 }
 caption {

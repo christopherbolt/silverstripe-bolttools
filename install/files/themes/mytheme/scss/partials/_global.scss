@@ -11,6 +11,7 @@ body {
 	font-family: $default-font-family;
 	color: $default-text-color;
 	background: $default-background;
+	font-weight: $default-font-weight;
 	
 	box-sizing: border-box;
     scroll-behavior: smooth;
@@ -30,7 +31,17 @@ body {
 //    @include transition(all .3s ease);
 //}
 
-a, button, input[type=submit] {
+a, button, input[type=submit], input[type=reset], input[type=button] {
 	transition: all .3s ease;
+}
+a, button {
+	img {
+		transition: all .3s ease;
+	}
+	svg {
+		text, line, polyline, path {
+			transition: all .3s ease;
+		}
+	}
 }
 
