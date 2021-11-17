@@ -4,6 +4,10 @@ After: '*'
 ---
 SilverStripe\i18n\i18n:
   default_locale: 'en_GB'
+
+# Enforce SSL from command line, you must set SS_BASE_URL in your environment variables eg. SS_BASE_URL="https://www.yoursite.com"
+SilverStripe\Control\Director:
+   alternate_base_url: '`SS_BASE_URL`'
  
 # Add any required javascript and CSS to admin
 SilverStripe\Admin\LeftAndMain:
