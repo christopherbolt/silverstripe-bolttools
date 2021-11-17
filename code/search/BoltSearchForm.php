@@ -25,12 +25,12 @@ class BoltSearchForm extends SearchForm {
 
 		$keywords = $data['Search'];
 
-	 	$andProcessor = create_function('$matches','
+	 	$andProcessor = function($matches) {
 	 		return " +" . $matches[2] . " +" . $matches[4] . " ";
-	 	');
-	 	$notProcessor = create_function('$matches', '
+		};
+	 	$notProcessor = function($matches) {
 	 		return " -" . $matches[3];
-	 	');
+		};
 
 	 	$keywords = preg_replace_callback('/()("[^()"]+")( and )("[^"()]+")()/i', $andProcessor, $keywords);
 	 	$keywords = preg_replace_callback('/(^| )([^() ]+)( and )([^ ()]+)( |$)/i', $andProcessor, $keywords);
