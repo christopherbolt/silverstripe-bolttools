@@ -15,14 +15,14 @@
     	"silverstripe/framework": "^4.0",
 		"symbiote/silverstripe-gridfieldextensions": "^3",
     	"wilr/silverstripe-googlesitemaps": "^2",
-    	"jonom/focuspoint": "^3",
+    	"jonom/focuspoint": "^4",
     	"sheadawson/silverstripe-linkable": "^2",
 		"christopherbolt/silverstripe-publishwithme": "^2",
 		"christopherbolt/silverstripe-retinacontentimages": "dev-master",
 		"colymba/gridfield-bulk-editing-tools": "^3",
-        "bummzack/sortablefile": "^2.0",
-		"undefinedoffset/silverstripe-nocaptcha": "^2.1",
-        "silverware/calendar": "^1.1"
+        "bummzack/sortablefile": "^2",
+		"undefinedoffset/silverstripe-nocaptcha": "^2",
+        "silverware/calendar": "^1"
     },
 	"extra": {
         "installer-name": "bolttools",
