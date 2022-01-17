@@ -53,6 +53,16 @@ SilverStripe\Forms\FormField:
     - SilverStripe\Forms\TextareaField
     - SilverStripe\Forms\DateField
 
+SilverStripe\Assets\File:
+  allowed_extensions:
+    - svg
+
+SilverStripe\MimeValidator\MimeUploadValidator:
+  MimeTypes:
+    svg:
+      - 'image/svg+xml'
+      - 'image/svg'
+
 BetterBrief\GoogleMapField:
   default_options:
     api_key: ''
