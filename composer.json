@@ -11,8 +11,8 @@
     ],
     "require": {
         "php": ">=5.5",
-        "silverstripe/cms": "^3.3",
-    	"silverstripe/framework": "^3.3",
+        "silverstripe/cms": "^3",
+    	"silverstripe/framework": "^3",
 		"symbiote/silverstripe-gridfieldextensions": "^2.0",
     	"wilr/silverstripe-googlesitemaps": "1.6.*",
     	"unclecheese/betterbuttons": "1.3.*",
