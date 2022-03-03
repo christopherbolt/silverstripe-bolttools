@@ -2,14 +2,17 @@
  * Main CSS File
  */
 
+ // Settings
 @import "settings";
 
+// Common base
 @import "mixins/common";
 @import "mixins/mixins";
 @import "base/reset";
 @import "base/base";
 @import "base/ssbase";
 
+// Project partials
 @import "partials/global";
 @import "partials/typography";
 @import "partials/form";
@@ -19,6 +22,8 @@
 @import "partials/layout";
 @import "partials/footer";
 
+// Project pages
 @import "pages/page";
 
+// Project blocks
 @import "blocks/content";
