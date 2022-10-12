@@ -1,0 +1,10 @@
+# Chris Bolt add to gitignore file
+/node_modules/
+.DS_Store
+_notes/
+dwsync.xml
+thumbs.db
+php_errorlog
+debug.log
+i.php
+/.idea/
