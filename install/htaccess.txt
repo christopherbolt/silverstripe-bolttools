@@ -1,21 +1,35 @@
 # Prepend this to top of Silverstripe htaccess file
 
-## SSL Redirect Begin
+## Redirects Begin
 
-#RewriteCond %{HTTPS} !=on
-#RewriteCond %{HTTP_HOST} !local
+# Redirect not primary domain
+#RewriteCond %{HTTP_HOST} !\.local
 #RewriteCond %{HTTP_HOST} !draftsite\.co\.nz
+#RewriteCond %{HTTP_HOST} !www\.domain\.co\.nz
 #RewriteRule ^(.*)$ https://www.domain.co.nz%{REQUEST_URI} [R=301,L]
 
-## SSL Redirect End
+# Redirect SSL
+#RewriteCond %{HTTPS} !=on
+#RewriteRule ^(.*)$ https://www.domain.co.nz%{REQUEST_URI} [R=301,L]
+
+## Redirects End
 
 ### Chris Bolt Begin ###
+
+# Block bad bots
+RewriteCond %{HTTP_USER_AGENT} Bytespider [NC]
+RewriteRule .* - [F,L] 
+
+# Security
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+Header always set Content-Security-Policy "frame-ancestors 'self'"
+Header always set X-Frame-Options "SAMEORIGIN"
 
 # Caching
 # 1 WEEK
 <IfModule mod_headers.c>
-	<FilesMatch "\.(jpg|jpeg|png|gif|swf|pdf|js|css|html|eot|svg|ttf|woff)$">
-		Header set Cache-Control "max-age=604800, public"
+	<FilesMatch "\.(jpg|jpeg|jpgx|jpegx|png|gif|webp|avif|swf|pdf|js|css|html|eot|svg|ttf|woff|woff2)$">
+		Header set Cache-Control "max-age=31536000, public"
 	</FilesMatch>
 </IfModule>
 # End Caching
@@ -32,7 +46,7 @@ RedirectMatch 404 /\.git
 RedirectMatch 404 /*\.md
 
 # Redirect themes
-RewriteRule ^themes/(.*) _resources/themes/$1 [NC,L]
+RewriteRule ^themes/(.*) resources/themes/$1 [NC,L]
 
 ### End Chris Bolt ###
 

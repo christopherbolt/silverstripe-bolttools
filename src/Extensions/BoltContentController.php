@@ -16,7 +16,7 @@ class BoltContentController extends Extension {
 		}
 		
 		// Prevent indexing of draft sites
-		if (Director::isDev() || Director::isTest() || stristr($_SERVER['HTTP_HOST'], 'draftsite.co.nz')) {
+		if (Director::isDev() || Director::isTest() || (isset($_SERVER['HTTP_HOST']) && stristr($_SERVER['HTTP_HOST'], 'draftsite.co.nz'))) {
 			Requirements::insertHeadTags('<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">');
 		}
 		

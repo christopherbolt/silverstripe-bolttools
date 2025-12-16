@@ -1,0 +1,7 @@
+User-agent: Bytespider
+Disallow: /
+
+User-agent: *
+Crawl-delay: 10
+Disallow: /cdn-cgi/
+#Sitemap: https://www.domain.co.nz/sitemap.xml

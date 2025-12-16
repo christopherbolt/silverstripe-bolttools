@@ -18,7 +18,7 @@
     	"jonom/focuspoint": "^4",
     	"sheadawson/silverstripe-linkable": "^2",
 		"christopherbolt/silverstripe-publishwithme": "^2",
-		"christopherbolt/silverstripe-retinacontentimages": "dev-master",
+		"christopherbolt/silverstripe-retinacontentimages": "^1",
 		"colymba/gridfield-bulk-editing-tools": "^3",
         "bummzack/sortablefile": "^2",
 		"undefinedoffset/silverstripe-nocaptcha": "^2",
