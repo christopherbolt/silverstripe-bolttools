@@ -10,24 +10,21 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
-        "silverstripe/cms": "^4.0",
-    	"silverstripe/framework": "^4.0",
-		"symbiote/silverstripe-gridfieldextensions": "^3",
-    	"wilr/silverstripe-googlesitemaps": "^2",
-    	"jonom/focuspoint": "^4",
+        "silverstripe/cms": "^5.0",
+		"symbiote/silverstripe-gridfieldextensions": "^4",
+    	"wilr/silverstripe-googlesitemaps": "^3",
+    	"jonom/focuspoint": "^5",
     	"sheadawson/silverstripe-linkable": "^2",
 		"christopherbolt/silverstripe-publishwithme": "^2",
-		"christopherbolt/silverstripe-retinacontentimages": "^1",
-		"colymba/gridfield-bulk-editing-tools": "^3",
+		"christopherbolt/silverstripe-retinacontentimages": "^2",
+		"colymba/gridfield-bulk-editing-tools": "^4",
         "bummzack/sortablefile": "^2",
-		"undefinedoffset/silverstripe-nocaptcha": "^2",
-        "silverware/calendar": "^1"
+		"undefinedoffset/silverstripe-nocaptcha": "^2"
     },
 	"extra": {
         "installer-name": "bolttools",
 		"branch-alias": {
-            "dev-master": "3.0.x-dev"
+            "dev-master": "4.0.x-dev"
         },
 		"expose": [
             "client"
