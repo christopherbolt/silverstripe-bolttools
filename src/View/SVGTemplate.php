@@ -17,6 +17,19 @@ use SilverStripe\View\ThemeResourceLoader;
  */
 class SVGTemplate extends ViewableData
 {
+
+    /**
+     * @config
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @config
+     * @var string
+     */    
+    private $id;
+
     /**
      * The base path to your SVG location
      *
@@ -42,8 +55,6 @@ class SVGTemplate extends ViewableData
 	
 	// String to record unique reference to modified svg
 	private $file_mod_string = '';
-	
-	
 	
 	// Remove style tags (css must be manually added to your stylesheet), applies only for inlined svg
 	private static $remove_style_tag = true;
@@ -93,12 +104,17 @@ class SVGTemplate extends ViewableData
     /**
      * @var array
      */
-    private $extraClasses;
+    private $extra_classes;
 
     /**
      * @var array
      */
     private $subfolders;
+
+    /**
+     * @var array
+     */
+    private $out;
 
     /**
      * @param string $name
