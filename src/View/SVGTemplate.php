@@ -124,13 +124,13 @@ class SVGTemplate extends ViewableData
     {
         $this->name = $name;
         $this->id = $id;
-        $this->extra_classes = $this->stat('default_extra_classes');
+        $this->extra_classes = $this->config()->get('default_extra_classes');
         $this->extra_classes[] = 'svg-'.$this->name;
         $this->subfolders = array();
         $this->out = new DOMDocument();
         $this->out->formatOutput = true;
 		
-		$this->template_vars = $this->stat('default_template_vars');
+		$this->template_vars = $this->config()->get('default_template_vars');
     }
 
     /**
@@ -319,7 +319,7 @@ class SVGTemplate extends ViewableData
             $root->setAttribute('class', $classes);
         }
 		
-		if (!$keepStyleTag && $this->stat('remove_style_tag')) {
+		if (!$keepStyleTag && $this->config()->get('remove_style_tag')) {
 			 foreach ($out->getElementsByTagName('style') as $element) {
 				 $element->parentNode->removeChild($element);
 			 }
@@ -346,18 +346,18 @@ class SVGTemplate extends ViewableData
             foreach($this->subfolders as $subfolder) {
                 $path .= $subfolder . DIRECTORY_SEPARATOR;
             }
-            $path .= (strpos($this->name, ".") === false) ? $this->name . '.' . $this->stat('extension') : $this->name;
+            $path .= (strpos($this->name, ".") === false) ? $this->name . '.' . $this->config()->get('extension') : $this->name;
             return $path;
         } else {
             $themeLoader = ThemeResourceLoader::inst();
             $themeList = SSViewer::get_themes();
 
-            $path = $this->stat('base_path');
+            $path = $this->config()->get('base_path');
             $path .= DIRECTORY_SEPARATOR;
             foreach($this->subfolders as $subfolder) {
                 $path .= $subfolder . DIRECTORY_SEPARATOR;
             }
-            $path .= (strpos($this->name, ".") === false) ? $this->name . '.' . $this->stat('extension') : $this->name;            
+            $path .= (strpos($this->name, ".") === false) ? $this->name . '.' . $this->config()->get('extension') : $this->name;            
             return BASE_PATH . DIRECTORY_SEPARATOR . $themeLoader->findThemedResource($path, $themeList);
         }
 		
@@ -368,7 +368,7 @@ class SVGTemplate extends ViewableData
         $themeLoader = ThemeResourceLoader::inst();
         $themeList = SSViewer::get_themes();
 
-        $path = $this->stat('save_path');
+        $path = $this->config()->get('save_path');
 
         return $themeLoader->findThemedResource($path, $themeList);	
 	}
@@ -390,7 +390,7 @@ class SVGTemplate extends ViewableData
             //}
             $file_mod_string = preg_replace("/[^a-zA-Z0-9]/smi", '', $this->file_mod_string);
             $file_mod_string .= 'sc'.SiteConfig::current_site_config()->ID;
-            $save .= preg_replace("/\.[a-z]+$/smi", '', $this->name) . $file_mod_string . '.' . $this->stat('extension');
+            $save .= preg_replace("/\.[a-z]+$/smi", '', $this->name) . $file_mod_string . '.' . $this->config()->get('extension');
 
             if (!file_exists($base.$save)) {
                 $xml = $this->process($path, true);
