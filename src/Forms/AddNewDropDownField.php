@@ -113,7 +113,7 @@ class AddNewDropDownField extends DropDownField {
 			$title = $this->getDialogTitle() ? $this->getDialogTitle() : 'New Item';
 		}
 		
-		$fields->insertBefore(HeaderField::create('AddNewHeader', $title), $fields->first()->getName());
+		$fields->insertBefore($fields->first()->getName(), HeaderField::create('AddNewHeader', $title));
 		$actions = FieldList::create($action);
 		$form = Form::create($this, 'AddNewListboxForm', $fields, $actions);
 		

@@ -79,7 +79,7 @@ class SortedLimitedPaginatedList extends LimitedPaginatedList {
 	 * Applies the sorting to the list
 	 * @return IteratorIterator
 	 */
-	public function getIterator() {
+	public function getIterator(): \Traversable {
 		$list = clone $this->list;
 		
 		// Sort list
