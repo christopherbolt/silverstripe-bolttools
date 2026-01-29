@@ -12,7 +12,7 @@ class BoltContentController extends Extension {
 	public static function onAfterInit() {
 		// Tracking scripts
 		if(Director::isLive())  {
-            Config::inst()->set(AddTrackingScriptsMiddleware::class, 'enabled', true);
+            Config::modify()->set(AddTrackingScriptsMiddleware::class, 'enabled', true);
 		}
 		
 		// Prevent indexing of draft sites
