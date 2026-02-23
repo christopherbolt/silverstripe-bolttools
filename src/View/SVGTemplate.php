@@ -2,7 +2,7 @@
 
 namespace ChristopherBolt\BoltTools\View;
 
-use SilverStripe\View\ViewableData;
+use SilverStripe\Model\ModelData;
 use DOMDocument;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\SSViewer;
@@ -15,7 +15,7 @@ use SilverStripe\View\ThemeResourceLoader;
 /**
  * Class SVGTemplate
  */
-class SVGTemplate extends ViewableData
+class SVGTemplate extends ModelData
 {
 
     /**
@@ -376,7 +376,7 @@ class SVGTemplate extends ViewableData
     /**
      * @return string
      */
-    public function forTemplate() {
+    public function forTemplate(): string {
         $path = $this->buildPath();
         return $this->process($path);
     }

@@ -3,7 +3,7 @@
 namespace ChristopherBolt\BoltTools\Extensions;
 
 use SilverStripe\View\Requirements;
-use SilverStripe\Admin\LeftAndMainExtension;
+use SilverStripe\Core\Extension;
 
 /**
  * Plug-ins for additional functionality in your LeftAndMain classes.
@@ -11,17 +11,9 @@ use SilverStripe\Admin\LeftAndMainExtension;
  * @package framework
  * @subpackage admin
  */
-class BoltToolsLeftAndMain extends LeftAndMainExtension {
+class BoltToolsLeftAndMain extends Extension {
 
-	public function init() {
-		parent::init();
+	protected function onInit() {
 		Requirements::css('christopherbolt/silverstripe-bolttools: client/css/bolttools.css');
 	}
-	
-	//public function accessedCMS() {
-	//}
-	
-	//public function augmentNewSiteTreeItem(&$item) {
-	//}
-
 }

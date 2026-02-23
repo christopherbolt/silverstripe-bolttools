@@ -2,7 +2,7 @@
 
 namespace ChristopherBolt\BoltTools\Lists;
 
-use SilverStripe\ORM\PaginatedList;
+use SilverStripe\Model\List\PaginatedList;
 use SilverStripe\ORM\SS_List;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\View\ArrayData;
