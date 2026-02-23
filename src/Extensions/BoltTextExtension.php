@@ -2,10 +2,10 @@
 
 namespace ChristopherBolt\BoltTools\Extensions;
 
-use SilverStripe\ORM\DataExtension;
+use Silverstripe\Core\Extension;
 
 
-class BoltTextExtension extends DataExtension {
+class BoltTextExtension extends Extension {
     private static $casting = array(
         "LimitWordCountNoHTML" => "HTMLText",
     );

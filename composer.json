@@ -10,21 +10,21 @@
         }
     ],
     "require": {
-        "silverstripe/cms": "^5.0",
-		"symbiote/silverstripe-gridfieldextensions": "^4",
-    	"wilr/silverstripe-googlesitemaps": "^3",
-    	"jonom/focuspoint": "^5",
-    	"sheadawson/silverstripe-linkable": "^2",
-		"christopherbolt/silverstripe-publishwithme": "^2",
+        "silverstripe/cms": "^6.0",
+		"symbiote/silverstripe-gridfieldextensions": "^5",
+    	"wilr/silverstripe-googlesitemaps": "^4",
+    	"jonom/focuspoint": "^6",
+    	"silverstripe/linkfield": "^5",
+		"christopherbolt/silverstripe-publishwithme": "^3",
 		"christopherbolt/silverstripe-retinacontentimages": "^2",
-		"colymba/gridfield-bulk-editing-tools": "^4",
-        "bummzack/sortablefile": "^2",
-		"undefinedoffset/silverstripe-nocaptcha": "^2"
+		"colymba/gridfield-bulk-editing-tools": "^5",
+        "bummzack/sortablefile": "^3",
+		"undefinedoffset/silverstripe-nocaptcha": "^3"
     },
 	"extra": {
         "installer-name": "bolttools",
 		"branch-alias": {
-            "dev-master": "4.0.x-dev"
+            "dev-master": "5.0.x-dev"
         },
 		"expose": [
             "client"

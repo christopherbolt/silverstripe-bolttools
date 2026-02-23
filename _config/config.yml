@@ -32,16 +32,6 @@ SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - ChristopherBolt\BoltTools\Extensions\BoltSiteConfig
 
-# Linkable
-Sheadawson\Linkable\Models\Link:
-  extensions:
-    - ChristopherBolt\BoltTools\Extensions\BoltLink
-    - ChristopherBolt\BoltTools\Extensions\DefaultCan
-
-Sheadawson\Linkable\Forms\LinkField:
-  extensions:
-    - ChristopherBolt\BoltTools\Extensions\BoltLinkField
-
 # Blog
 SilverStripe\Blog\Model\Blog:
   extensions:

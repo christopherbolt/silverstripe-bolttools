@@ -2,10 +2,10 @@
 
 namespace MySite\Extension;
 
-use SilverStripe\ORM\DataExtension;
+use Silverstripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
 
-class SiteConfigExtension extends DataExtension {
+class SiteConfigExtension extends Extension {
 		
 	private static $db = array(
 		

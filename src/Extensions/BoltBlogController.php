@@ -2,7 +2,7 @@
 
 namespace ChristopherBolt\BoltTools\Extensions;
 
-use SilverStripe\ORM\DataExtension;
+use Silverstripe\Core\Extension;
 use SilverStripe\Blog\Model\BlogCategory;
 use SilverStripe\Blog\Model\Blog;
 use SilverStripe\View\ArrayData;
@@ -18,7 +18,7 @@ if(!class_exists('SilverStripe\Widgets\Model\Widget')) {
 	include_once(dirname(__DIR__).'/nowidgets/nowidgets.php');
 }
 
-class BoltBlogController extends DataExtension {
+class BoltBlogController extends Extension {
 	
 	/* Category widget */
 	function getCategoriesList($limit=0,$order='Title',$direction='ASC') {

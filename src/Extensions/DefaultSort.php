@@ -2,11 +2,11 @@
 
 namespace ChristopherBolt\BoltTools\Extensions;
 
-use SilverStripe\ORM\DataExtension;
+use Silverstripe\Core\Extension;
 use SilverStripe\Core\ClassInfo;
  
 
-class DefaultSort extends DataExtension {
+class DefaultSort extends Extension {
 	
 	function onBeforeWrite() {
 		parent::onBeforeWrite();

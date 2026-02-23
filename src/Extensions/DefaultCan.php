@@ -2,12 +2,12 @@
 
 namespace ChristopherBolt\BoltTools\Extensions;
 
-use SilverStripe\ORM\DataExtension;
+use Silverstripe\Core\Extension;
 use SilverStripe\Security\Permission;
 
 /* Quickly allow editing on an object */
 
-class DefaultCan extends DataExtension {
+class DefaultCan extends Extension {
 	/*
 	function can($method, $member=null) {
 		if ($rel = $this->owner->config()->get('can_relation')) {

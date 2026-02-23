@@ -2,7 +2,7 @@
 
 namespace ChristopherBolt\BoltTools\Extensions;
 
-use SilverStripe\ORM\DataExtension;
+use Silverstripe\Core\Extension;
 use SilverStripe\Control\Director;
 use SilverStripe\Blog\Model\Blog;
 use SilverStripe\Control\Controller;
@@ -12,7 +12,7 @@ use SilverStripe\Control\Controller;
 Adds a linkingmode function for simple highlighting of the current category
 */
 
-class BoltBlogCategory extends DataExtension{
+class BoltBlogCategory extends Extension{
 	
 	function BlogLink() {
 		if (empty($this->owner->BlogID)) {

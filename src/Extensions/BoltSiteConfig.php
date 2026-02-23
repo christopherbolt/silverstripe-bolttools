@@ -2,7 +2,7 @@
 
 namespace ChristopherBolt\BoltTools\Extensions;
 
-use SilverStripe\ORM\DataExtension;
+use Silverstripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\EmailField;
 use SilverStripe\Forms\TextField;
@@ -11,7 +11,7 @@ use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\TextareaField;
 
-class BoltSiteConfig extends DataExtension {
+class BoltSiteConfig extends Extension {
 		
 	private static $db = array(
 		'Copyright' => 'Varchar(255)',

@@ -2,7 +2,7 @@
 
 namespace ChristopherBolt\BoltTools\Extensions;
 
-use SilverStripe\ORM\DataExtension;
+use Silverstripe\Core\Extension;
 use Page;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\CheckboxField;
@@ -10,7 +10,7 @@ use SilverStripe\Forms\TextField;
 use ChristopherBolt\BoltTools\Controllers\BoltSiteMap;
 use SilverStripe\Control\Director;
 
-class BoltSiteTree extends DataExtension {
+class BoltSiteTree extends Extension {
 	private static $db = array(
 		'MetaTitle' => 'Varchar(255)',
 		'ShowInSiteMap' => 'Boolean'

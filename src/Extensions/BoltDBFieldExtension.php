@@ -2,10 +2,10 @@
 
 namespace ChristopherBolt\BoltTools\Extensions;
 
-use SilverStripe\ORM\DataExtension;
+use Silverstripe\Core\Extension;
 
 
-class BoltDBFieldExtension extends DataExtension {
+class BoltDBFieldExtension extends Extension {
 	function URLEncodeSpaces() {
 		return str_replace(' ', '%20', $this->owner->value);
 	}

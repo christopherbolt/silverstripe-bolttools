@@ -9,8 +9,6 @@ mappings:
   BoltBlogCategory: ChristopherBolt\BoltTools\Extensions\BoltBlogCategory
   BoltBlogPost: ChristopherBolt\BoltTools\Extensions\BoltBlogPost
   BoltDBFieldExtension: ChristopherBolt\BoltTools\Extensions\BoltDBFieldExtension
-  BoltLink: ChristopherBolt\BoltTools\Extensions\BoltLink
-  BoltLinkField: ChristopherBolt\BoltTools\Extensions\BoltLinkField
   BoltMember: ChristopherBolt\BoltTools\Extensions\BoltMember
   BoltSiteTree: ChristopherBolt\BoltTools\Extensions\BoltSiteTree
   BoltSiteTree_Controller: ChristopherBolt\BoltTools\Extensions\BoltSiteTree_Controller

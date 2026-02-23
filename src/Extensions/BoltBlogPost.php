@@ -2,7 +2,7 @@
 
 namespace ChristopherBolt\BoltTools\Extensions;
 
-use SilverStripe\ORM\DataExtension;
+use Silverstripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
 use ChristopherBolt\BoltTools\Forms\AddNewListboxField;
 use SilverStripe\ORM\DataObject;
@@ -16,7 +16,7 @@ Adds functions for easy display of widgets without widget holder
 Adds option to use addnewlistboxfield instead of tagfield, since tag field is broken at time of writing
 */
 
-class BoltBlogPost extends DataExtension{
+class BoltBlogPost extends Extension{
 
 	private static $defaults = array(
 		'ShowInSiteMap' => 0

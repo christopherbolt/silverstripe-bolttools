@@ -2,7 +2,7 @@
 
 namespace ChristopherBolt\BoltTools\Extensions;
 
-use Silverstripe\ORM\DataExtension;
+use Silverstripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
 
 
@@ -11,7 +11,7 @@ Used to allow easy hiding of features not used in the site
 Adds functions for easy display of widgets without widget holder
 */
 
-class BoltBlog extends DataExtension{
+class BoltBlog extends Extension{
 	
 	public function updateCMSFields(FieldList $fields) {
 		

@@ -2,13 +2,13 @@
 
 namespace ChristopherBolt\BoltTools\Search;
 
-use SilverStripe\ORM\DataExtension;
+use Silverstripe\Core\Extension;
 use Exception;
 
 
 /* adds the search index to SiteTree */
 
-class BoltSearchIndexedSiteTree extends DataExtension {
+class BoltSearchIndexedSiteTree extends Extension {
 		
 	private static $db = array(
 		'SearchIndex' => 'HTMLText',
