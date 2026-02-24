@@ -9,7 +9,7 @@ use ChristopherBolt\BoltTools\Middleware\AddTrackingScriptsMiddleware;
 use SilverStripe\Core\Config\Config;
 
 class BoltContentController extends Extension {
-	public static function onAfterInit() {
+	public static function onBeforeInit() {
 		// Tracking scripts
 		if(Director::isLive())  {
             Config::modify()->set(AddTrackingScriptsMiddleware::class, 'enabled', true);
@@ -21,7 +21,5 @@ class BoltContentController extends Extension {
 		}
 		
 		Requirements::set_force_js_to_bottom(true);
-		Requirements::block('silverstripe/admin: thirdparty/jquery/jquery.js');
-		Requirements::block('silverstripe/admin: thirdparty/jquery/jquery.min.js');
 	}
 }
