@@ -4,8 +4,8 @@ namespace ChristopherBolt\BoltTools\Lists;
 
 use SilverStripe\Model\List\PaginatedList;
 use SilverStripe\ORM\SS_List;
-use SilverStripe\ORM\ArrayList;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\List\ArrayList;
+use SilverStripe\Model\ModelData;
 use SilverStripe\Control\HTTP;
 
 
@@ -73,7 +73,7 @@ class LimitedPaginatedList extends PaginatedList {
 		$result = new ArrayList();
 		
 		foreach ($lengths as $length) {
-			$result->push(new ArrayData(array(
+			$result->push(new ModelData(array(
 				'PageLength'     => $length,
 				'Link'        => HTTP::setGetVar($this->getPaginationGetVar(), 0, HTTP::setGetVar($this->getLengthGetVar(), $length, null, '&')),
 				'CurrentBool' => ($this->getPageLength() == $length || ($length == $this->unlimitedLengthText && $this->getPageLength() == $this->unlimitedLength))

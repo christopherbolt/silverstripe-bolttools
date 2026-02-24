@@ -137,8 +137,5 @@ class BoltSearchIndexedSiteTree extends Extension {
 		if (!$this->owner->isChanged('ClassName')){ // We cannot proceed if page type has changed
 			$this->updateSearchIndex();
 		}
-		parent::onBeforeWrite();
 	}
 }
-
-?>

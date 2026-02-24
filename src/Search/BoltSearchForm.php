@@ -9,7 +9,7 @@ use SilverStripe\Core\Convert;
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\PaginatedList;
-use SilverStripe\ORM\ArrayList;
+use SilverStripe\Model\List\ArrayList;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Assets\File;
 use SilverStripe\ORM\DataObject;

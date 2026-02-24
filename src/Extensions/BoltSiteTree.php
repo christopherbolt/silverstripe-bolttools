@@ -56,7 +56,6 @@ class BoltSiteTree extends Extension {
 	
 	/* hack to set defaults on ErrorPage */
 	function onBeforeWrite() {
-		parent::onBeforeWrite();
 		if (!$this->owner->ID && $this->owner->ClassName == 'SilverStripe\ErrorPage\ErrorPage') $this->owner->ShowInSiteMap = 0;
 	}
 	

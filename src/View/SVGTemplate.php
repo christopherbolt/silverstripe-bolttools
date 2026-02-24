@@ -4,7 +4,7 @@ namespace ChristopherBolt\BoltTools\View;
 
 use SilverStripe\Model\ModelData;
 use DOMDocument;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\ModelData;
 use SilverStripe\View\SSViewer;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\View\ThemeResourceLoader;
@@ -269,7 +269,7 @@ class SVGTemplate extends ModelData
 		
 		// Parse template before dom level parsing since that may screw it up
 		if ($this->template_vars) {
-			$data = new ArrayData($this->template_vars);
+			$data = new ModelData($this->template_vars);
 			$out->loadXML($data->renderWith(SSViewer::fromString(file_get_contents($filePath))));
         } else {
         	$out->load($filePath);
