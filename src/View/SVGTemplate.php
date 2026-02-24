@@ -4,7 +4,6 @@ namespace ChristopherBolt\BoltTools\View;
 
 use SilverStripe\Model\ModelData;
 use DOMDocument;
-use SilverStripe\Model\ModelData;
 use SilverStripe\View\SSViewer;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\View\ThemeResourceLoader;
