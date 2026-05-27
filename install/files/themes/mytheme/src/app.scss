@@ -1,0 +1,24 @@
+/**
+ * Main CSS File
+ */
+
+// Common base
+@use "scss/base/reset";
+@use "scss/base/base";
+@use "scss/base/ssbase";
+
+// Project partials
+@use "scss/partials/global";
+@use "scss/partials/typography";
+@use "scss/partials/form";
+@use "scss/partials/wrapper";
+@use "scss/partials/header";
+@use "scss/partials/navigation";
+@use "scss/partials/layout";
+@use "scss/partials/footer";
+
+// Project pages
+@use "scss/pages/page";
+
+// Project elemental
+@use "scss/elements/content";

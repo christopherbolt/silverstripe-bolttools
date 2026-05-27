@@ -1,5 +1,9 @@
 /* Styles for content that can be edited in the CMS editor */
 
+@use "../settings" as *;
+@use "../mixins/common" as *;
+@use "../mixins/mixins" as *;
+
 .typography {
 	// GENERIC STYLES 
 	// -------------------------------

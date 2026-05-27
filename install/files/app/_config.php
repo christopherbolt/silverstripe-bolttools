@@ -1,12 +1,16 @@
+<?php
+
+use SilverStripe\TinyMCE\TinyMCEConfig;
+
 // Add start and type attributes for <ol>
-SilverStripe\Forms\HTMLEditor\TinyMCEConfig::get('cms')->setOption(
+TinyMCEConfig::get('cms')->setOption(
     'extended_valid_elements',
-    SilverStripe\Forms\HTMLEditor\TinyMCEConfig::get('cms')->getOption('extended_valid_elements')
+    TinyMCEConfig::get('cms')->getOption('extended_valid_elements')
 	.',ol[start|type],table[border|cellspacing|cellpadding|width|height|class|align|summary|dir|id|style]'
 );
 
 // Add custom styles to the editor, this allows us more control than just adding the styles from typography.css
-SilverStripe\Forms\HTMLEditor\TinyMCEConfig::get('cms')
+TinyMCEConfig::get('cms')
 ->setOption('style_formats_merge', false)
 ->setOption('importcss_append', true)
 ->setOption(
@@ -81,4 +85,4 @@ SilverStripe\Forms\HTMLEditor\TinyMCEConfig::get('cms')
 		*/
     )
 )
-->insertButtonsBefore('formatselect', array('styleselect'));
+->insertButtonsBefore('blocks', array('styles'));

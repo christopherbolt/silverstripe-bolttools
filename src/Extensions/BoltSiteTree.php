@@ -43,7 +43,10 @@ class BoltSiteTree extends Extension {
     	$fields->addFieldToTab("Root.Settings", new CheckboxField('ShowInSiteMap', 'Show on site map page? (only if this site has a site map page)'), 'ShowInSearch');
 	}
 	
-	public function updateCMSFields(FieldList $fields) {		
+	public function updateCMSFields(FieldList $fields) {	
+		// Prevent sitemap showing on main screen
+		$fields->removeByName('ShowInSiteMap');
+			
 		// Add back metatitle
 		if ($fields->fieldByName('Root.Main.Metadata')) {
 			$fields->fieldByName('Root.Main.Metadata')->insertBefore('MetaDescription', $metaTitle = new TextField('MetaTitle', 'Meta Title'));

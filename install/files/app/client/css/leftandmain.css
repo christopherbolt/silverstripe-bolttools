@@ -5,21 +5,3 @@
 #tab-Root_Users {
 	display: none;	
 }
-
-/* set minimum height of gridfield so that add type menu is not obscured */
-fieldset.field.ss-gridfield {
-	min-height: 300px !important;	
-}
-
-/* fix display of bulk editing checkboxes */
-input.bulkSelect, input.bulkSelectAll {
-	position: static !important;
-}
-
-/* Upload link doesn't work in dialogs, needs to be drag and drop */
-.ui-dialog .uploadfield .uploadfield__droptext button:first-child {
-	display: none;
-}
-.ui-dialog .uploadfield .uploadfield__droptext .uploadfield__join:before {
-	content: 'Drop file here ';
-}

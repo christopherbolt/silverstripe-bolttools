@@ -2,11 +2,11 @@ This module includes common extensions, functions etc used by christopherbolt.co
 
 It's not really intended for public use, so support and documentation is limited, but you are more than welcome to use it and contribute to it.
 
-Requires SS 4.x see 1.0 branch for SS 3
+Requires SS 6.x see older branches for other versions
 
 Install silverstripe (update to version required):
 ```
-composer create-project silverstripe/installer . 4.0.3
+composer create-project silverstripe/installer ./
 ```
 
 Install BoltTools:
@@ -14,11 +14,13 @@ Install BoltTools:
 composer require christopherbolt/silverstripe-bolttools ^2
 ```
 
-Copy accross base mysite and themes.
-
-Run the silverstripe web installer if you use it.
-
 Run post install commands as required:
 ```
-cat vendor/christopherbolt/silverstripe-bolttools/install/htaccess.txt public/.htaccess > temp && mv temp public/.htaccess && cat vendor/christopherbolt/silverstripe-bolttools/install/gitignore.txt >> .gitignore && mv vendor/christopherbolt/silverstripe-bolttools/install/robots.txt public/robots.txt && rm public/install.php
+cat vendor/christopherbolt/silverstripe-bolttools/install/htaccess.txt public/.htaccess > temp && mv temp public/.htaccess && cat vendor/christopherbolt/silverstripe-bolttools/install/gitignore.txt >> .gitignore && cp vendor/christopherbolt/silverstripe-bolttools/install/robots.txt public/robots.txt
 ```
+
+Merge files from install/files into project as required
+
+Merge values from install/composer.txt into composer.json and then run composer vendor-expose
+
+Run npm install

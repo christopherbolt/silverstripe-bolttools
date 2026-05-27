@@ -1,5 +1,10 @@
 // Base styles for gloabl elements specific for this project
 // Do not put classes in here
+
+@use "../settings" as *;
+@use "../mixins/common" as *;
+@use "../mixins/mixins" as *;
+
 html,body {
 	// Base REM size must be set on the html element
 	@include responsive-font-sizes;

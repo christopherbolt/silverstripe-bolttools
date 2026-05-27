@@ -1,3 +1,7 @@
+@use "../settings" as *;
+@use "../mixins/common" as *;
+@use "../mixins/mixins" as *;
+
 // Chris Bolt - added a default line-height 
 body, body * {
 	line-height: $default-line-height;

@@ -1,4 +1,4 @@
-<div style="font-family:Arial, Helvetica, sans-serif; font-size: 12px; color:#000">
+<div style="font-family:Arial, Helvetica, sans-serif; font-size: 14px; color:#000">
 
 <p>A new contact form submission has been received.</p>
 

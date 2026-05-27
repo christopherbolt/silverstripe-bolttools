@@ -1,5 +1,7 @@
 // This file should contain all your site's mixins
 
+@use "../settings" as *;
+
 /// @require $breakpoints
 @mixin above($breakpoint) {
     // If the key exists in the map
@@ -62,25 +64,6 @@
 	@media (hover: hover) and (pointer: fine) {
 		@content;
 	}
-}
-
-@mixin responsive-font-sizes {
-	font-size: $font-size-small;
-	@include above('medium') {
-		font-size: $font-size-medium;	
-	}
-	@include above('large') {
-		font-size: $font-size-large;
-	}	
-}
-
-@mixin sprite($width:53px) {
-	background-image: url(../images/sprite.png);
-	background-repeat: no-repeat;
-	background-size: $width auto;
-	@include retina {
-		background-image: url(../images/sprite-retina.png);
-	}	
 }
 
 // Common mixins, probably don't need to change these -----------

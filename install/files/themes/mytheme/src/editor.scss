@@ -4,14 +4,11 @@
 
 // Fonts should be imported here too so that they show in the editor
 
-@import "settings";
-
-@import "mixins/common";
-@import "mixins/mixins";
-@import "base/reset";
-@import "base/base";
-@import "partials/global";
-@import "partials/typography";
+@use "scss/base/reset";
+@use "scss/base/base";
+//@use "scss/base/ssbase";
+@use "scss/partials/global";
+@use "scss/partials/typography";
 
 body {
 	padding: 10px;

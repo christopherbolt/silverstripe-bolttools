@@ -1,0 +1,19 @@
+# Merge these into composer.json
+
+    "extra": {
+        "expose": [
+            "app/client",
+            "themes/mytheme/_processed",
+            "themes/mytheme/css",
+            "themes/mytheme/images",
+            "themes/mytheme/javascript",
+            "themes/mytheme/thirdparty",
+            "themes/mytheme/webfonts"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "ClientNamespace\\": "app/src/"
+        }
+    }
+

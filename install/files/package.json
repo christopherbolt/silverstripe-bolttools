@@ -1,44 +1,19 @@
 {
-  "name": "silverstripe-starter",
+  "name": "silverstripe-website",
   "version": "1.0.0",
-  "description": "Base setup for a Silverstripe Project using Laravel Mix",
-  "main": "index.js",
-  "scripts": {
-    "dev": "npm run development",
-    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "npm run development -- --watch",
-    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod": "npm run production",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-  },
+  "description": "[![CI](https://github.com/silverstripe/silverstripe-installer/actions/workflows/ci.yml/badge.svg)](https://github.com/silverstripe/silverstripe-installer/actions/workflows/ci.yml) [![Silverstripe supported module](https://img.shields.io/badge/silverstripe-supported-0071C4.svg)](https://www.silverstripe.org/software/addons/silverstripe-commercially-supported-module-list/)",
+  "main": "webpack.mix.js",
   "dependencies": {
-    "jquery": "^3.5.1"
+    "jquery": "^4.0.0",
+    "laravel-mix": "^6.0.49"
   },
-  "devDependencies": {
-    "babel-eslint": "^9.0.0",
-    "browser-sync": "^2.26.13",
-    "browser-sync-webpack-plugin": "^2.0.1",
-    "cross-env": "^7.0.2",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.1",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-config-vue": "^2.0.2",
-    "eslint-config-wesbos": "^0.0.19",
-    "eslint-plugin-html": "^5.0.5",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "eslint-plugin-vue": "^6.2.2",
-    "laravel-mix": "^5.0.7",
-    "prettier": "1.19.1",
-    "resolve-url-loader": "^3.1.2",
-    "sass": "^1.28.0",
-    "sass-loader": "^8.0.2"
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx mix --production",
+    "dev": "npx mix",
+    "watch": "npx mix watch"
   },
-  "keywords": [],
-  "author": "Chris Bolt",
+  "author": "",
   "license": "ISC"
 }

@@ -1,0 +1,23 @@
+/* Site specific mixins */
+
+@use "../settings" as *;
+@use "common" as *;
+
+@mixin responsive-font-sizes {
+	font-size: $font-size-small;
+	@include above('medium') {
+		font-size: $font-size-medium;	
+	}
+	@include above('large') {
+		font-size: $font-size-large;
+	}	
+}
+
+@mixin sprite($width:53px) {
+	background-image: url(../images/sprite.png);
+	background-repeat: no-repeat;
+	background-size: $width auto;
+	@include retina {
+		background-image: url(../images/sprite-retina.png);
+	}	
+}
